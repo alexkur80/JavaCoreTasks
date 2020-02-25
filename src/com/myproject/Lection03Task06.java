@@ -2,8 +2,8 @@
  *  This class request int number and check if this number is SIMPLE or not. Output result
  *
  * @author  Kurlovich Alexander
- * @param int intNumber - store natural number we should check it is is SIMPLE or not.
  * @return  Output if number is Simple or not..
+ * @see com.myproject.Utils.checkScannerIntNumbe - method that checkinput number
  *  checkScannerIntNumber(sc1, intNumber) - verify if number you input is INT
  *  checkNumberIsSimple(intNumber, ifNumberIsSimple); - return boolean flag TRUE or FALCE is number is SIMPLE or
  *  NOT SIMPLE.
@@ -16,6 +16,8 @@
 package com.myproject;
 
 import java.util.Scanner;
+
+import static com.myproject.Utils.checkScannerIntNumber;
 
 public class Lection03Task06 {
 
@@ -34,13 +36,11 @@ public class Lection03Task06 {
             System.out.println("Number " + intNumber + " is NOT simple number");
         }
 
-
     }
 
-    public static boolean checkNumberIsSimple(int intNumber, boolean ifNumberIsSimple)  {
+    public static boolean checkNumberIsSimple(int intNumber, boolean ifNumberIsSimple) {
         for (int i = 2; i < intNumber; i++) {
             if (intNumber % i == 0) {
-              //  System.out.println("Number " + intNumber + " is NOT simple number");
                 ifNumberIsSimple = false;
                 return ifNumberIsSimple;
             }
@@ -49,19 +49,5 @@ public class Lection03Task06 {
         return (ifNumberIsSimple = true);
     }
 
-
-
-        public static int checkScannerIntNumber (Scanner sc1,int intNumber){
-            System.out.print("Input int number but NOT ZERO: ");
-            if (sc1.hasNextInt()) {
-                intNumber = sc1.nextInt();
-
-            } else {
-                System.out.println("You input wrong number, try again");
-
-            }
-            return intNumber;
-        }
-
-    }
+}
 

@@ -1,5 +1,5 @@
 /**
- *  This class generate double type Array, sort it, output MIN element, MAX element, Avarage Sum.
+ *  This class generate double type Array, sort it, output MIN element, MAX element, Average Sum.
  *
  * @author  Kurlovich Alexander
  * @param  int lowRandomElement - low number of random element
@@ -34,7 +34,8 @@ public class Lection03Task03 {
             System.out.println(elementsArray[i] + " ");
         }
 
-// sorting
+// Sorting using Bubble algorithm
+
         for (int i = elementsArray.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {
 
@@ -54,9 +55,9 @@ public class Lection03Task03 {
         }
 
 
-        System.out.println("\nMix element of Array is:" + elementsArray[0]);
-        System.out.println("Max element of Array is:" + elementsArray[elementsArray.length - 1]);
-        System.out.println("Avarage amont is: " + sumAllElementsArray / countElementsArray);
+        System.out.println("\nMIN element of Array is:" + elementsArray[0]);
+        System.out.println("MAX element of Array is:" + elementsArray[elementsArray.length - 1]);
+        System.out.println("AVERAGE amount is: " + sumAllElementsArray / countElementsArray);
 
 
     }

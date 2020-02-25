@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class Lection03Task04 {
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         int lowRandomElement = 10;
         int highRandomElement = 99;
         int countElementsArray = 3;
@@ -27,7 +27,7 @@ public class Lection03Task04 {
         Random randomElement = new Random();
 
         for (int i = 0; i < countElementsArray; i++) {
-            intArray[i] = randomElement.nextInt(highRandomElement);
+            intArray[i] = randomElement.nextInt(highRandomElement - lowRandomElement + 1) + lowRandomElement;
             System.out.print(intArray[i] + " ");
         }
 
