@@ -1,5 +1,5 @@
 /**
- *  This class request int number and output factorial of this number. Use FOR cycle.
+ *  This class request int number and output factorial of this number. Use WHILE cycle.
  *
  * @author  Kurlovich Alexander
  * @param intNumber  - int number.
@@ -9,13 +9,13 @@
  * @return  number factorial
  *
  */
+package com.myproject;
 
 import java.util.Scanner;
 
 import static com.myproject.Utils.checkScannerIntNumber;
 
-
-public class Lection03Task07 {
+public class Lection03Task07a {
 
     public static void main(String[] args) {
         int intNumber = 1;
@@ -25,9 +25,12 @@ public class Lection03Task07 {
         intNumber = checkScannerIntNumber(sc, intNumber);
 
         int tmpIntNumber = intNumber;
+
         int tmpJ = 1;
-        for (int i = 1; i <= intNumber; i++) {
-            tmpJ = tmpJ*i;
+        int i = 1;
+        while (i <= intNumber) {
+            tmpJ = tmpJ * i;
+            i++;
         }
         System.out.println("Factorial of " + tmpIntNumber + "! is :" + tmpJ);
     }

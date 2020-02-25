@@ -6,7 +6,7 @@
  * @param  int highRandomElement  - high number of random element
  * @param  int countElementsArray  -  count arrays elements
  * @param   boolean ifArrayAscending = true - default array is  Ascending sorted.
- * @return  Output if array is sorted Ascending or not.
+ * @return  Output if array is in Ascending more or not.
  *
  *
  */

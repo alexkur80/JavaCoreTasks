@@ -1,5 +1,5 @@
 /**
- *  This class fill random Array and output elements in Ascending Order and Descending Order
+ *  This class output first 100 elements of natural numbers, that divide for 13 and 17 with no leavings.
  *
  * @author  Kurlovich Alexander
  * @param  int countElementsToOutput  - have number of elements to output.
@@ -11,8 +11,6 @@
  */
 
 package com.myproject;
-
-import java.util.Random;
 
 public class Lection03Task02 {
 
