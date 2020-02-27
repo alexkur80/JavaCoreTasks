@@ -67,8 +67,9 @@ class GetTime {
         int minutesTmp = (((this.seconds % (24 * 3600)) % 3600) / 60);
         int secondsTmp = (((this.seconds % (24 * 3600)) % 3600) % 60);
 
-        System.out.print("You entered: " + this.seconds + " seconds ");
-        System.out.println("that's EQUAL " + daysTmp + "d " + hoursTmp + "h " + minutesTmp + "m " + secondsTmp + "s");
+        System.out.print("You entered: " + daysTmp + "d " + hoursTmp + "h " + minutesTmp + "m " + secondsTmp + "s");
+        System.out.println("that's EQUAL " + this.seconds + " seconds ");
+
 
     }
 
