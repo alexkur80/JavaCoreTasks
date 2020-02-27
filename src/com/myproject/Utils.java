@@ -14,8 +14,6 @@ package com.myproject;
 import java.util.Scanner;
 
 public class Utils {
-    public static void main(String[] args) {
-    }
 
 
     public static int checkScannerIntNumber(Scanner sc1) {
