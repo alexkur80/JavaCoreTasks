@@ -31,6 +31,9 @@ public class Utils {
         return intNumber;
     }
 
+
+// Verify if input number NOT ZERO
+
     public static int checkScannerIntNumberNew(Scanner sc1, String invitation) {
         int intNumber = 0;
 
