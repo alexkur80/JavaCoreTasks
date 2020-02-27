@@ -27,7 +27,7 @@ public class Lection03Task06 {
 
         Scanner sc1 = new Scanner(System.in);
 
-        intNumber = checkScannerIntNumber(sc1, intNumber);
+        intNumber = checkScannerIntNumber(sc1);
         ifNumberIsSimple = checkNumberIsSimple(intNumber, ifNumberIsSimple);
 
         if (ifNumberIsSimple == true) {

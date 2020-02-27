@@ -22,7 +22,7 @@ public class Lection03Task07 {
 
         Scanner sc = new Scanner(System.in);
 
-        intNumber = checkScannerIntNumber(sc, intNumber);
+        intNumber = checkScannerIntNumber(sc);
 
         int tmpJ = 1;
         for (int i = 1; i <= intNumber; i++) {

@@ -24,7 +24,7 @@ public class Lection03Task07a {
 
         Scanner sc = new Scanner(System.in);
 
-        intNumber = checkScannerIntNumber(sc, intNumber);
+        intNumber = checkScannerIntNumber(sc);
 
         int tmpJ = 1;
         int i = 1;
