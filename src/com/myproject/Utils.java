@@ -30,7 +30,7 @@ public class Utils {
     }
 
 
-// Verify if input number NOT ZERO
+// Verify if input number > 0
 
     public static int checkScannerIntNumberNew(Scanner sc1, String invitation) {
         int intNumber = 0;
