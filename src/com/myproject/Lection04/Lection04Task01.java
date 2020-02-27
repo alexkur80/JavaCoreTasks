@@ -20,11 +20,11 @@
  *
  */
 
-package com.myproject;
+package com.myproject.Lection04;
 
 import java.util.Scanner;
 
-import static com.myproject.Utils.*;
+import static com.myproject.Utils.Utils.*;
 
 class GetTime {
     int hours;

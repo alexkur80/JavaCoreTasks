@@ -12,7 +12,7 @@
  *
  */
 
-package com.myproject;
+package com.myproject.Lection03;
 
 public class Lection03Task02 {
 

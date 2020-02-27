@@ -3,7 +3,7 @@
  *
  * @author  Kurlovich Alexander
  * @return  Output if number is Simple or not..
- * @see com.myproject.Utils.checkScannerIntNumbe - method that checkinput number
+ * @see com.myproject.Utils.Utils.checkScannerIntNumbe - method that checkinput number
  *  checkScannerIntNumber(sc1, intNumber) - verify if number you input is INT
  *  checkNumberIsSimple(intNumber, ifNumberIsSimple); - return boolean flag TRUE or FALCE is number is SIMPLE or
  *  NOT SIMPLE.
@@ -13,11 +13,11 @@
  * (every natural number NUMBER % 1 ==0 AND NUMBER % NUMBER ==0)
  */
 
-package com.myproject;
+package com.myproject.Lection03;
 
 import java.util.Scanner;
 
-import static com.myproject.Utils.checkScannerIntNumber;
+import static com.myproject.Utils.Utils.checkScannerIntNumber;
 
 public class Lection03Task06 {
 

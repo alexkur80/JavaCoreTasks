@@ -9,7 +9,7 @@
  */
 
 
-package com.myproject;
+package com.myproject.Utils;
 
 import java.util.Scanner;
 

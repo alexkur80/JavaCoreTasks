@@ -8,7 +8,7 @@
  *
  */
 
-package com.myproject;
+package com.myproject.Lection03;
 
 import java.util.Random;
 
