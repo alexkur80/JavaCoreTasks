@@ -58,7 +58,6 @@ class GetTime {
                 Input seconds: 15
                 You entered: 0d 5h 45m 15s that's EQUAL 20715 seconds
 
-
     1 day = 24 * 3600 seconds
     1 hour = 3600 seconds
     1 minute = 60 seconds
