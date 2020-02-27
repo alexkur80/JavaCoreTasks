@@ -50,8 +50,14 @@ class GetTime {
     /*  This METHOD accepts number of seconds in form: NNNNNNN sec.
     Then converts number to Days, hours, minutes, seconds for readable form.
     Example:
-    User input: 8554151 seconds. Output: 97 days 20 hours 22 minutes 31 seconds
-    User input: 5 hours 69 minutes 987 seconds Output: 0 days 6 hours 25 minutes 27 seconds
+    User input: 20715 seconds.
+    You entered: 0d 5h 45m 15s that's EQUAL 20715 seconds
+
+    User input: Input hours: 5
+                Input minutes: 45
+                Input seconds: 15
+                You entered: 0d 5h 45m 15s that's EQUAL 20715 seconds
+
 
     1 day = 24 * 3600 seconds
     1 hour = 3600 seconds
@@ -68,7 +74,7 @@ class GetTime {
         int secondsTmp = (((this.seconds % (24 * 3600)) % 3600) % 60);
 
         System.out.print("You entered: " + daysTmp + "d " + hoursTmp + "h " + minutesTmp + "m " + secondsTmp + "s");
-        System.out.println("that's EQUAL " + this.seconds + " seconds ");
+        System.out.println(" that's EQUAL " + this.seconds + " seconds ");
 
 
     }
