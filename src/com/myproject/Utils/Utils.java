@@ -39,9 +39,10 @@ public class Utils {
             System.out.print(invitation);
             intNumber = sc1.nextInt();
         }
-        while (intNumber <= 0);
+        while (intNumber < 0);
         return intNumber;
     }
+
 
 
 }

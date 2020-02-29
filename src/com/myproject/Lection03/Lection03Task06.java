@@ -1,13 +1,13 @@
 /**
- *  This class request int number and check if this number is SIMPLE or not. Output result
+ * This class request int number and check if this number is SIMPLE or not. Output result
  *
- * @author  Kurlovich Alexander
- * @return  Output if number is Simple or not..
+ * @author Kurlovich Alexander
+ * @return Output if number is Simple or not..
  * @see com.myproject.Utils.Utils.checkScannerIntNumbe - method that checkinput number
- *  checkScannerIntNumber(sc1, intNumber) - verify if number you input is INT
- *  checkNumberIsSimple(intNumber, ifNumberIsSimple); - return boolean flag TRUE or FALCE is number is SIMPLE or
- *  NOT SIMPLE.
- *
+ * checkScannerIntNumber(sc1, intNumber) - verify if number you input is INT
+ * checkNumberIsSimple(intNumber, ifNumberIsSimple); - return boolean flag TRUE or FALCE is number is SIMPLE or
+ * NOT SIMPLE.
+ * <p>
  * Simple number is that number that NUMBER % X == 0. 1 and 2 - SIMPLE numbers. In this alghoritm we
  * check numbers between 2  * and (NUMBER -1) because NUMBER % NUMBER == 0
  * (every natural number NUMBER % 1 ==0 AND NUMBER % NUMBER ==0)

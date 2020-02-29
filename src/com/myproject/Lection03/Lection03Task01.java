@@ -1,11 +1,10 @@
 /**
- *  This class fill random Array and output elements in Ascending Order and Descending Order
+ * This class fill random Array and output elements in Ascending Order and Descending Order
  *
- * @author  Kurlovich Alexander
- * @param  int highRandomElement  - high number of random element
- * @param  int countElementsArray  -  count arrays elements
- * @return  All elements of array in ascending and descending order.
- *
+ * @author Kurlovich Alexander
+ * @param int highRandomElement  - high number of random element
+ * @param int countElementsArray  -  count arrays elements
+ * @return All elements of array in ascending and descending order.
  */
 
 package com.myproject.Lection03;
