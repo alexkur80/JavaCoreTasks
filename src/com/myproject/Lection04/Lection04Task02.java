@@ -5,7 +5,7 @@
  * @author  Kurlovich Alexander
  * @version Lection04Task02
  * @param int Atm pushToAtm() - method that accept funds in ATM.
- * @param boolean pullOutOfAtm(Atm atmMachine) - return boolean of success procedure.
+ * @param boolean withdrawOutOfAtm(Atm atmMachine) - return boolean of success procedure.
  *
  */
 
@@ -37,7 +37,7 @@ class Atm {
     }
 
 
-    static boolean WithdrawOutOfAtm(Atm atmMachine) {
+    static boolean withdrawOutOfAtm(Atm atmMachine) {
         boolean flag = false;
         Scanner sc = new Scanner(System.in);
         System.out.println("\nWe have banknotes only 100$, 50$, 20$  in ATM");
@@ -70,7 +70,7 @@ public class Lection04Task02 {
         Atm atmMachine = Atm.pushToAtm();
 
 // Return Flag of pullOutOfAtm operation.
-        boolean flag = Atm.WithdrawOutOfAtm(atmMachine);
+        boolean flag = Atm.withdrawOutOfAtm(atmMachine);
         System.out.println("Withdrawal result = " + flag);
     }
 }
