@@ -11,7 +11,7 @@
  *
  */
 
-package com.myproject.Lection03;
+package com.myproject.lection03;
 
 import java.util.Random;
 

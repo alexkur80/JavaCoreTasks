@@ -1,21 +1,23 @@
-package com.myproject.Lection03; /**
- *  This class request int number and calculate factorial of this number. Use FOR operator for cycle.
+/**
+ *  This class request int number and calculate factorial of this number. Use WHILE operator for cycle.
  *
  * @author  Kurlovich Alexander
  * @param intNumber  - int number.
- * @see com.myproject.Utils.Utils.checkScannerIntNumber
+ * @see com.myproject.utils.Utils.checkScannerIntNumber
  * @see checkScannerIntNumber(sc, intNumber) - method from Utils class. Request number in console.
  *
  * @return  number factorial
  *
  */
 
+
+package com.myproject.lection03;
+
 import java.util.Scanner;
 
-import static com.myproject.Utils.Utils.checkScannerIntNumber;
+import static com.myproject.utils.Utils.checkScannerIntNumber;
 
-
-public class Lection03Task07 {
+public class Lection03Task07a {
 
     public static void main(String[] args) {
         int intNumber = 1;
@@ -25,8 +27,10 @@ public class Lection03Task07 {
         intNumber = checkScannerIntNumber(sc);
 
         int tmpJ = 1;
-        for (int i = 1; i <= intNumber; i++) {
-            tmpJ = tmpJ*i;
+        int i = 1;
+        while (i <= intNumber) {
+            tmpJ = tmpJ * i;
+            i++;
         }
         System.out.println("Factorial of " + intNumber + " is: " + tmpJ);
     }

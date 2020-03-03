@@ -7,7 +7,7 @@
  * @return All elements of array in ascending and descending order.
  */
 
-package com.myproject.Lection03;
+package com.myproject.lection03;
 
 import java.util.Random;
 

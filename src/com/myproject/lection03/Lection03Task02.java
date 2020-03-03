@@ -12,12 +12,11 @@
  *
  */
 
-package com.myproject.Lection03;
+package com.myproject.lection03;
 
 public class Lection03Task02 {
 
     public static void main(String[] args) {
-
         int countElementsToOutput = 100;
         int natulalElemenArrayDevideOn13And17[] = new int[countElementsToOutput];
 
