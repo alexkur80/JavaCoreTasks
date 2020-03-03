@@ -5,7 +5,7 @@
  * @author  Kurlovich Alexander
  * @version Lection04Task02
  * @param int Atm pushToAtm() - method accept funds in ATM.
- * @param boolean withdrawOutOfAtm(Atm atmMachine) - method return boolean of success procedure.
+ * @param boolean withdrawOutOfAtm(Atm atmMachine)  - method return boolean of success procedure.
  *
  */
 
