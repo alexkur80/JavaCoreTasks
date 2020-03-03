@@ -150,7 +150,7 @@ public class Lection04Task02 {
 
         Atm atmMachine = Atm.pushToAtm();
 
-// Return Flag of pullOutOfAtm operation.
+// Return Flag of pullOutOfAtm  operation.
 
         boolean flag = Atm.withdrawOutOfAtm(atmMachine);
         System.out.println("Withdrawal result = " + flag);
