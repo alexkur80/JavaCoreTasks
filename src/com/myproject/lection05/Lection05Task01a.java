@@ -9,8 +9,8 @@
  * @param int intNumberA; int intNumberB
  * @param double doubleNumberA;
  * @param double doubleNumberB;
- * @param BigDecimal bigDecimalNumberA;
- * @param BigDecimal bigDecimalNumberB;
+ * @param BigDecimal bigDecimalNumberA
+ * @param BigDecimal bigDecimalNumberB
  * @return SUM of two numbers (int, double, BigDecimal)
  */
 
