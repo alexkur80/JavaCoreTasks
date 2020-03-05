@@ -38,19 +38,24 @@ class Warrior extends Hero {
     }
 
 
-    @Override
-    void attackEnemy(Enemy enemyObj, int damage) {
+    //@Override
+    void attackEnemy(Enemy enemyObj) {
+        int damage = 10;
+
+        if (damage > enemyObj.getHealth()) {
+            damage = enemyObj.getHealth();
+        }
+
         enemyObj.takeDamage(damage);
         if (enemyObj.getHealth() == 0) {
             System.out.println(super.getName() + " is attacking enemy for the last " + damage + "%" + " and enemy have "
-                    + enemyObj.getHealth() + "% left and died...");
-
+                    + enemyObj.getHealth() + "% left");
+            return;
         } else {
             System.out.println(super.getName() + " is attacking enemy for " + damage + "% damage and enemy left just "
                     + enemyObj.getHealth() + "%");
+
         }
-
-
     }
 }
 
@@ -61,12 +66,19 @@ class Mage extends Hero {
     }
 
 
-    @Override
-    void attackEnemy(Enemy enemyObj, int damage) {
+    //@Override
+    void attackEnemy(Enemy enemyObj) {
+        int damage = 17;
+
+        if (damage > enemyObj.getHealth()) {
+            damage = enemyObj.getHealth();
+        }
+
         enemyObj.takeDamage(damage);
         if (enemyObj.getHealth() == 0) {
             System.out.println(super.getName() + " is attacking enemy for the last " + damage + "%" + " and enemy have "
                     + enemyObj.getHealth() + "% left");
+            return;
         } else {
             System.out.println(super.getName() + " is attacking enemy for " + damage + "% damage and enemy left just "
                     + enemyObj.getHealth() + "%");
@@ -82,12 +94,19 @@ class Archer extends Hero {
     }
 
 
-    @Override
-    void attackEnemy(Enemy enemyObj, int damage) {
+    //@Override
+    void attackEnemy(Enemy enemyObj) {
+        int damage = 12;
+
+        if (damage > enemyObj.getHealth()) {
+            damage = enemyObj.getHealth();
+        }
+
         enemyObj.takeDamage(damage);
         if (enemyObj.getHealth() == 0) {
             System.out.println(super.getName() + " is attacking enemy for the last " + damage + "%" + " and enemy have "
                     + enemyObj.getHealth() + "% left");
+            return;
         } else {
             System.out.println(super.getName() + " is attacking enemy for " + damage + "% damage and enemy left just "
                     + enemyObj.getHealth() + "%");
@@ -126,11 +145,11 @@ public class TrainingGround {
         int randomDamageArcher = 0;
         int randomDamageMage = 0;
 
-        Random randomInt = new Random();
+  /*      Random randomInt = new Random();
 
         randomDamageWarrior = randomInt.nextInt(10);
         randomDamageArcher = randomInt.nextInt(25);
-        randomDamageMage = randomInt.nextInt(40);
+        randomDamageMage = randomInt.nextInt(40);*/
 
         Enemy enemyOne = new Enemy(100);
         Hero heroOne = new Hero("Hero Amur");
@@ -140,39 +159,33 @@ public class TrainingGround {
 
         int counterStrike = 0;
         while (enemyOne.getHealth() > 0) {
-            int warriorAttack = randomInt.nextInt(20);
+/*            int warriorAttack = randomInt.nextInt(20);
             int mageAttack = randomInt.nextInt(30);
-            int archerAttack = randomInt.nextInt(25);
+            int archerAttack = randomInt.nextInt(25);*/
 
             counterStrike++;
-            if (warriorAttack > enemyOne.getHealth()) {
-                warriorAttack = enemyOne.getHealth();
-                warriorOne.attackEnemy(enemyOne, warriorAttack);
-                System.out.println("There are " + counterStrike + " stikes killed enemy");
+            warriorOne.attackEnemy(enemyOne);
+            if (enemyOne.getHealth() == 0) {
+                System.out.println("It tooks " + counterStrike + " strikes to kill enemy");
                 return;
             }
-            warriorOne.attackEnemy(enemyOne, warriorAttack);
 
             counterStrike++;
-
-            if (mageAttack > enemyOne.getHealth()) {
-                mageAttack = enemyOne.getHealth();
-                mageOne.attackEnemy(enemyOne, mageAttack);
-                System.out.println("There are " + counterStrike + " stikes killed enemy");
+            mageOne.attackEnemy(enemyOne);
+            if (enemyOne.getHealth() == 0) {
+                System.out.println("It tooks " + counterStrike + " strikes to kill enemy");
                 return;
             }
-            mageOne.attackEnemy(enemyOne, mageAttack);
 
             counterStrike++;
-
-            if (archerAttack > enemyOne.getHealth()) {
-                archerAttack = enemyOne.getHealth();
-                archerOne.attackEnemy(enemyOne, archerAttack);
-                System.out.println("There are " + counterStrike + " stikes killed enemy");
+            archerOne.attackEnemy(enemyOne);
+            if (enemyOne.getHealth() == 0) {
+                System.out.println("It tooks " + counterStrike + " strikes to kill enemy");
                 return;
             }
-            archerOne.attackEnemy(enemyOne, archerAttack);
+            }
+
 
         }
     }
-}
+
