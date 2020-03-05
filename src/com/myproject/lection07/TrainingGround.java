@@ -3,7 +3,7 @@ package com.myproject.lection07;
 
 import java.util.Random;
 
-class Hero {
+abstract class Hero {
     private String name;
 
     Hero(String name) {
@@ -14,19 +14,7 @@ class Hero {
         return name;
     }
 
-    void attackEnemy(Enemy enemyObj, int damage) {
-        enemyObj.takeDamage(damage);
-        if (enemyObj.getHealth() == 0) {
-            System.out.println(name + " is attacking enemy for the last " + damage + "%" + " and enemy have "
-                    + enemyObj.getHealth() + "% left and died...");
-
-        } else {
-            System.out.println(name + " is attacking enemy for " + damage + "% damage and enemy left just "
-                    + enemyObj.getHealth() + "%");
-        }
-
-
-    }
+    abstract void attackEnemy(Enemy enemyObj);
 }
 
 
@@ -38,7 +26,7 @@ class Warrior extends Hero {
     }
 
 
-    //@Override
+    @Override
     void attackEnemy(Enemy enemyObj) {
         int damage = 10;
 
@@ -66,7 +54,7 @@ class Mage extends Hero {
     }
 
 
-    //@Override
+    @Override
     void attackEnemy(Enemy enemyObj) {
         int damage = 17;
 
@@ -94,7 +82,7 @@ class Archer extends Hero {
     }
 
 
-    //@Override
+    @Override
     void attackEnemy(Enemy enemyObj) {
         int damage = 12;
 
@@ -145,23 +133,14 @@ public class TrainingGround {
         int randomDamageArcher = 0;
         int randomDamageMage = 0;
 
-  /*      Random randomInt = new Random();
-
-        randomDamageWarrior = randomInt.nextInt(10);
-        randomDamageArcher = randomInt.nextInt(25);
-        randomDamageMage = randomInt.nextInt(40);*/
 
         Enemy enemyOne = new Enemy(100);
-        Hero heroOne = new Hero("Hero Amur");
         Warrior warriorOne = new Warrior("Warrior Vasiliy");
         Archer archerOne = new Archer("Archer Piotr");
         Mage mageOne = new Mage("Mage Natalia");
 
         int counterStrike = 0;
         while (enemyOne.getHealth() > 0) {
-/*            int warriorAttack = randomInt.nextInt(20);
-            int mageAttack = randomInt.nextInt(30);
-            int archerAttack = randomInt.nextInt(25);*/
 
             counterStrike++;
             warriorOne.attackEnemy(enemyOne);
@@ -183,9 +162,9 @@ public class TrainingGround {
                 System.out.println("It tooks " + counterStrike + " strikes to kill enemy");
                 return;
             }
-            }
-
-
         }
+
+
     }
+}
 
