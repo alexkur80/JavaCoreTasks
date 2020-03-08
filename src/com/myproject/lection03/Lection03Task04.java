@@ -1,14 +1,12 @@
 /**
- *  This class generate int type Array, Check out if Array is Ascending sort or not.
+ * This class generate int type Array, Check out if Array is Ascending sort or not.
  *
- * @author  Kurlovich Alexander
- * @param  int lowRandomElement - low number of random element
- * @param  int highRandomElement  - high number of random element
- * @param  int countElementsArray  -  count arrays elements
- * @param   boolean ifArrayAscending = true - default array is  Ascending sorted.
- * @return  Output if array is in Ascending more or not.
- *
- *
+ * @author Kurlovich Alexander
+ * @param int lowRandomElement - low number of random element
+ * @param int highRandomElement  - high number of random element
+ * @param int countElementsArray  -  count arrays elements
+ * @param boolean ifArrayAscending = true - default array is  Ascending sorted.
+ * @return Output if array is in Ascending more or not.
  */
 
 package com.myproject.lection03;
