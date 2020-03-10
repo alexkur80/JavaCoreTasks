@@ -14,6 +14,7 @@ public class Rectangle implements IShape {
         return width;
     }
 
+
     public double getHeight() {
         return height;
     }

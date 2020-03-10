@@ -5,6 +5,7 @@
  */
 
 
+
 package com.myproject.lection08;
 
 public class Cube implements IShape {

@@ -59,6 +59,7 @@ public class GeometricFig {
         cubeDiagonalResult = cubeCalculation.cubeDiagonal();
         cubeAreaResult = shape.area();
 
+
         ApplicationLogger.LOGGER.info("Rectangle area: " + rectangleAreaResult);
         ApplicationLogger.LOGGER.info("Circle area: " + circleAreaResult);
         ApplicationLogger.LOGGER.info("Circle lenght: " + circleLenghtResult);

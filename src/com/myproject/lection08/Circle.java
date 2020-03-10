@@ -9,6 +9,7 @@ package com.myproject.lection08;
 public class Circle implements IShape {
     private double rasius;
 
+
     Circle(double radius) {
         this.rasius = radius;
     }

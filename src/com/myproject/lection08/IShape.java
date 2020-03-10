@@ -4,3 +4,4 @@ interface IShape {
 
     double area();
 }
+
