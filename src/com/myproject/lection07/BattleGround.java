@@ -397,6 +397,8 @@ public class BattleGround {
 
         idEnemyProfile = checkScannerIntNumberNew(sc, invitation02);
 
+
+
         if (idHeroProfile == 1) {
             Warrior warriorOne = new Warrior("Warrior Vasiliy", 100);
             whoHeroIsReadyToFight = warriorOne;
