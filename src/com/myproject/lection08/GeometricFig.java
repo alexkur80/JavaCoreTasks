@@ -28,6 +28,8 @@ public class GeometricFig {
         ShapeUtils.isShapeIsCube(shape);
         ShapeUtils.isShapeIsOval(shape);
         ShapeUtils.isShapeIsCircle(shape);
+        ShapeUtils.isShapeIsSquare(shape);
+
         ApplicationLogger.LOGGER.info("Rectangle area: " + shape.area() + "\n");
 
 
@@ -39,9 +41,23 @@ public class GeometricFig {
         ShapeUtils.isShapeIsCube(shape);
         ShapeUtils.isShapeIsOval(shape);
         ShapeUtils.isShapeIsCircle(shape);
+        ShapeUtils.isShapeIsSquare(shape);
+
         ApplicationLogger.LOGGER.info("Cube area: " + shape.area());
         ApplicationLogger.LOGGER.info("Cube diagonal: " + ((Cube) shape).cubeDiagonal() + "\n");
 
+
+        Cube.Square square = ((Cube) shape).new Square(cubeLenght);
+        shape = square;
+        ApplicationLogger.LOGGER.info(shape.toString());
+        ShapeUtils.isShapeIsTriangle(shape);
+        ShapeUtils.isShapeIsRectangle(shape);
+        ShapeUtils.isShapeIsCube(shape);
+        ShapeUtils.isShapeIsOval(shape);
+        ShapeUtils.isShapeIsCircle(shape);
+        ShapeUtils.isShapeIsSquare(shape);
+
+        ApplicationLogger.LOGGER.info("Square area: " + shape.area() + "\n");
 
         IShape oval = new Oval(radiusAOval, radiusBOval);
         shape = oval;
@@ -51,6 +67,8 @@ public class GeometricFig {
         ShapeUtils.isShapeIsCube(shape);
         ShapeUtils.isShapeIsOval(shape);
         ShapeUtils.isShapeIsCircle(shape);
+        ShapeUtils.isShapeIsSquare(shape);
+
         ApplicationLogger.LOGGER.info("Oval area: " + shape.area());
         ApplicationLogger.LOGGER.info("Oval sum Radius A and Radius B: "
                 + ((Oval) shape).sumRadiusAandB() + "\n");
@@ -58,12 +76,13 @@ public class GeometricFig {
 
         Oval.Circle circle = ((Oval) shape).new Circle(radiusAOval);
         shape = circle;
-        ApplicationLogger.LOGGER.info(circle.toString());
+        ApplicationLogger.LOGGER.info(shape.toString());
         ShapeUtils.isShapeIsTriangle(shape);
         ShapeUtils.isShapeIsRectangle(shape);
         ShapeUtils.isShapeIsCube(shape);
         ShapeUtils.isShapeIsOval(shape);
         ShapeUtils.isShapeIsCircle(shape);
+        ShapeUtils.isShapeIsSquare(shape);
         ApplicationLogger.LOGGER.info("Circle area: " + shape.area() + "\n");
 
 
@@ -75,6 +94,7 @@ public class GeometricFig {
         ShapeUtils.isShapeIsCube(shape);
         ShapeUtils.isShapeIsOval(shape);
         ShapeUtils.isShapeIsCircle(shape);
+        ShapeUtils.isShapeIsSquare(shape);
         ApplicationLogger.LOGGER.info("Triangle area: " + shape.area());
 
     }

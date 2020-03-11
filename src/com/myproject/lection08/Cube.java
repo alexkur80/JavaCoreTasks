@@ -32,20 +32,22 @@ public class Cube implements IShape {
     }
 
 
+    class Square implements IShape {
 
-    /*  Есть ли смысл делать этот внутренний класс по логике? В этом классе можно записать методы, которые
-        относятся только к кубу - например, диагонать куба. Больше не будет использоваться нигде.
-        Или такое можо зщаписать в виде методов?
-
-    */
-/*    class CubeCalculation {
-
-        public double cubeDiagonal() {
-            double diagonal;
-            diagonal = Math.sqrt(3) * lenght;
-            return diagonal;
+        Square(double length) {
+            Cube.this.length = length;
         }
-    }*/
+
+        @Override
+        public String toString() {
+            return "Inside inner class Square, outer is Cube";
+        }
+
+        @Override
+        public double area() {
+            return Math.pow(length, 2);
+        }
+    }
 }
 
 

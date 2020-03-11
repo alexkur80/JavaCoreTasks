@@ -15,6 +15,10 @@ public class Oval implements IShape {
         this.radiusB = radiusB;
     }
 
+    Oval(double radiusA) {
+        this.radiusA = radiusA;
+
+    }
 
     @Override
     public double area() {

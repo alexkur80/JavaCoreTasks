@@ -21,5 +21,9 @@ public class ShapeUtils {
     static void isShapeIsCircle(IShape shape) {
         ApplicationLogger.LOGGER.info("This figure is Circle:" + (shape instanceof Oval.Circle));
     }
+
+    static void isShapeIsSquare(IShape shape) {
+        ApplicationLogger.LOGGER.info("This figure is Square:" + (shape instanceof Cube.Square));
+    }
 }
 
