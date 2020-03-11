@@ -10,18 +10,15 @@ public class Rectangle implements IShape {
     }
 
 
-    public double getWidth() {
-        return width;
-    }
-
-
-    public double getHeight() {
-        return height;
-    }
-
     @Override
     public double area() {
         double area = width * height;
         return area;
     }
+
+    @Override
+    public String toString(){
+        return "Inside class Rectangle";
+    }
+
 }

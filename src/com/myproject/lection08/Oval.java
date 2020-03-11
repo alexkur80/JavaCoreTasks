@@ -16,21 +16,40 @@ public class Oval implements IShape {
     }
 
 
-
     @Override
     public double area() {
         double area = ((radiusA + radiusB) / 2) * Math.PI;
         return area;
     }
 
-    class OvalCalculation {
+    @Override
+    public String toString() {
+        return "Inside class Oval";
+    }
 
-        public double sumRadiusAandB() {
-            double sumRadiusAandB;
-            sumRadiusAandB = radiusA + radiusB;
-            return sumRadiusAandB;
-        }
+    public double sumRadiusAandB() {
+        double sumRadiusAandB;
+        sumRadiusAandB = radiusA + radiusB;
+        return sumRadiusAandB;
     }
 
 
+    class Circle implements IShape {
+
+        Circle(double radiusA) {
+            Oval.this.radiusA = radiusA;
+        }
+
+        @Override
+        public double area() {
+            double area = Math.PI * Math.pow(Oval.this.radiusA, 2);
+            return area;
+        }
+
+        @Override
+        public String toString() {
+            return "Inside inner class Circle, outer is Oval";
+        }
+    }
 }
+

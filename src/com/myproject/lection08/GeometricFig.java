@@ -9,63 +9,73 @@ public class GeometricFig {
         double widthRectangle = 10;
         double heightRectangle = 20;
 
-        double radiusCircle = 10;
-
         double radiusAOval = 15;
         double radiusBOval = 20;
 
         double cubeLenght = 15;
 
-        double rectangleAreaResult;
-        double circleAreaResult;
-        double ovalAreaResult;
-        double cubeAreaResult;
-        double cubeDiagonalResult;
-        double circleLenghtResult;
-        double ovalSumRadiusAandB;
+        double triangleRightSideA = 10;
+        double triangleRightSideB = 15;
+
 
         IShape shape;
 
-
         IShape rectangle = new Rectangle(widthRectangle, heightRectangle);
         shape = rectangle;
-        rectangleAreaResult = shape.area();
+        ApplicationLogger.LOGGER.info(shape.toString());
+        ShapeUtils.isShapeIsTriangle(shape);
+        ShapeUtils.isShapeIsRectangle(shape);
+        ShapeUtils.isShapeIsCube(shape);
+        ShapeUtils.isShapeIsOval(shape);
+        ShapeUtils.isShapeIsCircle(shape);
+        ApplicationLogger.LOGGER.info("Rectangle area: " + shape.area() + "\n");
 
-
-        IShape circle = new Circle(radiusCircle);
-        shape = circle;
-        circleAreaResult = shape.area();
-
-// приведение к типу CIRCLE, тк интерфейс не имеет этого метода
-        Circle.CircleCalculation circleCalculation = ((Circle) shape).new CircleCalculation();
-        circleLenghtResult = circleCalculation.circleLenght();
-
-/*      Если создать ссылку типа CIRCLE, то для доступа к методу использовать такой вызов
-        Circle circle2 = new Circle(radiusCircle);
-        circleLen = circle2.circleLen();   // приведение к типу CIRCLE, тк интерфейс не имеет этого метода
-
-*/
-        IShape oval = new Oval(radiusAOval, radiusBOval);
-        shape = oval;
-        ovalAreaResult = shape.area();
-        Oval.OvalCalculation ovalCalculation = ((Oval) shape).new OvalCalculation();
-        ovalSumRadiusAandB = ovalCalculation.sumRadiusAandB();
 
         IShape cube = new Cube(cubeLenght);
         shape = cube;
+        ApplicationLogger.LOGGER.info(shape.toString());
+        ShapeUtils.isShapeIsTriangle(shape);
+        ShapeUtils.isShapeIsRectangle(shape);
+        ShapeUtils.isShapeIsCube(shape);
+        ShapeUtils.isShapeIsOval(shape);
+        ShapeUtils.isShapeIsCircle(shape);
+        ApplicationLogger.LOGGER.info("Cube area: " + shape.area());
+        ApplicationLogger.LOGGER.info("Cube diagonal: " + ((Cube) shape).cubeDiagonal() + "\n");
 
-// привести к типу Cube, тк  имплементируемый интерфейс не имеет этого метода
-        Cube.CubeCalculation cubeCalculation = ((Cube) shape).new CubeCalculation();
-        cubeDiagonalResult = cubeCalculation.cubeDiagonal();
-        cubeAreaResult = shape.area();
+
+        IShape oval = new Oval(radiusAOval, radiusBOval);
+        shape = oval;
+        ApplicationLogger.LOGGER.info(shape.toString());
+        ShapeUtils.isShapeIsTriangle(shape);
+        ShapeUtils.isShapeIsRectangle(shape);
+        ShapeUtils.isShapeIsCube(shape);
+        ShapeUtils.isShapeIsOval(shape);
+        ShapeUtils.isShapeIsCircle(shape);
+        ApplicationLogger.LOGGER.info("Oval area: " + shape.area());
+        ApplicationLogger.LOGGER.info("Oval sum Radius A and Radius B: "
+                + ((Oval) shape).sumRadiusAandB() + "\n");
 
 
-        ApplicationLogger.LOGGER.info("Rectangle area: " + rectangleAreaResult);
-        ApplicationLogger.LOGGER.info("Circle area: " + circleAreaResult);
-        ApplicationLogger.LOGGER.info("Circle lenght: " + circleLenghtResult);
-        ApplicationLogger.LOGGER.info("Cube area: " + cubeAreaResult);
-        ApplicationLogger.LOGGER.info("Cube diagonal: " + cubeDiagonalResult);
-        ApplicationLogger.LOGGER.info("Oval area: " + ovalAreaResult);
-        ApplicationLogger.LOGGER.info("Oval sum Radius A and Radius B: " + ovalSumRadiusAandB);
+        Oval.Circle circle = ((Oval) shape).new Circle(radiusAOval);
+        shape = circle;
+        ApplicationLogger.LOGGER.info(circle.toString());
+        ShapeUtils.isShapeIsTriangle(shape);
+        ShapeUtils.isShapeIsRectangle(shape);
+        ShapeUtils.isShapeIsCube(shape);
+        ShapeUtils.isShapeIsOval(shape);
+        ShapeUtils.isShapeIsCircle(shape);
+        ApplicationLogger.LOGGER.info("Circle area: " + shape.area() + "\n");
+
+
+        IShape triangleRight = new TriangleRight(triangleRightSideA, triangleRightSideB);
+        shape = triangleRight;
+        ApplicationLogger.LOGGER.info(shape.toString());
+        ShapeUtils.isShapeIsTriangle(shape);
+        ShapeUtils.isShapeIsRectangle(shape);
+        ShapeUtils.isShapeIsCube(shape);
+        ShapeUtils.isShapeIsOval(shape);
+        ShapeUtils.isShapeIsCircle(shape);
+        ApplicationLogger.LOGGER.info("Triangle area: " + shape.area());
+
     }
 }
