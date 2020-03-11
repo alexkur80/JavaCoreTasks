@@ -1,7 +1,17 @@
 /**
- * Outer class Cube
- * Inner class CubeCalculation has methods:
- * public double diagonal()   - calculate diagonal of cube, don't used but with Cube.
+ * This class has Outer class (Cube) and Inner class (Square) that both implemented from interface IShape.
+ * So some methods must be Overriding.
+ *
+ * @param public double area() - Overriding method calculate area of Cube(Square) and return area, type double
+ * @param public String toString() - Overriding method informing you are inside Cube(Square) class.
+ *
+ * <p>
+ * Inner class Circle implements IShape so  area() and toString() methods should be also
+ * Overriding.
+ * Inner class Circle has own Constructor with NO arguments. This method uses Outer class parameter
+ * radiusA.
+ * @author Kurlovich Alexander
+ * @version Lection08 Polymorphism
  */
 
 
@@ -33,10 +43,6 @@ public class Cube implements IShape {
 
 
     class Square implements IShape {
-
-        Square(double length) {
-            Cube.this.length = length;
-        }
 
         @Override
         public String toString() {

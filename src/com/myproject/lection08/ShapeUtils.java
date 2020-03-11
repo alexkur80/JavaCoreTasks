@@ -1,3 +1,10 @@
+/**
+ * This class has util methods that define if Object is particular figure.
+ *
+ * @author Kurlovich Alexander
+ * @version Lection08 Polymorphism
+ */
+
 package com.myproject.lection08;
 
 public class ShapeUtils {

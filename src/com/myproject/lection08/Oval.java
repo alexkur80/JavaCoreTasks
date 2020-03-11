@@ -1,8 +1,19 @@
 /**
- * Outer class Oval
- * Inner class OvalCalculation has methods:
- * public double sumRadiusAandB()   - calculate sum of RadiosA+ RadiusB
+ * This class has Outer class and Inner class that both implemented from interface IShape so somce
+ * methods should be Overriding.
+ *
+ * @param public double area() - Overriding method calculate area of Rectangle and return area, type double
+ * @param public String toString() - Overriding method informing you are inside Rectangle class.
+ * @param public double sumRadiusAandB() - method calculate sum of RadiosA+ RadiusB
+ * <p>
+ * Inner class Circle implements IShape so  area() and toString() methods should be also
+ * Overriding.
+ * Inner class Circle has own Constructor with NO arguments. This method used Outer class parameter
+ * radiusA.
+ * @author Kurlovich Alexander
+ * @version Lection08 Polymorphism
  */
+
 
 package com.myproject.lection08;
 
@@ -10,14 +21,10 @@ public class Oval implements IShape {
     double radiusA;
     double radiusB;
 
+
     Oval(double radiusA, double radiusB) {
         this.radiusA = radiusA;
         this.radiusB = radiusB;
-    }
-
-    Oval(double radiusA) {
-        this.radiusA = radiusA;
-
     }
 
     @Override
@@ -39,10 +46,6 @@ public class Oval implements IShape {
 
 
     class Circle implements IShape {
-
-        Circle(double radiusA) {
-            Oval.this.radiusA = radiusA;
-        }
 
         @Override
         public double area() {

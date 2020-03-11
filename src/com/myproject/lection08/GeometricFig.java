@@ -47,7 +47,7 @@ public class GeometricFig {
         ApplicationLogger.LOGGER.info("Cube diagonal: " + ((Cube) shape).cubeDiagonal() + "\n");
 
 
-        Cube.Square square = ((Cube) shape).new Square(cubeLenght);
+        Cube.Square square = ((Cube) shape).new Square();
         shape = square;
         ApplicationLogger.LOGGER.info(shape.toString());
         ShapeUtils.isShapeIsTriangle(shape);
@@ -73,8 +73,7 @@ public class GeometricFig {
         ApplicationLogger.LOGGER.info("Oval sum Radius A and Radius B: "
                 + ((Oval) shape).sumRadiusAandB() + "\n");
 
-
-        Oval.Circle circle = ((Oval) shape).new Circle(radiusAOval);
+        Oval.Circle circle = ((Oval) shape).new Circle();
         shape = circle;
         ApplicationLogger.LOGGER.info(shape.toString());
         ShapeUtils.isShapeIsTriangle(shape);
@@ -84,7 +83,6 @@ public class GeometricFig {
         ShapeUtils.isShapeIsCircle(shape);
         ShapeUtils.isShapeIsSquare(shape);
         ApplicationLogger.LOGGER.info("Circle area: " + shape.area() + "\n");
-
 
         IShape triangleRight = new TriangleRight(triangleRightSideA, triangleRightSideB);
         shape = triangleRight;
