@@ -2,7 +2,7 @@ package com.myproject.lection08;
 
 
 import com.myproject.utils.ApplicationLogger;
-
+import org.apache.log4j.Logger;
 
 public class GeometricFig {
     public static void main(String[] args) {
