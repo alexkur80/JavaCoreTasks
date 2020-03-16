@@ -168,16 +168,6 @@ class UtilsString {
     }
 
 
-    public static void personFIOreturn(String string) {
-
-        String[] str = string.split(" ");
-
-        for (String tmp : str) {
-            ApplicationLogger.LOGGER.info(tmp);
-        }
-
-    }
-
     public static String removeDuplicate(String string) {
 
         StringBuilder stringToRemoveDuplicates = new StringBuilder(string);
@@ -187,7 +177,6 @@ class UtilsString {
             if (stringToRemoveDuplicates.charAt(i) == stringToRemoveDuplicates.charAt(i + 1)) {
                 stringToRemoveDuplicates.replace(i, i + 1, "*");
             }
-
 
             ApplicationLogger.LOGGER.info(stringToRemoveDuplicates);
         }
@@ -199,7 +188,40 @@ class UtilsString {
     }
 
 
-}
+    public static String personFIO(String string) {
+
+        String firstSymbolOfPersonFIO[] = new String[3];
+        String string2 = string.trim();
+        String[] words = string2.split("\\s+"); // splitter is NON space symbol one ir more
+
+        StringBuilder stringbuilder = new StringBuilder();
+
+        try {
+            if (words.length > 3) {
+                throw new ArrayIndexOutOfBoundsException();
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            ApplicationLogger.LOGGER.error("Catch CHECKED ");
+        }
+
+
+        for (int i = 0; i < words.length; i++) {
+
+            firstSymbolOfPersonFIO[i] = words[i].substring(0, 1);
+
+            stringbuilder = stringbuilder
+                    .append(firstSymbolOfPersonFIO[i])
+                    .append(".");
+        }
+
+        String text = stringbuilder.toString()
+                .toUpperCase();
+
+        return text;
+        }
+    }
+
+
 
 
 

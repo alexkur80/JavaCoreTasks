@@ -14,8 +14,9 @@ public class StringsTesting {
         String stringToCountWords = "     This      class uses for Log4j.            Write to console and file.";
         String messageNew = "";
         boolean ifStringStartAndFinishWord = false;
-        String personNameSurname = "Ivanov aleksandr Ivanovich";
+        String personNameSurname = "   Asanov                      Bbeksandr  xzcf    cvanovich";
         String removeDuplicates = "ddFFFBBBaaaQQQQQQadddddddd\"";
+        String stringAfterRemovedDuplicates = "";
         String personFIO = "";
         int countWordsInString;
 
@@ -35,20 +36,20 @@ public class StringsTesting {
         ApplicationLogger.LOGGER.info("Sentence \" " + stringStartEndsEqualWord + " \" starts and finish with word \" " +
                 stringStartEndsword + " \" ? : " + ifStringStartAndFinishWord);
 
-        UtilsString.personFIOreturn(personNameSurname);
-
-        //personFIO = UtilsString.personFIOreturn(personNameSurname);
-        UtilsString.personFIOreturn(personNameSurname);
-        ApplicationLogger.LOGGER.info("First name, Second name, Father's name ( " +
-                personNameSurname + " )" + " initials: " + personFIO);
-
         countWordsInString = UtilsString.countWordsInString(stringToCountWords);
         ApplicationLogger.LOGGER.info("Inside sentence \"" + stringToCountWords + " \" " + countWordsInString + " words");
 
-        String stringAfterRemovedDuplicates = UtilsString.removeDuplicate(removeDuplicates);
+        stringAfterRemovedDuplicates = UtilsString.removeDuplicate(removeDuplicates);
         ApplicationLogger.LOGGER.info("String before: " + removeDuplicates + " ; String after " +
                 "removing duplicates: " + stringAfterRemovedDuplicates);
 
+      UtilsString.personFIO(personNameSurname);
+
+     personFIO =    UtilsString.personFIO(personNameSurname);
+        ApplicationLogger.LOGGER.info("First name, Second name, Father's name ( " +
+                personNameSurname + " )" + " initials: " + personFIO);
+
+      //  UtilsString.intToStringFilledByZero(100);
 
     }
 }
