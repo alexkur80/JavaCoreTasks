@@ -15,9 +15,10 @@ public class StringsTesting {
         String messageNew = "";
         boolean ifStringStartAndFinishWord = false;
         String personNameSurname = "Ivanov aleksandr Ivanovich";
-        String removeDuplicates = "AAAbbbbbcdddddgggg";
+        String removeDuplicates = "ddFFFBBBaaaQQQQQQadddddddd\"";
         String personFIO = "";
         int countWordsInString;
+
 
         //  int numberOfIteration = 1000000000; // java.lang.OutOfMemoryError Exception
         int numberOfIteration = 100000;
@@ -44,7 +45,10 @@ public class StringsTesting {
         countWordsInString = UtilsString.countWordsInString(stringToCountWords);
         ApplicationLogger.LOGGER.info("Inside sentence \"" + stringToCountWords + " \" " + countWordsInString + " words");
 
-     UtilsString.removeDuplicate(removeDuplicates);
+        String stringAfterRemovedDuplicates = UtilsString.removeDuplicate(removeDuplicates);
+        ApplicationLogger.LOGGER.info("String before: " + removeDuplicates + " ; String after " +
+                "removing duplicates: " + stringAfterRemovedDuplicates);
+
 
     }
 }

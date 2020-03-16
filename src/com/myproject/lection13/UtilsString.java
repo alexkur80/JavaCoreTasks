@@ -13,6 +13,11 @@
  * Return boolean True or False
  * @param public static int countWordsInString(String string)
  * This method count number of words in sentence using String method split(). It uses simple RegExp.
+ * @param public static void removeDuplicate(String string)
+ * This method remove duplicates from String. First it compares " i " and " i+1 " symbols, if they are EQUAL - we use StringBuilder  method " replace "
+ * symbol index " i " by " * ". IN the final iteration we   have text modified like *d**F**B**a*****Qa*******d" - no duplicates.
+ * Then we  convert "StringBuilder object"  to String object.
+ * Then we use STRING method "replace" and replace all " * " symbols by ""
  * <p>
  * alphabet
  * @author Kurlovich Alexander
@@ -35,7 +40,7 @@ class UtilsString {
         boolean outOfMemory = false;
 
         StringBuilder strBuilder = new StringBuilder(str1);
-
+        strBuilder.setLength(10);
         try {
 
             startTime = System.nanoTime();
@@ -173,17 +178,30 @@ class UtilsString {
 
     }
 
-    public static void removeDuplicate(String string) {
+    public static String removeDuplicate(String string) {
 
-       // System.out.println(string.replaceAll("([A-Za-z])\\1+", "$1"));
+        StringBuilder stringToRemoveDuplicates = new StringBuilder(string);
+
+        ApplicationLogger.LOGGER.info("Here is algorithm replacing duplicates");
+        for (int i = 0; i < stringToRemoveDuplicates.length() - 1; i++) {
+            if (stringToRemoveDuplicates.charAt(i) == stringToRemoveDuplicates.charAt(i + 1)) {
+                stringToRemoveDuplicates.replace(i, i + 1, "*");
+            }
 
 
+            ApplicationLogger.LOGGER.info(stringToRemoveDuplicates);
+        }
 
+        String text = stringToRemoveDuplicates.toString();
+        text = text.replace("*", "");
 
-
+        return text;
     }
 
+
 }
+
+
 
 
 
