@@ -11,11 +11,10 @@ public class StringsTesting {
         String newSymbol = ":)";
         String stringStartEndsEqualWord = "Hey, my name is Alex, Hey";
         String stringStartEndsword = "Hey";
+        String stringToCountWords = "     This      class uses for Log4j.            Write to console and file.";
         String messageNew = "";
-       /* String strOldSymbol = ":(";
-        String strNewSymbol = ":)";*/
         boolean ifStringStartAndFinishWord = false;
-        String personNameSurname = "Ivanov aleksandr Ivanovich Balishev";
+        String personNameSurname = "Ivanov aleksandr Ivanovich";
         String removeDuplicates = "AAAbbbbbcdddddgggg";
         String personFIO = "";
         int countWordsInString;
@@ -35,16 +34,17 @@ public class StringsTesting {
         ApplicationLogger.LOGGER.info("Sentence \" " + stringStartEndsEqualWord + " \" starts and finish with word \" " +
                 stringStartEndsword + " \" ? : " + ifStringStartAndFinishWord);
 
-      UtilsString.personFIOreturn(personNameSurname);
+        UtilsString.personFIOreturn(personNameSurname);
 
-      personFIO = UtilsString.personFIOreturn(personNameSurname);
+        //personFIO = UtilsString.personFIOreturn(personNameSurname);
+        UtilsString.personFIOreturn(personNameSurname);
         ApplicationLogger.LOGGER.info("First name, Second name, Father's name ( " +
                 personNameSurname + " )" + " initials: " + personFIO);
 
-        countWordsInString = UtilsString.countWordsInString(personNameSurname);
-          ApplicationLogger.LOGGER.info("Inside sentence \"" +  personNameSurname +" \" " + countWordsInString + " words");
+        countWordsInString = UtilsString.countWordsInString(stringToCountWords);
+        ApplicationLogger.LOGGER.info("Inside sentence \"" + stringToCountWords + " \" " + countWordsInString + " words");
 
-        UtilsString.removeDuplicate(removeDuplicates);
+     UtilsString.removeDuplicate(removeDuplicates);
 
     }
 }

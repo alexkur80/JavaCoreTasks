@@ -12,8 +12,9 @@
  * This method takes "String string" and looking for is it starts AND finish by "String world".
  * Return boolean True or False
  * @param public static int countWordsInString(String string)
- *               This method count number of words in sentence using RegExp. It accepts Russian and English
- *              alphabet
+ * This method count number of words in sentence using String method split(). It uses simple RegExp.
+ * <p>
+ * alphabet
  * @author Kurlovich Alexander
  * @version Lection13 Strings, Formatter
  */
@@ -21,9 +22,6 @@
 package com.myproject.lection13;
 
 import com.myproject.lection08.ApplicationLogger;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 class UtilsString {
 
@@ -114,34 +112,50 @@ class UtilsString {
         return ifStringStartAndFinishWord;
     }
 
+
+/* countWordsInString Using RegExp
+
+
     public static int countWordsInString(String string) {
 
         Pattern pattern = Pattern.compile("[a-zA-Zа-яёА-ЯЁ0-9]+");
         Matcher matcher = pattern.matcher(string);
 
-        int count = 0;
+        int counter = 0;
         while (matcher.find()) {
-            count++;
+            counter++;
         }
-        return count;
+        return counter;
     }
-
-
-/* Using RegExp
-
-    public static String strReplace(String string) {
-    String symbolOldRegExp = ":\\(";
-    String symbolNew = ":)";
-
-    Pattern patterns = Pattern.compile(symbolOldRegExp);
-    Matcher matcher = patterns.matcher(string);
-
-    String replacedString = matcher.replaceAll(symbolNew);
-            return replacedString;
-    }
-
 */
 
+    public static int countWordsInString(String string) {
+
+        String[] words = string.split("\\S+"); // splitter is NON space symbol one ir more
+        int counter = 0;
+
+        for (String str : words) {
+            counter++;
+        }
+
+        return counter;
+    }
+
+
+    /* Using RegExp
+
+        public static String strReplace(String string) {
+        String symbolOldRegExp = ":\\(";
+        String symbolNew = ":)";
+
+        Pattern patterns = Pattern.compile(symbolOldRegExp);
+        Matcher matcher = patterns.matcher(string);
+
+        String replacedString = matcher.replaceAll(symbolNew);
+                return replacedString;
+        }
+
+    */
     public static String strReplace(String string, String oldSymbol, String newSymbol) {
 
         String replacedString = string.replace(oldSymbol, newSymbol);
@@ -149,29 +163,28 @@ class UtilsString {
     }
 
 
+    public static void personFIOreturn(String string) {
 
+        String[] str = string.split(" ");
 
-
-
-
-    public static String personFIOreturn(String string) {
-
-        String pattern = "(\\S+\\s)(\\S{1})\\S+\\s(\\S{1})\\S+";
-
-       Pattern patt = Pattern.compile(pattern);
-        Matcher match = patt.matcher(string);
-        String str = string.replaceAll(pattern, "$1.$2.$3.");
-
-return str;
-        }
-
-        public static void removeDuplicate(String string) {
-
-
-
+        for (String tmp : str) {
+            ApplicationLogger.LOGGER.info(tmp);
         }
 
     }
+
+    public static void removeDuplicate(String string) {
+
+       // System.out.println(string.replaceAll("([A-Za-z])\\1+", "$1"));
+
+
+
+
+
+    }
+
+}
+
 
 
 
