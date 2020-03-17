@@ -258,7 +258,7 @@ class UtilsString {
 
         Formatter fmt = new Formatter();
 
-        numberFormatted = fmt.format("First method 'Formatter'       %010d", number);
+        numberFormatted = fmt.format("First method 'Formatter'      %010d", number);
 
         // Convert 'Formatter' to 'String'
         String stringFormatted = numberFormatted + "";
@@ -300,7 +300,7 @@ class UtilsString {
             }
 
             // Convert 'Appendable' to 'String'
-            stringFormatted = "Second method 'StringBuffer'   " + stringbuilder;
+            stringFormatted = "Second method 'StringBuffer'  " + stringbuilder;
             return stringFormatted;
         }
 
@@ -310,7 +310,7 @@ class UtilsString {
         }
 
         stringbuilder.append(numberToString);
-        stringFormatted = "Second method 'StringBuffer'   " + stringbuilder;
+        stringFormatted = "Second method 'StringBuffer' " + stringbuilder;
         return stringFormatted;
     }
 
@@ -341,7 +341,7 @@ class UtilsString {
                 stringFormatted += "0";
             }
 
-            stringFormatted = "Third method 'String'         " + stringFormatted;
+            stringFormatted = "Third method 'String'        " + stringFormatted;
             return stringFormatted;
         }
 
@@ -350,7 +350,7 @@ class UtilsString {
             stringFormatted += "0";
         }
 
-        stringFormatted = "Third method 'String'         " + stringFormatted + numberToString;
+        stringFormatted = "Third method 'String'        " + stringFormatted + numberToString;
         return stringFormatted;
     }
 

@@ -32,7 +32,7 @@ public class StringsTesting {
 
         String resultConcatVSStringBuilderTest = "What concat method is faster?";
 
-        long numberForFormatter = 72322L;
+        long numberToFormat = 72322L;
 
 
         try {
@@ -81,24 +81,38 @@ public class StringsTesting {
         long startTime;
         long finishTime;
         long timeMethodExecute;
+        String numberFormatted01 = "";
+        String numberFormatted02 = "";
+        String numberFormatted03 = "";
+        long numberOfIterations = 1000000L;
 
         startTime = System.nanoTime();
-        String numberFormatted01 = UtilsString.longToStringFilledByZero01(numberForFormatter);
+        for (long i = 0; i < numberOfIterations; i++) {
+            numberFormatted01 = UtilsString.longToStringFilledByZero01(numberToFormat);
+        }
         finishTime = System.nanoTime();
         timeMethodExecute = finishTime - startTime;
-        ApplicationLogger.LOGGER.info(numberFormatted01 + "  executes " + timeMethodExecute + "ns");
+        ApplicationLogger.LOGGER.info(numberFormatted01 + "  executes " + timeMethodExecute + "ns" +
+                " for " + numberOfIterations + " iterations");
 
         startTime = System.nanoTime();
-        String numberFormatted02 = UtilsString.intToStringFilledByZero02(numberForFormatter);
+        for (long i = 0; i < numberOfIterations; i++) {
+            numberFormatted02 = UtilsString.intToStringFilledByZero02(numberToFormat);
+        }
         finishTime = System.nanoTime();
         timeMethodExecute = finishTime - startTime;
-        ApplicationLogger.LOGGER.info(numberFormatted02 + "  executes " + timeMethodExecute + "ns");
+        ApplicationLogger.LOGGER.info(numberFormatted02 + "  executes" + timeMethodExecute + "ns" +
+                " for " + numberOfIterations + " iterations");
 
         startTime = System.nanoTime();
-        String numberFormatted03 = UtilsString.intToStringFilledByZero03(numberForFormatter);
+        for (long i = 0; i < numberOfIterations; i++) {
+            numberFormatted03 = UtilsString.intToStringFilledByZero03(numberToFormat);
+        }
         finishTime = System.nanoTime();
         timeMethodExecute = finishTime - startTime;
-        ApplicationLogger.LOGGER.info(numberFormatted03 + "  executes " + timeMethodExecute + "ns");
+        ApplicationLogger.LOGGER.info(numberFormatted03 + "  executes " + timeMethodExecute + "ns" +
+                " for " + numberOfIterations + " iterations");
+
     }
 
 }
