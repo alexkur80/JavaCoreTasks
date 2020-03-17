@@ -14,7 +14,7 @@ public class StringsTesting {
         String stringToCountWords = "     This      class uses for Log4j.            Write to console and file.";
         String messageNew = "";
         boolean ifStringStartAndFinishWord = false;
-        String personNameSurname = "   Asanov                      Bbeksandr  xzcf    cvanovich";
+        String personNameSurname = "   Cherez   Tridtcattrizabora   Zadirischenko";
         String removeDuplicates = "ddFFFBBBaaaQQQQQQadddddddd\"";
         String stringAfterRemovedDuplicates = "";
         String personFIO = "";
@@ -43,14 +43,24 @@ public class StringsTesting {
         ApplicationLogger.LOGGER.info("String before: " + removeDuplicates + " ; String after " +
                 "removing duplicates: " + stringAfterRemovedDuplicates);
 
-      UtilsString.personFIO(personNameSurname);
+        // UtilsString.personFIO(personNameSurname);
 
-     personFIO =    UtilsString.personFIO(personNameSurname);
-        ApplicationLogger.LOGGER.info("First name, Second name, Father's name ( " +
-                personNameSurname + " )" + " initials: " + personFIO);
+        boolean flag = false;
+        try {
 
-      //  UtilsString.intToStringFilledByZero(100);
+            personFIO = UtilsString.personFIO(personNameSurname);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            ApplicationLogger.LOGGER.info("Catch CHECKED ArrayIndexOutOfBoundsException");
+            flag = true;
+        }
+        if (!flag) {
+            ApplicationLogger.LOGGER.info("First name, Second name, Father's name ( " +
+                    personNameSurname + " )" + " initials: " + personFIO);
+        }
 
+
+        //  UtilsString.intToStringFilledByZero(100);
     }
 }
+
 

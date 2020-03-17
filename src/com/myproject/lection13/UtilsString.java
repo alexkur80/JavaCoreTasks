@@ -14,10 +14,16 @@
  * @param public static int countWordsInString(String string)
  * This method count number of words in sentence using String method split(). It uses simple RegExp.
  * @param public static void removeDuplicate(String string)
- * This method remove duplicates from String. First it compares " i " and " i+1 " symbols, if they are EQUAL - we use StringBuilder  method " replace "
- * symbol index " i " by " * ". IN the final iteration we   have text modified like *d**F**B**a*****Qa*******d" - no duplicates.
+ * This method remove duplicates from String. First it compares " i " and " i+1 " symbols, if they
+ * are EQUAL - we use StringBuilder  method " replace "
+ * symbol index " i " by " * ". IN the final iteration we   have text modified like
+ * *d**F**B**a*****Qa*******d" - no duplicates.
  * Then we  convert "StringBuilder object"  to String object.
  * Then we use STRING method "replace" and replace all " * " symbols by ""
+ * @param public static String personFIO(String string) throws ArrayIndexOutOfBoundsException
+ * This method find first symbols in first name, second name, father's name and output first
+ * symbols only delimited by "." in upper case
+ * Ex: Input: Cherez   Tridtcattrizabora   Zadirischenko Output: C.T.Z.
  * <p>
  * alphabet
  * @author Kurlovich Alexander
@@ -147,7 +153,7 @@ class UtilsString {
     }
 
 
-    /* Using RegExp
+    /* strReplace using RegExp
 
         public static String strReplace(String string) {
         String symbolOldRegExp = ":\\(";
@@ -188,22 +194,12 @@ class UtilsString {
     }
 
 
-    public static String personFIO(String string) {
+    public static String personFIO(String string) throws ArrayIndexOutOfBoundsException {
 
         String firstSymbolOfPersonFIO[] = new String[3];
         String string2 = string.trim();
         String[] words = string2.split("\\s+"); // splitter is NON space symbol one ir more
-
         StringBuilder stringbuilder = new StringBuilder();
-
-        try {
-            if (words.length > 3) {
-                throw new ArrayIndexOutOfBoundsException();
-            }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            ApplicationLogger.LOGGER.error("Catch CHECKED ");
-        }
-
 
         for (int i = 0; i < words.length; i++) {
 
@@ -218,8 +214,8 @@ class UtilsString {
                 .toUpperCase();
 
         return text;
-        }
     }
+}
 
 
 
