@@ -32,7 +32,7 @@ public class StringsTesting {
 
         String resultConcatVSStringBuilderTest = "What concat method is faster?";
 
-        long numberForFormatter = 2211122L;
+        long numberForFormatter = 72322L;
 
 
         try {
@@ -78,16 +78,28 @@ public class StringsTesting {
                     personNameSurname + " )" + " initials: " + personFIO);
         }
 
+        long startTime;
+        long finishTime;
+        long timeMethodExecute;
+
+        startTime = System.nanoTime();
         String numberFormatted01 = UtilsString.longToStringFilledByZero01(numberForFormatter);
-        ApplicationLogger.LOGGER.info(numberFormatted01);
+        finishTime = System.nanoTime();
+        timeMethodExecute = finishTime - startTime;
+        ApplicationLogger.LOGGER.info(numberFormatted01 + "  executes " + timeMethodExecute + "ns");
 
-
+        startTime = System.nanoTime();
         String numberFormatted02 = UtilsString.intToStringFilledByZero02(numberForFormatter);
-        ApplicationLogger.LOGGER.info(numberFormatted02);
+        finishTime = System.nanoTime();
+        timeMethodExecute = finishTime - startTime;
+        ApplicationLogger.LOGGER.info(numberFormatted02 + "  executes " + timeMethodExecute + "ns");
 
-       /* String numberFormatted02 = UtilsString.intToStringFilledByZero02(numberForFormatter);
-        ApplicationLogger.LOGGER.info("Second method:" + numberFormatted02);*/
-        }
+        startTime = System.nanoTime();
+        String numberFormatted03 = UtilsString.intToStringFilledByZero03(numberForFormatter);
+        finishTime = System.nanoTime();
+        timeMethodExecute = finishTime - startTime;
+        ApplicationLogger.LOGGER.info(numberFormatted03 + "  executes " + timeMethodExecute + "ns");
+    }
 
 }
 

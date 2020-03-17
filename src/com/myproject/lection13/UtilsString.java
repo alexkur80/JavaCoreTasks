@@ -189,7 +189,6 @@ class UtilsString {
 
         String text = stringToRemoveDuplicates.toString();
         text = text.replace("*", "");
-
         return text;
     }
 
@@ -228,7 +227,6 @@ class UtilsString {
 
         String text = stringbuilder.toString()
                 .toUpperCase();
-
         return text;
     }
 
@@ -247,8 +245,6 @@ class UtilsString {
      * @return 10 symbol outpiut, filled with '0' from the end or all '0'. Ex1: 0000000124 Ex2:0000000000
      */
     public static String longToStringFilledByZero01(long number) {
-        long startTime = System.nanoTime();
-
         Formatter numberFormatted;
         int numberLenght = 0;
 
@@ -262,15 +258,10 @@ class UtilsString {
 
         Formatter fmt = new Formatter();
 
-        numberFormatted = fmt.format("First method: %010d", number);
+        numberFormatted = fmt.format("First method 'Formatter'       %010d", number);
 
         // Convert 'Formatter' to 'String'
         String stringFormatted = numberFormatted + "";
-
-        long endTime = System.nanoTime();
-
-        long timeOfMethodExecution = endTime - startTime;
-
         return stringFormatted;
     }
 
@@ -293,7 +284,6 @@ class UtilsString {
      * Ex1: 0000000124 Ex2:0000000000
      */
     public static String intToStringFilledByZero02(long number) {
-        long startTime = System.nanoTime();
 
         String stringFormatted = "";
         int maxNumberOfSymbolsOutput = 10;
@@ -310,28 +300,31 @@ class UtilsString {
             }
 
             // Convert 'Appendable' to 'String'
-            stringFormatted = stringbuilder + "";
+            stringFormatted = "Second method 'StringBuffer'   " + stringbuilder;
+            return stringFormatted;
         }
 
         // Now we fill the rest symbols from the left by '0'
         for (int i = 0; i < maxNumberOfSymbolsOutput - numberLenght; i++) {
             stringbuilder.append("0");
         }
+
         stringbuilder.append(numberToString);
-        stringFormatted = "Second method: " + stringbuilder;
-        long endTime = System.nanoTime();
-
-        long timeOfMethodExecution = endTime - startTime;
-
+        stringFormatted = "Second method 'StringBuffer'   " + stringbuilder;
         return stringFormatted;
     }
 
 
     /**
      * Variant03
+     * This method accepts 'numberl' and fill with '0' from left up to 10 symbols. If 'numberL'  more then
+     * 10 symbols - replace all symbols to '0' from the left
+     * Algorithm use class String:
+     * <p>
+     * maxNumberOfSymbolsOutput - number of digits to output  after that fill all with '0'
      *
-     * @param number
-     * @return
+     * @return stringFormatted contains 10 symbol outpiut, filled with '0' from the end or all '0'.
+     * Ex1: 0000000124 Ex2:0000000000
      */
 
     public static String intToStringFilledByZero03(long number) {
@@ -345,20 +338,19 @@ class UtilsString {
         if (numberLenght > maxNumberOfSymbolsOutput) {
             for (int i = 0; i < maxNumberOfSymbolsOutput; i++) {
 
-                stringbuilder.append("0");
+                stringFormatted += "0";
             }
 
-            // Convert 'Appendable' to 'String'
-            stringFormatted = stringbuilder + "";
+            stringFormatted = "Third method 'String'         " + stringFormatted;
+            return stringFormatted;
         }
 
         // Now we fill the rest symbols from the left by '0'
         for (int i = 0; i < maxNumberOfSymbolsOutput - numberLenght; i++) {
-            stringbuilder.append("0");
+            stringFormatted += "0";
         }
-        stringbuilder.append(numberToString);
-        stringFormatted = "third method:" + stringbuilder;
 
+        stringFormatted = "Third method 'String'         " + stringFormatted + numberToString;
         return stringFormatted;
     }
 
