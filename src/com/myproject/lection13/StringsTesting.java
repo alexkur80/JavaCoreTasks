@@ -1,3 +1,10 @@
+/**
+ * This class include Methods utilities
+ *
+ * @author Kurlovich Alexander
+ * @version Lection13 Strings, StringBuilder Formatter, main()
+ * @date 03/17/2020
+ */
 package com.myproject.lection13;
 
 import com.myproject.lection08.ApplicationLogger;
@@ -6,48 +13,61 @@ public class StringsTesting {
     public static void main(String[] args) {
         String str1 = "Change";
         String str2 = " World!";
+        int numberOfIteration = 10000;
+
         String messageToReplaceSubstring = ":( :( :( :(";
         String oldSymbol = ":(";
         String newSymbol = ":)";
+
         String stringStartEndsEqualWord = "Hey, my name is Alex, Hey";
-        String stringStartEndsword = "Hey";
+        String stringStartEndsWord = "Hey";
+
         String stringToCountWords = "     This      class uses for Log4j.            Write to console and file.";
-        String messageNew = "";
-        boolean ifStringStartAndFinishWord = false;
-        String personNameSurname = "   Cherez   Tridtcattrizabora   Zadirischenko";
-        String removeDuplicates = "ddFFFBBBaaaQQQQQQadddddddd\"";
-        String stringAfterRemovedDuplicates = "";
-        String personFIO = "";
-        int countWordsInString;
+
+        String personNameSurname = "  Cherez   Tridtcattrizabora   Zadiriscenko";
+
+        String removeDuplicates = "ddFFFBBBaaaQQQQQQadddddddd";
+
+        String personFIO = "Ex: F.I.O, will be changed after method execute";
+
+        String resultConcatVSStringBuilderTest = "What concat method is faster?";
+
+        long numberForFormatter = 123456912L;
 
 
-        //  int numberOfIteration = 1000000000; // java.lang.OutOfMemoryError Exception
-        int numberOfIteration = 100000;
-        Appendable resultConcatVSStringBuilderTest;
+        try {
+            resultConcatVSStringBuilderTest = UtilsString.stringBuilderVSString(str1, str2, numberOfIteration);
 
-        resultConcatVSStringBuilderTest = UtilsString.stringBuilderVSString(str1, str2, numberOfIteration);
-        ApplicationLogger.LOGGER.info(resultConcatVSStringBuilderTest);
+        } catch (OutOfMemoryError e) {
+            ApplicationLogger.LOGGER.error("Out of memory error in strBuilder.append(str2) " + e);
+            resultConcatVSStringBuilderTest = "ERROR";
+        }
+
+        if (resultConcatVSStringBuilderTest != null) {
+            ApplicationLogger.LOGGER.info(resultConcatVSStringBuilderTest);
+        }
 
 
-        messageNew = UtilsString.strReplace(messageToReplaceSubstring, oldSymbol, newSymbol);
-        ApplicationLogger.LOGGER.info("I was sad " + messageToReplaceSubstring + " but now I am happy " + messageNew);
+        String messageAfterReplacing = UtilsString.strReplace(messageToReplaceSubstring, oldSymbol, newSymbol);
+        ApplicationLogger.LOGGER.info("I was sad " + messageToReplaceSubstring
+                + " but now I am happy " + messageAfterReplacing);
 
-        ifStringStartAndFinishWord = UtilsString.ifStringStartAndFinishWord(stringStartEndsEqualWord, stringStartEndsword);
-        ApplicationLogger.LOGGER.info("Sentence \" " + stringStartEndsEqualWord + " \" starts and finish with word \" " +
-                stringStartEndsword + " \" ? : " + ifStringStartAndFinishWord);
+        boolean ifStringStartAndFinishWord = UtilsString.ifStringStartAndFinishWord(stringStartEndsEqualWord, stringStartEndsWord);
+        ApplicationLogger.LOGGER.info("Sentence \" " + stringStartEndsEqualWord
+                + " \" starts and finish with word \" " +
+                stringStartEndsWord + " \" ? : " + ifStringStartAndFinishWord);
 
-        countWordsInString = UtilsString.countWordsInString(stringToCountWords);
-        ApplicationLogger.LOGGER.info("Inside sentence \"" + stringToCountWords + " \" " + countWordsInString + " words");
+        int countWordsInString = UtilsString.countWordsInString(stringToCountWords);
+        ApplicationLogger.LOGGER.info("Inside sentence \"" + stringToCountWords + " \" "
+                + countWordsInString + " words");
 
-        stringAfterRemovedDuplicates = UtilsString.removeDuplicate(removeDuplicates);
+        String stringAfterRemovedDuplicates = UtilsString.removeDuplicate(removeDuplicates);
         ApplicationLogger.LOGGER.info("String before: " + removeDuplicates + " ; String after " +
                 "removing duplicates: " + stringAfterRemovedDuplicates);
 
-        // UtilsString.personFIO(personNameSurname);
+        boolean flag = false; // needs if not Exception
 
-        boolean flag = false;
         try {
-
             personFIO = UtilsString.personFIO(personNameSurname);
         } catch (ArrayIndexOutOfBoundsException e) {
             ApplicationLogger.LOGGER.info("Catch CHECKED ArrayIndexOutOfBoundsException");
@@ -58,8 +78,8 @@ public class StringsTesting {
                     personNameSurname + " )" + " initials: " + personFIO);
         }
 
-
-        //  UtilsString.intToStringFilledByZero(100);
+        String numberFormatted = UtilsString.longToStringFilledByZero(numberForFormatter);
+        ApplicationLogger.LOGGER.info(numberFormatted);
     }
 }
 

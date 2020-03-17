@@ -1,84 +1,63 @@
 /**
- * This class include Methods utilities for project
+ * This class includes Methods utilities
  *
- * @param public static Appendable stringBuilderVSString(String str1, String str2, int numberOfIteration)
- * this method accept string1, string2, numberOfIteration.
- * It compare what method of concatenation of two strings faster:
- * string1.append(string2) or " String1 + String2. It catch OutOfMemoryError Exception.
- * Return message what variant is faster.
- * public static String strReplace(String string, String oldSymbol, String newSymbol)
- * This method takes  "String string" and change all  "oldSymbol"  with "newSymbol". Using String method
- * @param public static boolean ifStringStartAndFinishWord (String string, String world)
- * This method takes "String string" and looking for is it starts AND finish by "String world".
- * Return boolean True or False
- * @param public static int countWordsInString(String string)
- * This method count number of words in sentence using String method split(). It uses simple RegExp.
- * @param public static void removeDuplicate(String string)
- * This method remove duplicates from String. First it compares " i " and " i+1 " symbols, if they
- * are EQUAL - we use StringBuilder  method " replace "
- * symbol index " i " by " * ". IN the final iteration we   have text modified like
- * *d**F**B**a*****Qa*******d" - no duplicates.
- * Then we  convert "StringBuilder object"  to String object.
- * Then we use STRING method "replace" and replace all " * " symbols by ""
- * @param public static String personFIO(String string) throws ArrayIndexOutOfBoundsException
- * This method find first symbols in first name, second name, father's name and output first
- * symbols only delimited by "." in upper case
- * Ex: Input: Cherez   Tridtcattrizabora   Zadirischenko Output: C.T.Z.
- * <p>
- * alphabet
  * @author Kurlovich Alexander
- * @version Lection13 Strings, Formatter
+ * @version Lection13 Strings, StringBuilder Formatter, Methods
+ * @date 03/17/2020
  */
 
 package com.myproject.lection13;
 
 import com.myproject.lection08.ApplicationLogger;
 
+import java.util.Formatter;
+
 class UtilsString {
 
-    public static Appendable stringBuilderVSString(String str1, String str2, int numberOfIteration) {
+    /**
+     * Method compare what waster concatinate - standart 'str1+str2' or ;strilngBuilder.append(str1)'
+     * important moment - in StringBuilder conctructor we put capacity of symbols that probably
+     * we keep in StringBuilder because this way concatenation algorithm using append become much more faster/
+     *
+     * @param str1              string one to concatenate
+     * @param str2              string two to concatinate
+     * @param numberOfIteration number of concatenation iterations
+     * @return time1Method/time2Method
+     * @throws OutOfMemoryError if numberOfIteration > 1000000000 (type int)
+     */
+    public static String stringBuilderVSString(String str1, String str2, int numberOfIteration) throws OutOfMemoryError {
 
-        long startTime = 0;
-        long endTime = 0;
-        double str1SumStr2Time = 0;
-        double str1AppendStr2Time = 0;
-        double resultWhatFaster = 0;
-        boolean outOfMemory = false;
+        StringBuilder strBuilder = new StringBuilder(1400000);
 
-        StringBuilder strBuilder = new StringBuilder(str1);
-        strBuilder.setLength(10);
-        try {
+        long startTime = System.nanoTime();
 
-            startTime = System.nanoTime();
-            for (int i = 0; i < numberOfIteration; i++) {
-                String str1SumStr2 = str1 + str2;
-            }
-            endTime = System.nanoTime();
-            str1SumStr2Time = endTime - startTime;
-
-            startTime = System.nanoTime();
-            for (int i = 0; i < numberOfIteration; i++) {
-                strBuilder.append(str2);
-            }
-            endTime = System.nanoTime();
-            str1AppendStr2Time = endTime - startTime;
-
-            resultWhatFaster = str1SumStr2Time / str1AppendStr2Time;
-            ApplicationLogger.LOGGER.info("\" str1 + str2 \" takes " + str1SumStr2Time + " ns");
-            ApplicationLogger.LOGGER.info("\" str1.append(str2) \" takes " + str1AppendStr2Time + " ns");
-
-            resultWhatFaster = str1SumStr2Time / str1AppendStr2Time;
-
-
-        } catch (OutOfMemoryError e) {
-            ApplicationLogger.LOGGER.error("Out of memory error in strBuilder.append(str2) " + e);
-            outOfMemory = true;
-
+        for (int i = 0; i < numberOfIteration; i++) {
+            String str1SumStr2 = str1 + str2 + i;
         }
+
+        long endTime = System.nanoTime();
+        double str1SumStr2Time = endTime - startTime;
+
+        startTime = System.nanoTime();
+
+        for (int i = 0; i < numberOfIteration; i++) {
+            strBuilder
+                    .append(str1)
+                    .append(str2)
+                    .append(i);
+        }
+
+        endTime = System.nanoTime();
+        double str1AppendStr2Time = endTime - startTime;
+
+        double resultWhatFaster = str1SumStr2Time / str1AppendStr2Time;
+        ApplicationLogger.LOGGER.info("\" str1 + str2 \" takes " + str1SumStr2Time + " ns");
+        ApplicationLogger.LOGGER.info("\" str1.append(str2) \" takes " + str1AppendStr2Time + " ns");
+
 
         StringBuilder strBuilderResult = new StringBuilder("Result:");
 
-        if (str1SumStr2Time < str1AppendStr2Time && !outOfMemory) {
+        if (str1SumStr2Time < str1AppendStr2Time) {
             strBuilderResult
                     .append("\" str1 + str2 \" faster ")
                     .append(resultWhatFaster)
@@ -86,9 +65,8 @@ class UtilsString {
                     .append(numberOfIteration)
                     .append(" iterations");
 
-
         } else if (
-                str1AppendStr2Time < str1SumStr2Time && !outOfMemory) {
+                str1AppendStr2Time < str1SumStr2Time) {
             strBuilderResult
                     .append("\" str1.append(str2) \" faster ")
                     .append(resultWhatFaster)
@@ -96,24 +74,24 @@ class UtilsString {
                     .append(numberOfIteration)
                     .append(" iterations");
 
-
-        } else if (str1AppendStr2Time == str1SumStr2Time && !outOfMemory) {
+        } else if (str1AppendStr2Time == str1SumStr2Time) {
             strBuilderResult
                     .append("\" str1.append(str2) \" takes EQUAL time ")
                     .append("as  \" str1 + str2 \" in ")
                     .append(numberOfIteration)
                     .append(" iterations");
 
-        } else {
-            strBuilderResult.append("Too much iterations, out of memory" +
-                    " Not possible to estimate resultWhatFaster correctly");
-
         }
-
-        return strBuilderResult;
-
+        String result = strBuilderResult + "";
+        return result;
     }
 
+
+    /**
+     * @param string - sentence that checked for first and last word
+     * @param world  - word, that is looking for in the beginning and in the end of string
+     * @return boolean true or false - if word contains in the first and last word of string
+     */
     public static boolean ifStringStartAndFinishWord(String string, String world) {
         boolean ifStringStartAndFinishWord = false;
 
@@ -140,6 +118,13 @@ class UtilsString {
     }
 */
 
+    /**
+     * This method count number of words in sentence. It used String method 'split' with RegEx
+     * '\\S+' means  - everything but space symbols so it include words.
+     *
+     * @param string any text
+     * @return number of words in string
+     */
     public static int countWordsInString(String string) {
 
         String[] words = string.split("\\S+"); // splitter is NON space symbol one ir more
@@ -167,18 +152,33 @@ class UtilsString {
         }
 
     */
-    public static String strReplace(String string, String oldSymbol, String newSymbol) {
 
-        String replacedString = string.replace(oldSymbol, newSymbol);
+    /**
+     * Method replace all 'oldSubstring' by  'newSubstring'
+     *
+     * @param string       any text
+     * @param oldSubstring find all substring in 'string'
+     * @param newSubstring replace all 'oldSubstring' by  'newSubstring'
+     * @return string replaces text
+     * @version
+     */
+    public static String strReplace(String string, String oldSubstring, String newSubstring) {
+
+        String replacedString = string.replace(oldSubstring, newSubstring);
         return replacedString;
     }
 
 
+    /**
+     * @param string any text
+     * @return text without duplicated symbols. Ex: Text before: 'ddFFFBBBaaaQQQQQQadddddddd'
+     * Text after: dFBaQad
+     */
     public static String removeDuplicate(String string) {
 
         StringBuilder stringToRemoveDuplicates = new StringBuilder(string);
 
-        ApplicationLogger.LOGGER.info("Here is algorithm replacing duplicates");
+        ApplicationLogger.LOGGER.info("This algorithm replacing duplicates");
         for (int i = 0; i < stringToRemoveDuplicates.length() - 1; i++) {
             if (stringToRemoveDuplicates.charAt(i) == stringToRemoveDuplicates.charAt(i + 1)) {
                 stringToRemoveDuplicates.replace(i, i + 1, "*");
@@ -194,6 +194,22 @@ class UtilsString {
     }
 
 
+    /**
+     * This method find first symbols in first name, second name, father's name and output first
+     * symbols only delimited by "." in upper case. Alghoritm:
+     * 1) Trims claces in the beginning and in the end
+     * 2) Split 'spaces' and put all words in String[] words
+     * 3) Use StringBuilder method to get first symbol of every word from 'String[] words' and
+     * append with '.' - output correct F.I.O
+     * 4) Make Appendable type StringBuilder to String type
+     * Ex: Before: Cherez   Tridtcattrizabora   Zadirischenko
+     * After: C.T.Z.
+     *
+     * @param string any name. Should have 3 words - First name, Second name, Father's name, otherwise
+     *               ArrayIndexOutOfBoundsException
+     * @return text in format F.I.O
+     * @throws ArrayIndexOutOfBoundsException catch in main()
+     */
     public static String personFIO(String string) throws ArrayIndexOutOfBoundsException {
 
         String firstSymbolOfPersonFIO[] = new String[3];
@@ -215,6 +231,64 @@ class UtilsString {
 
         return text;
     }
+
+
+    /**
+     * This method accepts long number and fill with '0' from left up to 10 symbols. If 'numberL'  more then
+     * 10 symbols - replace all symbols to '0'
+     * Algorithm:
+     * 1) convert 'long' to 'String' so we have some methods available to operate.
+     * 2) Get length of 'string' and check if it is longer then 10. If numberToString.length > 10, 'number' =0
+     * and output string filled with '0'
+     * 3) Else use class 'Formatter' to output result in proper format
+     *
+     * @param number
+     * @return 10 symbol outpiut, filled with '0' from the end or all '0'. Ex1: 0000000124 Ex2:0000000000
+     */
+    public static String longToStringFilledByZero(long number) {
+        Formatter numberFormatted;
+        int numberLenght = 0;
+
+        // convert int to String;
+        String numberToString = number + "";
+
+        numberLenght = numberToString.length();
+        if (numberLenght > 10) {
+            number = 0;
+        }
+
+        Formatter fmt = new Formatter();
+
+        numberFormatted = fmt.format("Formatting is easy %010d", number);
+
+        // Convert 'Formatter' to 'String'
+        String stringFormatted = numberFormatted + "";
+
+        return stringFormatted;
+    }
+
+    public static String intToStringFilledByZero2(long number) {
+        Formatter numberFormatted;
+        int numberLenght = 0;
+
+        // Convert 'long' to 'String'
+        String numberToString = number + "";
+
+        numberLenght = numberToString.length();
+        System.out.println(numberLenght);
+        if (numberLenght > 10) {
+            number = 0;
+        }
+
+        Formatter fmt = new Formatter();
+        numberFormatted = fmt.format("Formatting is easy %010d", number);
+
+        // Convert 'Formatter' to 'String'
+        String stringFormatted = numberFormatted + "";
+
+        return stringFormatted;
+    }
+
 }
 
 
