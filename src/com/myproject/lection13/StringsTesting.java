@@ -13,7 +13,7 @@ public class StringsTesting {
     public static void main(String[] args) {
         String str1 = "Change";
         String str2 = " World!";
-        int numberOfIteration = 10000;
+        int numberOfIteration = 1000;
 
         String messageToReplaceSubstring = ":( :( :( :(";
         String oldSymbol = ":(";
@@ -32,7 +32,7 @@ public class StringsTesting {
 
         String resultConcatVSStringBuilderTest = "What concat method is faster?";
 
-        long numberForFormatter = 123456912L;
+        long numberForFormatter = 2211122L;
 
 
         try {
@@ -78,9 +78,17 @@ public class StringsTesting {
                     personNameSurname + " )" + " initials: " + personFIO);
         }
 
-        String numberFormatted = UtilsString.longToStringFilledByZero(numberForFormatter);
-        ApplicationLogger.LOGGER.info(numberFormatted);
-    }
+        String numberFormatted01 = UtilsString.longToStringFilledByZero01(numberForFormatter);
+        ApplicationLogger.LOGGER.info(numberFormatted01);
+
+
+        String numberFormatted02 = UtilsString.intToStringFilledByZero02(numberForFormatter);
+        ApplicationLogger.LOGGER.info(numberFormatted02);
+
+       /* String numberFormatted02 = UtilsString.intToStringFilledByZero02(numberForFormatter);
+        ApplicationLogger.LOGGER.info("Second method:" + numberFormatted02);*/
+        }
+
 }
 
 
