@@ -1,8 +1,8 @@
 /**
- * This class include Methods utilities
+ * This class include String, StringBuilder, Formatter tasks
  *
  * @author Kurlovich Alexander
- * @version Lection13 Strings, StringBuilder Formatter, main()
+ * @version Lection13 Strings, StringBuilder Formatter
  * @date 03/17/2020
  */
 package com.myproject.lection13;
