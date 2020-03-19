@@ -6,6 +6,7 @@ package com.myproject.lection03; /**
  * @see com.myproject.utils.Utils.checkScannerIntNumber
  * @see checkScannerIntNumber(sc, intNumber) - method from Utils class. Request number in console.
  *
+ *
  * @return  number factorial
  */
 
