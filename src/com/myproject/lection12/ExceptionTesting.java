@@ -1,6 +1,7 @@
 /**
  * This Class testing Exceptions opportunities
  *
+ *
  * @author Kurlovich Alexander
  * @version Lection12 Exceptions
  */
