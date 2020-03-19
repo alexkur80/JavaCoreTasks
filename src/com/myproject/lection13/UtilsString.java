@@ -279,6 +279,7 @@ class UtilsString {
      * <p>
      * maxNumberOfSymbolsOutput - number of digits to output  after that fill all with '0'
      *
+     *
      * @param number
      * @return stringFormatted contains 10 symbol outpiut, filled with '0' from the end or all '0'.
      * Ex1: 0000000124 Ex2:0000000000
