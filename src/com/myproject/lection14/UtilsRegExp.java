@@ -21,7 +21,7 @@ public class UtilsRegExp {
      * sign '_' but not start with '_'. It should have domen upper level org.com.by
      * It have restriction on domen length    - from 1 to 7 symbols/
      * Domen doesn't should end by '_'
-     * RegExp   (?<=\s|^)([^\W_0-9]\w+)[@]([^\W_]+\.)+[^\W_]{2,7}(?=\s|$)
+     * RegExp   (?<=\s|^)([^\W_0-9]\w+)[@]([^\W_]+\.)+[^\W_]{2,4}(?=\s|$)
      * Description:
      * (?<=\s|^)  - positive look behind  - if starts with '\s' | '^' then we are looking next condition
      * ([^\W_0-9]\w+) - group 1, verify that starts from letter only, exclude '_' and 0-9'
@@ -29,8 +29,8 @@ public class UtilsRegExp {
      * [@] - then'@' every email has
      * ([^\W_]+\.)+    this group include letters, digits exclude '_' from one to many times and then
      * include '.'
-     * [^\W_]{2,7}(?=\s) - this verify if include domen upper level inclide all letters and digits,
-     * exclude '_' and have length {2,7}
+     * [^\W_]{2,4}(?=\s) - this verify if include domen upper level inclide all letters and digits,
+     * exclude '_' and have length {2,4}
      * (?=\s|$)   positive look ahead - see, if next symbol finishes with '\s' or this is last symbol of text
      * <p>
      * from 1 to 7 and repeat from one to more. It makes using higher level domens.
@@ -39,7 +39,7 @@ public class UtilsRegExp {
      */
     public static String emailValidator(String emailToValidate) {
 
-        Pattern pattern = Pattern.compile("(?<=\\s|^)([^\\W_0-9]\\w+)[@]([^\\W_]+\\.)+[^\\W_]{2,7}(?=\\s|$)", Pattern.MULTILINE);
+        Pattern pattern = Pattern.compile("(?<=\\s|^)([^\\W_0-9]\\w+)[@]([^\\W_]+\\.)+[^\\W_]{2,4}(?=\\s|$)", Pattern.MULTILINE);
         Matcher matcher = pattern.matcher(emailToValidate);
         StringBuilder stringbuilder = new StringBuilder();
 
