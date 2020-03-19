@@ -14,6 +14,7 @@
  * 2. IronMan Mikola   - his strikes are strong and Warriors very little affect to him. Archer Piotr has
  * no affect at all.
  *
+ *
  * @author Kurlovich Alexander
  * @return Simulate fight Hero vs Enemy
  */
