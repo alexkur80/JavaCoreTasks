@@ -33,6 +33,7 @@ class Atm {
         int usd100 = checkScannerIntNumberNew(sc, "Input amount of 100$ banknotes:\t");
         Atm atmMachine = new Atm(usd20, usd50, usd100);
         return atmMachine;
+
     }
 
     static boolean withdrawOutOfAtm(Atm atmMachine) {
