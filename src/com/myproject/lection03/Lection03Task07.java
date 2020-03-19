@@ -7,8 +7,6 @@ package com.myproject.lection03; /**
  * @see checkScannerIntNumber(sc, intNumber) - method from Utils class. Request number in console.
  *
  * @return  number factorial
- *
- *
  */
 
 import java.util.Scanner;
