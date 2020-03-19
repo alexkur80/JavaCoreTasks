@@ -39,7 +39,6 @@ class OverloadingOfMethods {
         result = bigDecimalNumberA.add(bigDecimalNumberB);
 
         return result;
-
     }
 }
 
