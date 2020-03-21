@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 public class Math<T extends Number> {
     private T value01;
     private T value02;
-    private T SumValue01Value02;
 
     Math(T value01, T value02) {
         this.value01 = value01;
@@ -19,10 +18,6 @@ public class Math<T extends Number> {
     public T getValue02() {
         return value02;
 
-    }
-
-    public T getSumValue01Value02() {
-        return SumValue01Value02;
     }
 
 

@@ -19,26 +19,37 @@ public class GenericsTesting {
         ApplicationLogger.LOGGER.info("Pair V after " + swappedPair.getPairValue());
 
 
-        Math<Integer> mathAB01 = new Math<>(10, 20);
-        Number mathAB1Result = MathUtil.sumAB(mathAB01);
-        ApplicationLogger.LOGGER.info("Integer sum " + mathAB01.getValue01() + " + " + mathAB01.getValue02() + " = " + mathAB1Result);
+        Math<Integer> variablesInteger = new Math<>(20, 10);
+        Number sumAB01Result = MathUtil.sumAB(variablesInteger);
+        Number divAB01Result = MathUtil.divAB(variablesInteger);
+        ApplicationLogger.LOGGER.info("Integer sum " + variablesInteger.getValue01() + " + " + variablesInteger.getValue02() + " = " + sumAB01Result);
+        ApplicationLogger.LOGGER.info("Integer div " + variablesInteger.getValue01() + " / " + variablesInteger.getValue02() + " = " + divAB01Result);
 
 
-        Math<Double> mathAB02 = new Math<>(15.54D, 34D);
-        Number mathAB2Result = MathUtil.sumAB(mathAB02);
-        ApplicationLogger.LOGGER.info("Double sum " + mathAB02.getValue01() + " + " + mathAB02.getValue02() + " = " + mathAB2Result);
+        Math<Double> variablesDouble = new Math<>(15.54D, 34D);
+        Number sumAB02Result = MathUtil.sumAB(variablesDouble);
+        Number divAB02Result = MathUtil.divAB(variablesDouble);
+        ApplicationLogger.LOGGER.info("Double sum " + variablesDouble.getValue01() + " + " + variablesDouble.getValue02() + " = " + sumAB02Result);
+        ApplicationLogger.LOGGER.info("Double div " + variablesDouble.getValue01() + " / " + variablesDouble.getValue02() + " = " + divAB02Result);
 
 
-        Math<Float> mathAB03 = new Math<>(123.3f, 223.3f);
-        Number mathAB3Result = MathUtil.sumAB(mathAB03);
-        ApplicationLogger.LOGGER.info("Float sum " + mathAB03.getValue01() + " + " + mathAB02.getValue02() + " = " + mathAB3Result);
+        Math<Float> variablesFloat = new Math<>(123.3f, 223.3f);
+        Number sumAB03Result = MathUtil.sumAB(variablesFloat);
+        Number divAB03Result = MathUtil.divAB(variablesFloat);
+        ApplicationLogger.LOGGER.info("Float sum " + variablesFloat.getValue01() + " + " + variablesFloat.getValue02() + " = " + sumAB03Result);
+        ApplicationLogger.LOGGER.info("Float div " + variablesFloat.getValue01() + " / " + variablesFloat.getValue02() + " = " + divAB03Result);
 
 
         BigDecimal bigDecimalNumber01 = new BigDecimal("111111111111111111111");
         BigDecimal bigDecimalNumber02 = new BigDecimal("222222222222222222222");
-        Math<BigDecimal> mathAB04 = new Math<>(bigDecimalNumber01, bigDecimalNumber02);
-        Number mathAB4Result = MathUtil.sumAB(mathAB04);
-        ApplicationLogger.LOGGER.info("BigDecimal sum " + mathAB04.getValue01() + " + " + mathAB04.getValue02() + " = " + mathAB4Result);
+        Math<BigDecimal> variablesBigDecimal = new Math<>(bigDecimalNumber01, bigDecimalNumber02);
+        Number sumAB04Result = MathUtil.sumAB(variablesBigDecimal);
+        Number divAB04Result = MathUtil.divAB(variablesBigDecimal);
+        ApplicationLogger.LOGGER.info("BigDecimal sum " + variablesBigDecimal.getValue01() + " + " + variablesBigDecimal.getValue02() + " = " + sumAB04Result);
+        ApplicationLogger.LOGGER.info("BigDecimal div " + variablesBigDecimal.getValue01() + " / " + variablesBigDecimal.getValue02() + " = " + divAB04Result);
+
+
+
 
 
     }
