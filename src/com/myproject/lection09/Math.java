@@ -1,3 +1,10 @@
+/**
+ * This class needs for ariphmetic operation with THE SAME TYPE numbers, extended from Numbers.
+ * Its safe because Generics controlling the same type verification.
+ *
+ *
+ */
+
 package com.myproject.lection09;
 
 import java.math.BigDecimal;

@@ -1,3 +1,8 @@
+/**
+ * This is main class, testing Generics and Annotation.
+ *
+ */
+
 package com.myproject.lection09;
 
 import com.myproject.utils.ApplicationLogger;
