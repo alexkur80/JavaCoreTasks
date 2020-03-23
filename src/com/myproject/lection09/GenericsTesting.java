@@ -1,6 +1,5 @@
 /**
  * This is main class, testing Generics and Annotation.
- *
  */
 
 package com.myproject.lection09;
@@ -53,10 +52,17 @@ public class GenericsTesting {
         ApplicationLogger.LOGGER.info("BigDecimal sum " + variablesBigDecimal.getValue01() + " + " + variablesBigDecimal.getValue02() + " = " + sumAB04Result);
         ApplicationLogger.LOGGER.info("BigDecimal div " + variablesBigDecimal.getValue01() + " / " + variablesBigDecimal.getValue02() + " = " + divAB04Result);
 
+        Math<Double> math = new Math(12.5, 15.5);
+        TransactionClass transactionclass = new TransactionClass();
 
+        ClassAnalyzer.transactionSuccessVerification(transactionclass);
 
+        ClassAnalyzer.showClassName(math);
+        ClassAnalyzer.showClassFields(math);
+        ClassAnalyzer.showClassMethods(math);
+        ClassAnalyzer.showMethodsAnnotations(transactionclass);
+        ClassAnalyzer.showClassConstructors(math);
 
 
     }
-
 }
