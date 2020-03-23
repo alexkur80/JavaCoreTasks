@@ -54,14 +54,17 @@ public class GenericsTesting {
 
         Math<Double> math = new Math(12.5, 15.5);
         TransactionClass transactionclass = new TransactionClass();
+        Pair pair = new Pair();
 
         ClassAnalyzer.transactionSuccessVerification(transactionclass);
 
         ClassAnalyzer.showClassName(math);
         ClassAnalyzer.showClassFields(math);
-        ClassAnalyzer.showClassMethods(math);
-        ClassAnalyzer.showMethodsAnnotations(transactionclass);
-        ClassAnalyzer.showClassConstructors(math);
+        ClassAnalyzer.showClassMethods(pair);
+        ClassAnalyzer.showMethodsAnnotations(math);
+      //  ClassAnalyzer.showClassConstructors(pair);
+        ClassAnalyzer.showClassConstructors(pair);
+
 
 
     }

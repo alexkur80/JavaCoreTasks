@@ -7,6 +7,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 public class ClassAnalyzer {
 
@@ -15,6 +16,7 @@ public class ClassAnalyzer {
 
         Class clazz = obj.getClass();
         ApplicationLogger.LOGGER.info("Class: " + clazz.getName());
+        ApplicationLogger.LOGGER.info("Super Class: " + clazz.getSuperclass());
     }
 
     // Overloading showClassName method
@@ -28,7 +30,7 @@ public class ClassAnalyzer {
 
         int i = 0;
         for (Field field : fields) {
-            ApplicationLogger.LOGGER.info("Field #" + i + " " + field.getName());
+            ApplicationLogger.LOGGER.info("Field #" + i + " " + field.getName() + field.getType());
             i++;
         }
 
@@ -41,7 +43,7 @@ public class ClassAnalyzer {
 
         int i = 0;
         for (Method method : methods) {
-            ApplicationLogger.LOGGER.info("Method #" + i + " " + method.getName());
+            ApplicationLogger.LOGGER.info("Method #" + i + " " + method.getName() + " Return: " + method.getReturnType());
             i++;
         }
     }
@@ -66,6 +68,7 @@ public class ClassAnalyzer {
             Annotation[] annotations = method.getAnnotations();
             for (Annotation annotation : annotations) {
                 ApplicationLogger.LOGGER.info("Annotation" + annotation.toString());
+
             }
         }
 
@@ -77,7 +80,6 @@ public class ClassAnalyzer {
         for (Method method : methods) {
             Annotation[] annotations = method.getAnnotations();
             for (Annotation annotation : annotations) {
-                ApplicationLogger.LOGGER.info("Annotation" + annotation.toString());
             }
         }
 
@@ -86,25 +88,29 @@ public class ClassAnalyzer {
 
     public static void showClassConstructors(Object obj) {
         Class clazz = obj.getClass();
-        Constructor[] constructors = clazz.getConstructors();
+        Constructor[] constructors = clazz.getDeclaredConstructors();
         int i = 0;
         for (Constructor constructor : constructors) {
-            ApplicationLogger.LOGGER.info("Constructor #" + i + constructor.getName());
+           //ApplicationLogger.LOGGER.info ("Constructor #" + i + " " + constructors[i].getParameterTypes().toString() + constructors[i].getName());
+            ApplicationLogger.LOGGER.info ("Constructor #" + i + " " + constructors[i].getName());
+
             i++;
         }
+
+      //  Class[] parameterTypes = constructor.getParameterTypes();
 
     }
 
 
     // Overloading showClassConstructors method
     public static void showClassConstructors(Class clazz) {
-        Constructor[] constructors = clazz.getConstructors();
+        Constructor[] constructors = clazz.getDeclaredConstructors();
         int i = 0;
         for (Constructor constructor : constructors) {
-            ApplicationLogger.LOGGER.info("Constructor #" + i + constructor.getName());
+        //  ApplicationLogger.LOGGER.info("Constructor " + constructor.);
             i++;
         }
-
+        System.out.println("Конструкторы класса: " + Arrays.toString(clazz.getConstructors()));
     }
 
 

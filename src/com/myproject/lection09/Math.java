@@ -13,6 +13,10 @@ public class Math<T extends Number> {
     private T value01;
     private T value02;
 
+    Math() {
+
+    }
+
     Math(T value01, T value02) {
         this.value01 = value01;
         this.value02 = value02;
@@ -22,6 +26,7 @@ public class Math<T extends Number> {
         return value01;
     }
 
+    @Transaction
     public T getValue02() {
         return value02;
 
