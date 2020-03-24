@@ -164,7 +164,7 @@ public class ClassAnalyzer {
      * nothing in transaction lost.
      * Alghoritm. First using Reflection API we check ckass methods of object 'Object obj'
      * Then checking if method have annotation @Transaction and if it has - it execute here: method.invoke(new Object())
-     * and in for each cucle checking every methods in class that marks with @Transaction  and execute.
+     * and in for each cucle checking every methods in class that marks with @Transaction  and execute .
      *
      * @param obj class object which analyse for start and finish transaction annotation executed
      */
