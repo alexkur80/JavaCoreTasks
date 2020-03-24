@@ -13,7 +13,7 @@ import com.myproject.utils.ApplicationLogger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UtilsRegExp {
+public final class UtilsRegExp {
 
 
     /**

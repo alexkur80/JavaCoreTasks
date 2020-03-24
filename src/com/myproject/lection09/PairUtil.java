@@ -13,8 +13,6 @@ import java.util.List;
  * two elements different types 'V' and 'K' is ClassCastException.
  *
  *
- * @author Kurlovich Alexander
- * @version 21/03/2020
  */
 public class PairUtil {
 

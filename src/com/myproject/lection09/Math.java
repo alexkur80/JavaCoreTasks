@@ -7,6 +7,8 @@
 
 package com.myproject.lection09;
 
+import com.myproject.utils.ApplicationLogger;
+
 import java.math.BigDecimal;
 
 public  class Math<T extends Number> {
@@ -14,7 +16,6 @@ public  class Math<T extends Number> {
     private T value02;
 
     Math() {
-
     }
 
     Math(T value01, T value02) {
@@ -22,7 +23,7 @@ public  class Math<T extends Number> {
         this.value02 = value02;
     }
 
-    @Transaction
+    @Deprecated
     public T getValue01() {
         return value01;
     }
@@ -33,5 +34,15 @@ public  class Math<T extends Number> {
 
     }
 
+
+    @Transaction
+    public static void transactionTesting() {
+        ApplicationLogger.LOGGER.info("Transaction #1 processing, please wait");
+    }
+
+    @Transaction
+    public static void transactionTesting2() {
+        ApplicationLogger.LOGGER.info("Transaction #2 processing, please wait");
+    }
 
 }

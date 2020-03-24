@@ -1,5 +1,7 @@
 package com.myproject.lection09;
 
+import com.myproject.utils.ApplicationLogger;
+
 public class Pair <K, V> {
     private K pairKey;
     private V pairValue;
@@ -29,6 +31,11 @@ public class Pair <K, V> {
         this.pairValue = pairValue;
     }
 
+    @Transaction
+    public static void transactionTesting() {
+        ApplicationLogger.LOGGER.info("Transaction processing, please wait");
+
+    }
 
 }
 

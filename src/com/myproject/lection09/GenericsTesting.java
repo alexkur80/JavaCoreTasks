@@ -1,5 +1,9 @@
 /**
- * This is main class, testing Generics and Annotation.
+ * This is main class, testing Generics, Annotation, Reflection API.
+ *
+ * @data 03/24/2020
+ * @author Kurlovich Alexander
+ * @version Lection09 Generics, reflection API
  */
 
 package com.myproject.lection09;
@@ -12,7 +16,8 @@ import java.math.BigDecimal;
 public class GenericsTesting {
     public static void main(String[] args) {
 
-        Pair<String, String> initialPair = new Pair<>("12", "1212Value");
+
+        Pair<String, String> initialPair = new Pair<>("1111key", "2222value");
 
         ApplicationLogger.LOGGER.info("Pair K before " + initialPair.getPairKey());
         ApplicationLogger.LOGGER.info("Pair V before " + initialPair.getPairValue());
@@ -56,7 +61,7 @@ public class GenericsTesting {
 
         ClassAnalyzer.analizeClass(math);
 
-
+        ClassAnalyzer.transactionSuccessVerification(math);
 
     }
 }
