@@ -3,14 +3,14 @@ package com.myproject.lection09;
 import com.myproject.utils.ApplicationLogger;
 
 
-public class TransactionClass {
+public class TMPTransactionClass {
 
 
-   TransactionClass() {
+   TMPTransactionClass() {
 ApplicationLogger.LOGGER.info("Default constructor");
     }
 
-TransactionClass(int a, String b) {
+TMPTransactionClass(int a, String b) {
 
     }
 

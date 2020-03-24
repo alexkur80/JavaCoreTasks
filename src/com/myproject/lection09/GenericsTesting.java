@@ -53,17 +53,8 @@ public class GenericsTesting {
         ApplicationLogger.LOGGER.info("BigDecimal div " + variablesBigDecimal.getValue01() + " / " + variablesBigDecimal.getValue02() + " = " + divAB04Result);
 
         Math<Double> math = new Math(12.5, 15.5);
-        TransactionClass transactionclass = new TransactionClass();
-        Pair pair = new Pair();
 
-        ClassAnalyzer.transactionSuccessVerification(transactionclass);
-
-        ClassAnalyzer.showClassName(math);
-        ClassAnalyzer.showClassFields(math);
-        ClassAnalyzer.showClassMethods(pair);
-        ClassAnalyzer.showMethodsAnnotations(math);
-      //  ClassAnalyzer.showClassConstructors(pair);
-        ClassAnalyzer.showClassConstructors(pair);
+        ClassAnalyzer.analizeClass(math);
 
 
 

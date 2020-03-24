@@ -2,6 +2,12 @@ package com.myproject.lection09;
 
 import com.myproject.utils.ApplicationLogger;
 
+
+/**
+ * This is Generic class Solution extends ClassForGenerics and implements InterfaceForGenerics
+ *
+ * @param <T>
+ */
 public class Solution<T extends ClassForGenerics & InterfaceForGenerics> {
 private T id;
 

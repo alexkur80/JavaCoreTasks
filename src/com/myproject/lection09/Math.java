@@ -9,7 +9,7 @@ package com.myproject.lection09;
 
 import java.math.BigDecimal;
 
-public class Math<T extends Number> {
+public  class Math<T extends Number> {
     private T value01;
     private T value02;
 
@@ -22,11 +22,12 @@ public class Math<T extends Number> {
         this.value02 = value02;
     }
 
+    @Transaction
     public T getValue01() {
         return value01;
     }
 
-    @Transaction
+    @Deprecated
     public T getValue02() {
         return value02;
 
