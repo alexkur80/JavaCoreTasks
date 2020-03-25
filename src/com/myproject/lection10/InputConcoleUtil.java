@@ -19,17 +19,17 @@ public class InputConcoleUtil {
 
 
     /**
-     * This method accepts input numbers from console, then uses RegEx parsing line and
+     * This Utilite Method accepts input numbers from console, then uses RegEx parsing line and
      * extract numbers. Then put all numbers in 'List' collection and return.
      *
      * Numbers should be typed using 'SPACE' to divide numbers from each other, numbers+letters or
      * only letters ignores.
      *
-     * @return List
+     * @return List Collection of numbers typed in console.
      * @throws IOException
      */
-    public static List<Integer> inputNumbersFromConcole() throws IOException {
 
+    public static List<Integer> inputNumbersFromConcole() throws IOException {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
