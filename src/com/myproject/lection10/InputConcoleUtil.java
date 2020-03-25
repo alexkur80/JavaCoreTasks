@@ -28,7 +28,6 @@ public class InputConcoleUtil {
      * @return List Collection of numbers typed in console.
      * @throws IOException
      */
-
     public static List<Integer> inputNumbersFromConcole() throws IOException {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -41,8 +40,6 @@ public class InputConcoleUtil {
         Matcher matcher = pattern.matcher(number);
 
         List<Integer> input = new ArrayList<>();
-
-        System.out.println(number);
 
         while (matcher.find()) {
 
