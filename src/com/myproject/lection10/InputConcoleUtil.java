@@ -12,16 +12,10 @@ import java.util.regex.Pattern;
 
 public class InputConcoleUtil {
 
-
-    private InputConcoleUtil() {
-
-    }
-
-
     /**
      * This Utilite Method accepts input numbers from console, then uses RegEx parsing line and
      * extract numbers. Then put all numbers in 'List' collection and return.
-     *
+     * <p>
      * Numbers should be typed using 'SPACE' to divide numbers from each other, numbers+letters or
      * only letters ignores.
      *

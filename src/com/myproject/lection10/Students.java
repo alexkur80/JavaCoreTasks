@@ -4,7 +4,7 @@ import com.myproject.utils.ApplicationLogger;
 
 import java.util.*;
 
-public class UtilsCollection {
+public class Students {
 
     @Override
     public int hashCode() {
@@ -64,7 +64,6 @@ public class UtilsCollection {
      * This method output students in assending and descending more, using two variants.
      * First - using for cycle,
      * Second - using iterator
-     *
      */
     public static void student() {
 
@@ -101,15 +100,16 @@ public class UtilsCollection {
         ListIterator<String> iterator = studentName.listIterator();
         int counter01 = 0;
         while (iterator.hasNext()) {
-            ApplicationLogger.LOGGER.info("Name #" + counter01 + " " + iterator.next());
+            String next = iterator.next();
+            ApplicationLogger.LOGGER.info("Name #" + counter01 + " " + next);
             counter01++;
         }
 
         ApplicationLogger.LOGGER.info("Students name in decending mode, iterator  output");
         int counter02 = 0;
         while (iterator.hasPrevious()) {
-
-            ApplicationLogger.LOGGER.info("Name #" + counter02 + " " + iterator.previous());
+            String previous = iterator.previous();
+            ApplicationLogger.LOGGER.info("Name #" + counter02 + " " + previous);
             counter02++;
         }
 
