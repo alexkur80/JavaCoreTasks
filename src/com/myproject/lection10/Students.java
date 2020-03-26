@@ -65,7 +65,7 @@ public class Students {
      * First - using for cycle,
      * Second - using iterator
      */
-    public static void student() {
+    public static void studentList() {
 
         List<String> studentName = new LinkedList<>() {
             {

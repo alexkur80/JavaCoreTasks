@@ -17,7 +17,7 @@ public class CollectionMain {
     public static void main(String[] args) {
 
         Students.studentMarks();
-        Students.student();
+        Students.studentList();
 
         List<Integer> numbersToStack = null;
         try {
