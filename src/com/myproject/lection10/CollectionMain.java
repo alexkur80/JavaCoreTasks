@@ -21,7 +21,7 @@ public class CollectionMain {
 
         List<Integer> numbersToStack = null;
         try {
-            numbersToStack = IntegerConcoleRegular.inputNumbersFromConsole();
+            numbersToStack = IntegerConsoleRegular.inputNumbersFromConsole();
         } catch (IOException e) {
             ApplicationLogger.LOGGER.error("Error IOException reading line from console " +
                     "in inputNumbersFromConcole method");

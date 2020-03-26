@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class IntegerConcoleRegular {
+public class IntegerConsoleRegular {
 
     /**
      * This Utilite Method accepts input numbers from console, then uses RegEx parsing line and
