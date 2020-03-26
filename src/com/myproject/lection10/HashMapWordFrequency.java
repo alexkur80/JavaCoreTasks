@@ -17,7 +17,7 @@ public class HashMapWordFrequency {
      * @param text any String text
      * @return Map<Key, Value> Key - word in 'text', Value how many word repeats in 'text'
      */
-    public static Map<String, Integer> worldVocabulary(String text) {
+    public static Map<String, Integer> wordFrequencyVocabulary(String text) {
 
         String[] words = text.split("[^a-zA-Zа-яА-ЯёЁ]+");
         List<String> listWords = new ArrayList<>();

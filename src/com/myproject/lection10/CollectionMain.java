@@ -53,7 +53,7 @@ public class CollectionMain {
                 "of right to education also.";
 
         Map<String, Integer> wordCounter;
-        wordCounter = HashMapWordFrequency.worldVocabulary(text);
+        wordCounter = HashMapWordFrequency.wordFrequencyVocabulary(text);
 
         ArrayList<Integer> ascendingNumbers;
         ascendingNumbers = SortIntegerAscending.sortReverse();
