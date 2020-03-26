@@ -3,7 +3,7 @@ package com.myproject.lection10;
 import java.util.Collection;
 import java.util.Random;
 
-public class CollectionUtils {
+public class GenerateIntegerRandom {
 
 
     /**

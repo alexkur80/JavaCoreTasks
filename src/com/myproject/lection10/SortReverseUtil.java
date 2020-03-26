@@ -24,7 +24,7 @@ public class SortReverseUtil {
         Collection<Integer> collection = new ArrayList<>();
         ArrayList<Integer> arrayList = new ArrayList<>();
 
-        collection = CollectionUtils.randomInt(-10, 5, 10, collection);
+        collection = GenerateIntegerRandom.randomInt(-10, 5, 10, collection);
 
         ApplicationLogger.LOGGER.info("Non sorted collection:");
 

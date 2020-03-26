@@ -4,7 +4,7 @@ import com.myproject.utils.ApplicationLogger;
 
 import java.util.*;
 
-public class SetMethodsUtil {
+public class CollectionsUtil {
 
 
     /**
@@ -16,7 +16,7 @@ public class SetMethodsUtil {
 
         // Random filled first collection
         Collection<Integer> setOne = new TreeSet<>();
-        setOne = CollectionUtils.randomInt(15, 25, 10, setOne);
+        setOne = GenerateIntegerRandom.randomInt(15, 25, 10, setOne);
 
 
         Iterator<Integer> iteratorSetOne = setOne.iterator();
@@ -41,7 +41,7 @@ public class SetMethodsUtil {
 
         // Random filled second collection
         Collection<Integer> setSecond = new TreeSet<>();
-        setSecond = CollectionUtils.randomInt(14, 30, 10, setSecond);
+        setSecond = GenerateIntegerRandom.randomInt(14, 30, 10, setSecond);
 
         Iterator<Integer> iteratorSetSecond = setSecond.iterator();
 

@@ -37,14 +37,14 @@ public class CollectionTesting {
         stack.pop();
 
 // generating Collection to use for myAddAll, myRetainAll methods
-        Collection<Integer> collectionFirst = SetMethodsUtil.collectionFirst();
-        Collection<Integer> collectionSecond = SetMethodsUtil.collectionSecond();
+        Collection<Integer> collectionFirst = CollectionsUtil.collectionFirst();
+        Collection<Integer> collectionSecond = CollectionsUtil.collectionSecond();
 
         Collection<Integer> addAllCollectionResult;
-        addAllCollectionResult = SetMethodsUtil.myAddAll(collectionFirst, collectionSecond);
+        addAllCollectionResult = CollectionsUtil.myAddAll(collectionFirst, collectionSecond);
 
         Collection<Integer> retainAllCollectionResult;
-        retainAllCollectionResult = SetMethodsUtil.myRetainAll(collectionFirst, collectionSecond);
+        retainAllCollectionResult = CollectionsUtil.myRetainAll(collectionFirst, collectionSecond);
 
         String text = "In addition to the above-mentioned studies on text " +
                 "books contain instructional education; the education curriculum and " +
