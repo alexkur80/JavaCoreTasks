@@ -3,7 +3,7 @@
  *
  * @data 03/26/2020
  * @author akurlovich
- * @version Lection10 Collections
+ * @version Lection10  Collections
  */
 
 package com.myproject.lection10;
