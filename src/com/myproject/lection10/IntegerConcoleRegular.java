@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class InputConcoleUtil {
+public class IntegerConcoleRegular {
 
     /**
      * This Utilite Method accepts input numbers from console, then uses RegEx parsing line and
@@ -22,7 +22,7 @@ public class InputConcoleUtil {
      * @return List Collection of numbers typed in console.
      * @throws IOException
      */
-    public static List<Integer> inputNumbersFromConcole() throws IOException {
+    public static List<Integer> inputNumbersFromConsole() throws IOException {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 

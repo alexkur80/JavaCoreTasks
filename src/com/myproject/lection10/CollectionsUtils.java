@@ -4,7 +4,7 @@ import com.myproject.utils.ApplicationLogger;
 
 import java.util.*;
 
-public class CollectionsUtil {
+public class CollectionsUtils {
 
 
     /**

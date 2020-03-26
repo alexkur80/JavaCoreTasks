@@ -4,10 +4,10 @@ import com.myproject.utils.ApplicationLogger;
 
 import java.util.*;
 
-public class MyHashMapAlgrothms {
+public class HashMapWordFrequency {
 
     /**
-     * This method read text and create friquency word vocabulary output
+     * This method read text and create frequency word vocabulary output
      * Ex:  to:2    the:1   in:3
      * Algorithm description:
      * #1 Using RegEx and 'split' utilMethod create array of words from text, excluding
