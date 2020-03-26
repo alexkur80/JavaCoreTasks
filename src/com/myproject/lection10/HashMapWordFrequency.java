@@ -31,22 +31,22 @@ public class HashMapWordFrequency {
         }
 
 
-        Map<String, Integer> wordCounter = new HashMap<>();
+        Map<String, Integer> wordCounterMap = new HashMap<>();
         Integer counter = 0;
         for (String word : words) {
-            if (wordCounter.containsKey(word)) {
-                counter = wordCounter.get(word);
+            if (wordCounterMap.containsKey(word)) {
+                counter = wordCounterMap.get(word);
                 counter++;
-                wordCounter.put(word, counter);
+                wordCounterMap.put(word, counter);
             } else {
-                wordCounter.put(word, 1);
+                wordCounterMap.put(word, 1);
             }
 
         }
 
         ApplicationLogger.LOGGER.info("Output unique Key:Value");
 
-        Iterator<Map.Entry<String, Integer>> entries = wordCounter.entrySet()
+        Iterator<Map.Entry<String, Integer>> entries = wordCounterMap.entrySet()
                 .iterator();
 
         int counterTmp02 = 0;
@@ -55,7 +55,7 @@ public class HashMapWordFrequency {
             ApplicationLogger.LOGGER.info("#" + counterTmp02++ + " " + entry.getKey() + ":" + entry.getValue());
         }
 
-        return wordCounter;
+        return wordCounterMap;
 
     }
 
