@@ -32,7 +32,7 @@ public class BlackBox<Integer> {
             counter++;
         }
 
-        Integer firstElement = (Integer) this.blackBoxTreeSet.toArray()[(blackBoxTreeSet.size() - 1) - indexMax];
+        Integer firstElement = (Integer) this.blackBoxTreeSet.toArray()[(blackBoxTreeSet.size()) - indexMax];
         return firstElement;
 
     }
