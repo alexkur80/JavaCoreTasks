@@ -12,10 +12,7 @@ public class Polynomial {
 
     public static String polynomial(Map<Integer, Integer> polynomial) {
 
-
         Map<Integer, Integer> mapValueFriquency = new HashMap<>();
-
-
 
         Iterator<Map.Entry<Integer, Integer>> iterator = polynomial.entrySet()
                 .iterator();
@@ -38,7 +35,6 @@ public class Polynomial {
         result = result.replaceAll("(1x)", "x");
         result = result.replaceAll("(x\\^0)", "");
         result = result.replaceAll("(x\\^1)", "x");
-
 
         return result;
     }
