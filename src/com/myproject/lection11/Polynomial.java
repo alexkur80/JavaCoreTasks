@@ -15,6 +15,8 @@ public class Polynomial {
 
         Map<Integer, Integer> mapValueFriquency = new HashMap<>();
 
+
+
         Iterator<Map.Entry<Integer, Integer>> iterator = polynomial.entrySet()
                 .iterator();
 
