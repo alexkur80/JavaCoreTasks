@@ -32,8 +32,9 @@ public class BlackBox<Integer> {
             counter++;
         }
 
-        Integer firstElement = (Integer) this.blackBoxTreeSet.toArray()[(blackBoxTreeSet.size()) - indexMax];
-        return firstElement;
+        Integer elementByIndexFromMax = (Integer) this.blackBoxTreeSet.toArray()[(blackBoxTreeSet.size()) - indexMax];
+        return elementByIndexFromMax;
+
 
     }
 
@@ -47,8 +48,8 @@ public class BlackBox<Integer> {
     public Integer minKBlackBox(int indexMin) throws ArrayIndexOutOfBoundsException {
 
         ApplicationLogger.LOGGER.info("BlackBox numbers:");
-        Integer firstElement = (Integer) this.blackBoxTreeSet.toArray()[indexMin - 1];
-        return firstElement;
+        Integer elementByIndexFromMin = (Integer) this.blackBoxTreeSet.toArray()[indexMin - 1];
+        return elementByIndexFromMin;
 
     }
 

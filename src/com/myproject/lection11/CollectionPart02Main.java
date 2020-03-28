@@ -72,7 +72,7 @@ public class CollectionPart02Main {
         }
 
         // choose indexMax element from BlackBox
-        int indexMax = 6;
+        int indexMax = 4;
         try {
             Integer maxKBlackBox = blackBox.maxKBlackBox(indexMax);
             ApplicationLogger.LOGGER.info("Max for index: " + indexMax + ": " + maxKBlackBox);
@@ -82,7 +82,7 @@ public class CollectionPart02Main {
         }
 
         // choose indexMin element from BlackBox
-        int indexMin = 8;
+        int indexMin = 2;
         try {
             Integer minKBlackBox = blackBox.minKBlackBox(indexMin);
             ApplicationLogger.LOGGER.info("Min for index: " + indexMin + ": " + minKBlackBox);
