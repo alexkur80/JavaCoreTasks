@@ -17,7 +17,7 @@ public final class UtilsRegExp {
 
 
     /**
-     * This class uses RegEx to validate email addresses from raw text. Email template should have digits, letters,
+     * This method uses RegEx to validate email addresses from raw text. Email template should have digits, letters,
      * sign '_' but not start with '_'. It should have domen upper level org.com.by
      * It have restriction on domen length    - from 1 to 7 symbols/
      * Domen doesn't should end by '_'
@@ -57,7 +57,7 @@ public final class UtilsRegExp {
 
 
     /**
-     * This class uses RegEx to find valid HEX numbers and get them.
+     * This method uses RegEx to find valid HEX numbers and get them.
      * RegExp   0x([0-9]|[a-fA-F])+
      * Description
      * 0x    - start from 0x
@@ -85,7 +85,7 @@ public final class UtilsRegExp {
 
 
     /**
-     * This class uses RegEx to find symbols between tegs <qwqwe 2SDASD> and replace
+     * This method uses RegEx to find symbols between tegs <qwqwe 2SDASD> and replace
      * by <p>
      * RegExp   <(.|\n)*?>
      * Description
@@ -111,7 +111,7 @@ public final class UtilsRegExp {
 
 
     /**
-     * This class uses RegEx to find phoneNumbers from format +375000000000 and output to correct format
+     * This method uses RegEx to find phoneNumbers from format +375000000000 and output to correct format
      * +375 (XX) YYY-YY-YY
      * RegEx    (\+375)(\d{2})(\d{3})(\d{2})(\d{2})
      * important: Since we need to output in some format - regex should be grouped to collect
@@ -153,7 +153,7 @@ public final class UtilsRegExp {
 
 
     /**
-     * This class uses RegEx to find correct ipv4ToValidate
+     * This method uses RegEx to find correct ipv4ToValidate
      * Example valid Ipv4:
      * 0.0.0.0
      * 0.0.1.0
