@@ -10,6 +10,7 @@ import java.util.Random;
          * This method uses more then one time so I decided to write separate utilite method.
          * It fills with random generating numbers any 'Collection <Integer>  collections
          *
+         *
          * @param min        Min int number for generating
          * @param max        Max int number for generating
          * @param iterations number of iterations
