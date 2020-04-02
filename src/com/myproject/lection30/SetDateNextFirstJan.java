@@ -15,7 +15,6 @@ public class SetDateNextFirstJan implements TemporalAdjuster {
 
     @Override
     public void setNewDate() {
-
         LocalDate today = LocalDate.now();
 
         int daysInYear = today.lengthOfYear();
@@ -30,6 +29,4 @@ public class SetDateNextFirstJan implements TemporalAdjuster {
         ApplicationLogger.LOGGER.info("Changed date for the soonest 1st Jan is " + newDate);
 
     }
-
-
 }

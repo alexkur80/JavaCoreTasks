@@ -18,13 +18,14 @@ public class AddDays implements TemporalAdjuster {
         return addDays;
     }
 
+
     public void setAddDays(int addDays) {
         this.addDays = addDays;
     }
 
+
     @Override
     public void setNewDate() {
-
         setAddDays(addDays);
 
         LocalDate today = LocalDate.now();
@@ -35,6 +36,7 @@ public class AddDays implements TemporalAdjuster {
 
         System.out.println();
     }
+
 
     AddDays(int addDays) {
         this.addDays = addDays;
