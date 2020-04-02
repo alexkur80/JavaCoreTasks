@@ -1,6 +1,6 @@
 package com.myproject.lection16;
 
-import com.myproject.lection15.FileUtilsCopy01;
+import com.myproject.lection16.FileUtilsCopy01;
 import com.myproject.utils.ApplicationLogger;
 
 import java.io.*;

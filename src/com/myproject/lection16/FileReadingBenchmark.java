@@ -1,6 +1,6 @@
 package com.myproject.lection16;
 
-import com.myproject.lection15.FileUtilsCopy01;
+import com.myproject.lection16.FileUtilsCopy01;
 import com.myproject.utils.ApplicationLogger;
 
 import java.io.*;
@@ -24,8 +24,9 @@ public class FileReadingBenchmark {
             ) {
                 String line;
 
+
                 while ((line = fileIn.readLine()) != null) {
-                    fileOut.write(line + "\n");
+                    fileOut.write(line + " \n");
 
                 }
             } catch (IOException e) {
@@ -55,13 +56,14 @@ public class FileReadingBenchmark {
                  FileWriter fileOut = new FileWriter(fileWrite)) {
 
                 int tmpChar;
-                while ((tmpChar = fileIn.read()) != -1) {
+                while ((tmpChar = fileIn.read())  != -1) {
                     fileOut.write(tmpChar);
                 }
             } catch (IOException e) {
                 ApplicationLogger.LOGGER.error("Error opening and reading file " + fileRead.getName() + " OR " + fileWrite.getName());
                 e.printStackTrace();
             }
+
 
         }
         long stopTime = System.nanoTime();

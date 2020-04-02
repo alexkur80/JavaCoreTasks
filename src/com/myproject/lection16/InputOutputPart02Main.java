@@ -20,11 +20,11 @@ public class InputOutputPart02Main {
         String fileSerialization02 = "D:\\Coding\\PVTCoursesPart01\\InputOutput\\serializationNotebook.ser";
 
         // Benchmark reading file 5Mb using BufferedReader
-        Long timeBufferedReader = FileReadingBenchmark.bufferedReaderBenchmark(file);
+        long timeBufferedReader = FileReadingBenchmark.bufferedReaderBenchmark(file);
         ApplicationLogger.LOGGER.info(timeBufferedReader / 1000000 + " ms");
 
         // Benchmark reading file 5Mb using FileReader
-        Long timeFileReader = FileReadingBenchmark.fileReaderBenchmark(file);
+        long timeFileReader = FileReadingBenchmark.fileReaderBenchmark(file);
         ApplicationLogger.LOGGER.info(timeFileReader / 1000000 + " ms");
 
         // Serialize  and deserialize object Computer
