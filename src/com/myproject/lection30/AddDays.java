@@ -18,12 +18,16 @@ public class AddDays implements TemporalAdjuster {
         return addDays;
     }
 
+    AddDays(int addDays) {
+        this.addDays = addDays;
+
+    }
 
     public void setAddDays(int addDays) {
         this.addDays = addDays;
     }
 
-
+    // JUnit test passed
     @Override
     public void setNewDate() {
         setAddDays(addDays);
@@ -34,12 +38,7 @@ public class AddDays implements TemporalAdjuster {
         ApplicationLogger.LOGGER.info("Today is " + today);
         ApplicationLogger.LOGGER.info("Today plus " + this.addDays + " days : " + todayPlusDays);
 
-        System.out.println();
     }
 
 
-    AddDays(int addDays) {
-        this.addDays = addDays;
-
-    }
 }

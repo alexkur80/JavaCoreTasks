@@ -19,7 +19,7 @@ public class SetDateNextFirstJan implements TemporalAdjuster {
 
         int daysInYear = today.lengthOfYear();
         int todayIsDay = today.getDayOfYear();
-        int leftDays = daysInYear - todayIsDay + 1;
+        int leftDays = daysInYear - todayIsDay;
         ApplicationLogger.LOGGER.info("Today is " + today);
         ApplicationLogger.LOGGER.info("There are " + daysInYear + " days in this year");
         ApplicationLogger.LOGGER.info("Today is " + todayIsDay + "th day of the year");
