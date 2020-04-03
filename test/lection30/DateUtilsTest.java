@@ -1,6 +1,5 @@
 /**
  * This test package for lection30
- *
  */
 
 package lection30;
@@ -130,16 +129,10 @@ public class DateUtilsTest {
         int todayIsDay = today.getDayOfYear();
         int leftDays = daysInYear - todayIsDay;
 
-        ApplicationLogger.LOGGER.info("Today is " + today);
-        ApplicationLogger.LOGGER.info("There are " + daysInYear + " days in this year");
-        ApplicationLogger.LOGGER.info("Today is " + todayIsDay + "th day of the year");
-        ApplicationLogger.LOGGER.info("There are  left " + leftDays + " days until 01 Jan of the next year");
-
         LocalDate newDate = today.plus(leftDays + 1, ChronoUnit.DAYS);
-        ApplicationLogger.LOGGER.info("Changed date for the soonest 1st Jan is " + newDate);
 
         // leftDays + 1 change date to 01 Jan of the next year
-        Assert.assertEquals(3,leftDays + 1);
+        Assert.assertEquals(3, leftDays + 1);
 
 
     }
