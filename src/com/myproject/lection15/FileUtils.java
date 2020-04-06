@@ -61,7 +61,7 @@ public class FileUtils {
             File fileOrDirectory = new File(filePath + File.separator + file);
 
             if (fileOrDirectory.isFile())
-                System.out.println(filePath + File.separator + file);
+                ApplicationLogger.LOGGER.info(filePath + File.separator + file);
             else {
                 dirFileListRecursive(filePath + File.separator + file);
             }
