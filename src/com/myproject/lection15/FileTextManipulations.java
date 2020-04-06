@@ -4,18 +4,18 @@
 
 package com.myproject.lection15;
 
+import com.myproject.lection16.FileUtilsCopy01;
 import com.myproject.utils.ApplicationLogger;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class FileTextManipulations {
-
     /**
      * This method accepts 'file', read it and oputput in console by lines.
      *
@@ -23,7 +23,6 @@ public class FileTextManipulations {
      * @throws IOException
      */
     public static void outputLinesFromFileToConsole(String filePath) {
-
         boolean isExistIsFile = FileUtils.isFileExistIsFile(filePath);
 
         if (isExistIsFile) {
@@ -51,7 +50,6 @@ public class FileTextManipulations {
      * @param filePath file path
      */
     public static void dublesDigits(String filePath) {
-
         boolean isExistIsFile = FileUtils.isFileExistIsFile(filePath);
 
         if (isExistIsFile) {
@@ -102,7 +100,6 @@ public class FileTextManipulations {
      * @throws IOException
      */
     public static void wordsFirstVowelLetter(String filePath) {
-
         boolean isExistIsFile = FileUtils.isFileExistIsFile(filePath);
 
         if (isExistIsFile) {
@@ -133,8 +130,8 @@ public class FileTextManipulations {
             }
             System.out.println(stringBuilderVowel);
         }
-
     }
+
 
     /**
      * This method print in console only words, if their last letter equal next word's first letter.
@@ -142,9 +139,7 @@ public class FileTextManipulations {
      * @param filePath file with text which explore
      */
     public static void allWordsLastLetterNextFirstLetterEqual(String filePath) {
-
         boolean isExistIsFile = FileUtils.isFileExistIsFile(filePath);
-
 
         if (isExistIsFile) {
 
@@ -179,6 +174,112 @@ public class FileTextManipulations {
             }
         }
     }
+
+
+    /**
+     * This method read java-code file and write copy in file every line in
+     * reverse order. New file name adds 'copy' extension.
+     */
+    public static void doReverseFileCopy(String filePath) {
+        boolean isExistIsFile = FileUtils.isFileExistIsFile(filePath);
+
+        File fileRead = new File(File.separator + filePath);
+        File fileWrite = new File(File.separator + filePath + ".copy");
+        StringBuilder stringBuilder = new StringBuilder();
+
+        if (isExistIsFile) {
+            try (BufferedReader fileIn = new BufferedReader(new FileReader(fileRead));
+                 BufferedWriter fileOut = new BufferedWriter(new FileWriter(fileWrite))
+            ) {
+                String line;
+
+                while ((line = fileIn.readLine()) != null) {
+                    stringBuilder.setLength(0); // clear stringBuilder
+                    line = stringBuilder.append(line)
+                            .reverse()
+                            .toString();
+                    fileOut.write(line + " \n");
+                }
+            } catch (IOException e) {
+                ApplicationLogger.LOGGER.error("Error opening, reading or writing file ");
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    public static void writeIntOwnRealization(List<Integer> list, String filePath) {
+        File file = new File(filePath);
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            ApplicationLogger.LOGGER.error("Unable to create file " + file.getName());
+        }
+
+        boolean isExistIsFile = FileUtils.isFileExistIsFile(filePath);
+
+
+        if (isExistIsFile) {
+            try (DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(File.separator + filePath));
+                 DataInputStream dataInputStream = new DataInputStream(new FileInputStream(File.separator + filePath))) {
+
+                ApplicationLogger.LOGGER.info("List of generated int numbers:");
+                Iterator<Integer> iterator = list.iterator();
+
+
+//                /**
+//                 *  This commented method write int to binary file, using utility method 'writeInt'
+//                 *  but below provides the same functionality using bit moving & 0xFF
+//                 */
+//
+//                while (iterator.hasNext()) {
+//                Integer number = iterator.next();
+//                dataOutputStream.writeInt(number);
+//                ApplicationLogger.LOGGER.info("Writing  int numbers to  binary file: " + number);
+//                }
+
+
+                while (iterator.hasNext()) {
+                    Integer number = iterator.next();
+
+                    dataOutputStream.write((number >>> 24) & 0b11111111);
+                    dataOutputStream.write((number >>> 16) & 0b11111111);
+                    dataOutputStream.write((number >>> 8) & 0b11111111);
+                    dataOutputStream.write((number) & 0b11111111);
+
+                    ApplicationLogger.LOGGER.info("Writing  int numbers to  binary file: " + number);
+
+                }
+
+
+                StringBuilder stringBuilder = new StringBuilder();
+                int sumAllNumbers = 0;
+                int counter = 0;
+                for (int i = 0; i < list.size(); i++) {
+
+                    int nexNUmber = dataInputStream.readInt();
+                    stringBuilder.append(nexNUmber)
+                            .append(" ");
+
+                    sumAllNumbers += nexNUmber;
+                    counter++;
+                }
+
+                ApplicationLogger.LOGGER.info("Reading int numbers from binary file: " + stringBuilder);
+                ApplicationLogger.LOGGER.info("Average of all numbers: " + sumAllNumbers / counter);
+
+
+            } catch (FileNotFoundException e) {
+                ApplicationLogger.LOGGER.error("Error FileNotFoundException");
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
+
+
+
 
 

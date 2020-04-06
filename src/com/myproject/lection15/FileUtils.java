@@ -16,38 +16,28 @@ public class FileUtils {
      * @return flag true if file is exist and this is file, false otherwise.
      */
     public static boolean isFileExistIsFile(String filePath) {
-
-        boolean flag;
+        boolean flag = false;
         File file = new File(File.separator + filePath);
-
-        try {
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        if(!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                ApplicationLogger.LOGGER.error("Error creating file " + file.getName());
-            }
-        }
 
         if (file.exists() && file.isFile()) {
             flag = true;
-        } else {
-            flag = false;
         }
         ApplicationLogger.LOGGER.info("Is file " + file.getName() + " exist? " + flag);
 
         return flag;
     }
 
+    public static boolean isDirectoryIsExist(String filePath) {
+        boolean flag = false;
+        File dir = new File(filePath);
+
+        if (dir.exists() && dir.isDirectory()) {
+            flag = true;
+        }
+        ApplicationLogger.LOGGER.info("Directory " + dir.getName() + " exist? " + flag);
+
+        return flag;
+    }
 
 
 }
