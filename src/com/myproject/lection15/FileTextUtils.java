@@ -15,12 +15,11 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class FileTextManipulations {
+public class FileTextUtils {
     /**
      * This method accepts 'file', read it and oputput in console by lines.
      *
      * @param filePath File path for reading and output in console by linies
-     * @throws IOException
      */
     public static void outputLinesFromFileToConsole(String filePath) {
         boolean isExistIsFile = FileUtils.isFileExistIsFile(filePath);
@@ -40,7 +39,6 @@ public class FileTextManipulations {
                 e.printStackTrace();
             }
         }
-
     }
 
 
@@ -96,8 +94,7 @@ public class FileTextManipulations {
      * 1) Accept file path
      * 2) validate if file exist and if file is file
      *
-     * @param filePath
-     * @throws IOException
+     * @param filePath path for text file
      */
     public static void wordsFirstVowelLetter(String filePath) {
         boolean isExistIsFile = FileUtils.isFileExistIsFile(filePath);

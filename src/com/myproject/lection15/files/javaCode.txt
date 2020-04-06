@@ -1,0 +1,41 @@
+/**
+ * IllegalMyException "UNCHECKED"
+ *
+ * @author Kurlovich Alexander
+ * @version Lection12 Exceptions
+ */
+
+package com.myproject.lection12;
+
+public class IsZeroException extends RuntimeException {
+    private String message;
+    private int number;
+
+    IsZeroException() {
+        this.message = " is ZERO, try another number";
+        this.number = 0;
+
+    }
+
+    IsZeroException(String message) {
+        this.message = message;
+        this.number = 0;
+
+    }
+
+    IsZeroException(String message, int number) {
+        this.message = message;
+        this.number = number;
+
+    }
+
+
+    @Override
+    public String toString() {
+        String s1 = this.getClass()
+                .getName();
+        String s2 = ": " + number + message;
+        return s1.concat(s2);
+
+    }
+}

@@ -1,12 +1,10 @@
 package com.myproject.lection15;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
 public class GenerateIntegerRandom {
-
 
     /**
      * This method uses more then one time so I decided to write separate utilite method.

@@ -1,0 +1,44 @@
+**/
+"DEKCEHCNU" noitpecxEyMlagellI *
+*
+rednaxelA hcivolruK rohtua@ *
+snoitpecxE 21noitceL noisrev@ *
+/*
+
+;21noitcel.tcejorpym.moc egakcap
+
+{ noitpecxEemitnuR sdnetxe noitpecxEoreZsI ssalc cilbup
+;egassem gnirtS etavirp
+;rebmun tni etavirp
+
+{ )(noitpecxEoreZsI
+;"rebmun rehtona yrt ,OREZ si " = egassem.siht
+;0 = rebmun.siht
+
+}
+
+{ )egassem gnirtS(noitpecxEoreZsI
+;egassem = egassem.siht
+;0 = rebmun.siht
+
+}
+
+{ )rebmun tni ,egassem gnirtS(noitpecxEoreZsI
+;egassem = egassem.siht
+;rebmun = rebmun.siht
+
+}
+
+
+edirrevO@
+{ )(gnirtSot gnirtS cilbup
+)(ssalCteg.siht = 1s gnirtS
+;)(emaNteg.
+;egassem + rebmun + " :" = 2s gnirtS
+;)2s(tacnoc.1s nruter
+
+}
+}
+
+
+

@@ -1,0 +1,4 @@
+ThereT Tisa  a batch hmode for this3 333module To use eit,3 4414444simply generate44144 an input 2file whose 5515lines each hcontain44
+a year for whic22h hthe exand1 kddSolstice data wwill be 333computed Then sp66366ecify 2the input and doutput filenames
+and pr22332ests the Run butto2n to generate the output fi6666le Each line ein nth output file cont222ains sthe input year
+the da33te and time eof each event,and the leng166th tof feach season
