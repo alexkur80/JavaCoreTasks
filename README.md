@@ -1,1 +1,3 @@
-Coding in **"IT-Academy PVT"** while training courses "Java Fundamentals" February-April, 2020
+Training in **"IT-Academy PVT"** "Java Fundamentals" 
+Starts February 2020
+finished April 2020
