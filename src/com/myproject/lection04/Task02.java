@@ -144,7 +144,7 @@ class Atm {
     }
 }
 
-public class Lection04Task02 {
+public class Task02 {
     public static void main(String[] args) {
 
 // We need class atmMachine for future method so it doesn't should be lost!
