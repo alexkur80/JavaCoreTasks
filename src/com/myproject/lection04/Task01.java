@@ -81,7 +81,7 @@ class GetTime {
 }
 
 //public class Lection04Task01 {
-public class Lection04Task01 {
+public class Task01 {
 
     public static void main(String[] agrs) {
 
