@@ -1,20 +1,16 @@
-/**
- * This class modulate ATM system. Banknotes have three parameters:
- * banknotes20Usd, banknotes50Usd, banknotes100Usd defined in Constructor.
- *
- * @author  Kurlovich Alexander
- * @version Lection04Task02
- * @param int Atm pushToAtm() - method accept funds in ATM.
- * @param boolean withdrawOutOfAtm(Atm atmMachine)  - method return boolean of success procedure.
- *
- */
-
 package com.myproject.lection04;
 
 import java.util.Scanner;
 
 import static com.myproject.utils.Utils.checkScannerIntNumberNew;
 
+/**
+ * This class modulate ATM system. Banknotes have three parameters:
+ * banknotes20Usd, banknotes50Usd, banknotes100Usd defined in Constructor.
+ * <p>
+ * int Atm pushToAtm() - method accept funds in ATM.
+ * boolean withdrawOutOfAtm(Atm atmMachine)  - method return boolean of success procedure.
+ */
 class Atm {
     int banknotes20Usd;
     int banknotes50Usd;
@@ -31,8 +27,7 @@ class Atm {
         int usd20 = checkScannerIntNumberNew(sc, "Input amount of 20$ banknotes:\t");
         int usd50 = checkScannerIntNumberNew(sc, "Input amount of 50$ banknotes:\t");
         int usd100 = checkScannerIntNumberNew(sc, "Input amount of 100$ banknotes:\t");
-        Atm atmMachine = new Atm(usd20, usd50, usd100);
-        return atmMachine;
+        return new Atm(usd20, usd50, usd100);
 
     }
 
@@ -54,8 +49,6 @@ class Atm {
 
         cashToWithdrawNow = checkScannerIntNumberNew(sc, "How much USD you want to withdraw: ");
 
-// >>>>>  START quick verification.
-
         if (cashToWithdrawNow % 10 != 0) {
             return false;
         }
@@ -69,19 +62,14 @@ class Atm {
             return false;
         }
 
-// <<<<<  STOP  quick verification.
-
-// >>>>> START full verification
-
-/*  This part of code START full verification, if possible to withdraw amount client needs in following
-        cases:
-        1)  ATM doesn't have enough banknotes necessary value. Example: ATM has 100$ x10, 50$ x5, 2$ x2 There
-        is not possible to withdraw 60$, 160$, 280$ etc
-        2) ATM has 100$ x10, 50$ x2, 20$ x20 in case client needs 260$ algorithm calculate this way:
-        100$ x2  + 50$ x1 -> Verify if re rest amount %20 ==0 -? if not, DECREMENT 50$-- and withdraw
-        the rest with 20$ banknotes.
+/**  This part of code START full verification, if possible to withdraw amount client needs in following
+ cases:
+ 1)  ATM doesn't have enough banknotes necessary value. Example: ATM has 100$ x10, 50$ x5, 2$ x2 There
+ is not possible to withdraw 60$, 160$, 280$ etc
+ 2) ATM has 100$ x10, 50$ x2, 20$ x20 in case client needs 260$ algorithm calculate this way:
+ 100$ x2  + 50$ x1 -> Verify if re rest amount %20 ==0 -? if not, DECREMENT 50$-- and withdraw
+ the rest with 20$ banknotes.
  */
-
         banknotes100UsdToWithdrawTmp = cashToWithdrawNow / 100;
 
         if (banknotes100UsdToWithdrawTmp > 0 && banknotes100UsdToWithdrawTmp
@@ -103,15 +91,14 @@ class Atm {
             banknotes50UsdToWithdrawFinish = atmMachine.banknotes50Usd;
         }
 
-/*  Here VERY IMPORTANT part of algorithm. Example: if client's withdraw amount is 60$
-    we meet requirement: banknotes50UsdToWithdrawFinish == 1
-    But  (cashToWithdrawNow / 50) % 20 !=0 and we have PROBLEM. The rest 10$ amount not
-    possible to withdraw. 60$  = 20$ x3, 60$ != 50$ + 10$ since we don't have 10$ banknote.
+/**  Here VERY IMPORTANT part of algorithm. Example: if client's withdraw amount is 60$
+ we meet requirement: banknotes50UsdToWithdrawFinish == 1
+ But  (cashToWithdrawNow / 50) % 20 !=0 and we have PROBLEM. The rest 10$ amount not
+ possible to withdraw. 60$  = 20$ x3, 60$ != 50$ + 10$ since we don't have 10$ banknote.
 
-    Solution is  - we should step back and DECREMENT  banknotes50UsdToWithdrawFinish
-    to calculate the rest amount by 20$ banknotes.
-*/
-
+ Solution is  - we should step back and DECREMENT  banknotes50UsdToWithdrawFinish
+ to calculate the rest amount by 20$ banknotes.
+ */
         if ((cashToWithdrawNow - banknotes100UsdToWithdrawFinish * 100 -
                 banknotes50UsdToWithdrawFinish * 50) % 20 != 0 && banknotes50UsdToWithdrawFinish > 0) {
             banknotes50UsdToWithdrawFinish--;
@@ -131,8 +118,6 @@ class Atm {
             flag = true;
         }
 
-// <<<<< STOP full verification
-
         if (flag) {
 
             System.out.println("We can offer following banknotes for your request:");
@@ -147,15 +132,7 @@ class Atm {
 public class Task02 {
     public static void main(String[] args) {
 
-// We need class atmMachine for future method so it doesn't should be lost!
-
         Atm atmMachine = Atm.pushToAtm();
-
-// Return Flag of pullOutOfAtm  operation.
-
-        boolean flag = Atm.withdrawOutOfAtm(atmMachine);
-        System.out.println("Withdrawal result = " + flag);
+        System.out.println("Withdrawal result = " + Atm.withdrawOutOfAtm(atmMachine));
     }
 }
-
-
