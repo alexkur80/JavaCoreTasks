@@ -7,7 +7,7 @@ package com.myproject.lection03;
 public class Task02 {
 
     /**
-     * int countElementsToOutput  - have number of elements to output. <p>
+     * int countElementsToOutput - have number of elements to output. <p>
      * int counterFillingElements - verify how many elements suit for rule. in Last iteration <p>
      * counterFillingElements == countElementsToOutput <p>
      * <p>
