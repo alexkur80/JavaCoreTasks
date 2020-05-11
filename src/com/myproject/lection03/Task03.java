@@ -1,40 +1,35 @@
-/**
- *  This class generate double type Array, sort it, output MIN element, MAX element, Average Sum.
- *
- * @author  Kurlovich Alexander
- * @param  int lowRandomElement - low number of random element
- * @param  int highRandomElement  - high number of random element
- * @param  int countElementsArray  -  count arrays elements
- *
- * @return  Output sort Array, MIn element, MAX element, Avarage Sum.
- *
- *
- */
-
 package com.myproject.lection03;
 
 import java.util.Random;
 
-public class Lection03Task03 {
+/**
+ * Generates double type Array, sort it, output MIN element, MAX element, Average Sum.
+ */
+public class Task03 {
 
+    /**
+     * int lowRandomElement - low number of random element <p>
+     * int highRandomElement  - high number of random element <p>
+     * int countElementsArray  -  count arrays elements <p>
+     * <p>
+     * Output sort Array, MIn element, MAX element, Avarage Sum.
+     */
     public static void main(String[] args) {
+        int countElementsArray = 1000;
+        double[] elementsArray = new double[countElementsArray];
+
+        Random randomElement = new Random();
+
+        System.out.println("There are list of " + countElementsArray + " double type random generated numbers: ");
 
         int lowRandomElement = 10;
         int highRandomElement = 20;
-        int countElementsArray = 5;
-        double sumAllElementsArray = 0;
-
-        double elementsArray[] = new double[countElementsArray];
-        Random randomElement = new Random();
-
-        System.out.println ("There are list of " + countElementsArray + " double type random generated numbers: ");
-
         for (int i = 0; i < elementsArray.length; i++) {
             elementsArray[i] = (lowRandomElement + (highRandomElement - lowRandomElement) * randomElement.nextDouble());
             System.out.println(elementsArray[i] + " ");
         }
 
-// Sorting using Bubble algorithm
+        /* Sorting using Bubble algorithm */
 
         for (int i = elementsArray.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {
@@ -49,16 +44,14 @@ public class Lection03Task03 {
 
         System.out.println("\nWe have sorted Array by bubble algorithm:");
 
+        double sumAllElementsArray = 0;
         for (int i = 0; i < elementsArray.length; i++) {
             System.out.println(elementsArray[i]);
             sumAllElementsArray = sumAllElementsArray + elementsArray[i];
         }
 
-
         System.out.println("\nMIN element of Array is:" + elementsArray[0]);
         System.out.println("MAX element of Array is:" + elementsArray[elementsArray.length - 1]);
         System.out.println("AVERAGE amount is: " + sumAllElementsArray / countElementsArray);
-
-
     }
 }
