@@ -1,5 +1,9 @@
+package com.myproject.lection04;
+
+import static com.myproject.utils.Utils.checkScannerIntNumberNew;
+
 /**
- * This class describe time with 3 arguments: hours, minutes, seconds.
+ * Describes time with 3 arguments: hours, minutes, seconds.
  * Create  two Constructors for class GetTime.
  * First constructor (GetTime(int seconds)) - accept just seconds from console
  * Second constructor (GetTime(int hours, int minutes, int seconds)) - accept hours, minutes, seconds from console
@@ -8,26 +12,19 @@
  * It makes for correct output form. For example - it user input " 6 hours 98 minutes 196 seconds" - this is not
  * correct format. It converts into "0 Days 7 hours 41 minutes 16 seconds".
  *
- * @return First result - output seconds
- * @see public static int checkScannerIntNumberNew (Scanner sc1, String invitation) in Util class
  * <p>
  * Output result using methods:
  * outputFirstMethod
  * outputSecondMethod
  * <p>
  * use checkScannerIntNumberNew (Scanner sc1, String invitation) method from Util  for input form.
+ *
+ * @return First result - output seconds
  */
-
-package com.myproject.lection04;
-
-import java.util.Scanner;
-
-import static com.myproject.utils.Utils.*;
-
 class GetTime {
-    int hours;
-    int minutes;
-    int seconds;
+     private int hours;
+    private int minutes;
+    private int seconds;
 
     GetTime(int seconds) {
         this.seconds = seconds;
@@ -37,11 +34,34 @@ class GetTime {
         this.hours = hours;
         this.minutes = minutes;
         this.seconds = seconds;
+    }
 
+    public int getHours() {
+        return hours;
+    }
+
+    public void setHours(int hours) {
+        this.hours = hours;
+    }
+
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
+    }
+
+    public int getSeconds() {
+        return seconds;
+    }
+
+    public void setSeconds(int seconds) {
+        this.seconds = seconds;
     }
 
     /**
-     * This METHOD accepts number of seconds in form: NNNNNNN sec.
+     * Accepts number of seconds in form: NNNNNNN sec.
      * Then converts number to Days, hours, minutes, seconds for readable form.
      * Example:
      * User input: 20715 seconds.
@@ -56,39 +76,32 @@ class GetTime {
      * 1 hour = 3600 seconds
      * 1 minute = 60 seconds
      */
-    void convertSecondsToDaysHoursMinutesSecondsAndOutput(int seconds) {
-
-        this.seconds = seconds;
-        int daysTmp = this.seconds / (24 * 3600);
-        int hoursTmp = (this.seconds % (24 * 3600)) / 3600;
-        int minutesTmp = (((this.seconds % (24 * 3600)) % 3600) / 60);
-        int secondsTmp = (((this.seconds % (24 * 3600)) % 3600) % 60);
+    protected void convertSecondsToDaysHoursMinutesSecondsAndOutput(int seconds) {
+        this.setSeconds(seconds);
+        int daysTmp = this.getSeconds() / (24 * 3600);
+        int hoursTmp = (this.getSeconds() % (24 * 3600)) / 3600;
+        int minutesTmp = (((this.getSeconds() % (24 * 3600)) % 3600) / 60);
+        int secondsTmp = (((this.getSeconds() % (24 * 3600)) % 3600) % 60);
 
         System.out.print("You entered: " + daysTmp + "d " + hoursTmp + "h " + minutesTmp + "m " + secondsTmp + "s");
-        System.out.println(" that's EQUAL " + this.seconds + " seconds ");
-
+        System.out.println(" that's EQUAL " + this.getSeconds() + " seconds");
     }
 }
 
 public class Task01 {
 
-    public static void main(String[] agrs) {
+    public static void main(String[] args) {
+        GetTime timeOne = new GetTime(checkScannerIntNumberNew("Input seconds: "));
 
-        Scanner sc01 = new Scanner(System.in);
-        Scanner sc02 = new Scanner(System.in);
-        Scanner sc03 = new Scanner(System.in);
-
-        GetTime timeOne = new GetTime(checkScannerIntNumberNew(sc01, "Input seconds: "));
-
-        int hours = checkScannerIntNumberNew(sc01, "Input hours: ");
-        int minutes = checkScannerIntNumberNew(sc02, "Input minutes: ");
-        int seconds = checkScannerIntNumberNew(sc03, "Input seconds: ");
+        int hours = checkScannerIntNumberNew("Input hours: ");
+        int minutes = checkScannerIntNumberNew("Input minutes: ");
+        int seconds = checkScannerIntNumberNew("Input seconds: ");
         int secondsFromHoursMinutesSeconds = (hours * 3600 + minutes * 60 + seconds);
 
         GetTime timeTwo = new GetTime(hours, minutes, seconds);
-        timeTwo.seconds = secondsFromHoursMinutesSeconds;
+        timeTwo.setSeconds(secondsFromHoursMinutesSeconds);
 
-        timeOne.convertSecondsToDaysHoursMinutesSecondsAndOutput(timeOne.seconds);
-        timeTwo.convertSecondsToDaysHoursMinutesSecondsAndOutput(timeTwo.seconds);
+        timeOne.convertSecondsToDaysHoursMinutesSecondsAndOutput(timeOne.getSeconds());
+        timeTwo.convertSecondsToDaysHoursMinutesSecondsAndOutput(timeTwo.getSeconds());
     }
 }
