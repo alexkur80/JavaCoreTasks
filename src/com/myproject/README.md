@@ -5,7 +5,4 @@
 * [Cycles, Arrays](https://github.com/alexkur80/PVTCourse2020/tree/master/src/com/myproject/lection03)
 * [OOP ATM Machine simulator](https://github.com/alexkur80/PVTCourse2020/tree/master/src/com/myproject/lection04)
 * [Classes wrappers, Objects](https://github.com/alexkur80/PVTCourse2020/tree/master/src/com/myproject/lection05)
-sdfsdf
-sdfsdf
-sdf
-sdf
+* [Polymorphism, abstract classes, interfaces, inheritance](https://github.com/alexkur80/PVTCourse2020/tree/master/src/com/myproject/lection07)
