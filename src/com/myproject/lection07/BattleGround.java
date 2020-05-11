@@ -1,5 +1,5 @@
 /**
- * Class BattleGround perform game "Hero" that simulate fight between Hero and Enemy. User can choose
+ * BattleGround perform game "Hero" that simulate fight between Hero and Enemy. User can choose
  * who he is playing and fighting with. Enemy has different super oppurtunities, heroes also have
  * different characteristics:
  * <p>
@@ -13,18 +13,11 @@
  * 1. Zombie Vanno     - his strikes are weak but he reborns! The most dangerous guy\n" +
  * 2. IronMan Mikola   - his strikes are strong and Warriors very little affect to him. Archer Piotr has
  * no affect at all.
- *
- *
- * @author Kurlovich Alexander
- * @return Simulate fight Hero vs Enemy
  */
-
 
 package com.myproject.lection07;
 
 import java.util.Random;
-
-import java.util.Scanner;
 
 import static com.myproject.utils.Utils.checkScannerIntNumberNew;
 
@@ -62,29 +55,24 @@ class Warrior extends Hero {
     }
 
     public boolean isAlive() {
-
-        if (super.getHealth() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return super.getHealth() > 0;
     }
 
     public void takeDamage(int damage) {
-        int health = super.getHealth();
+        int health;
+        health = super.getHealth();
         health -= damage;
         setHealth(health);
     }
 
-
     @Override
-    void attackEnemy(Enemy enemyObj) {
-        Random rnd = new Random();
+    public void attackEnemy(Enemy enemyObj) {
         int highRandomElement = 11;
         int lowRandomElement = 8;
-
         int highRandomElementIronman = 5;
         int lowRandomElementIronman = 2;
+
+        Random rnd = new Random();
 
         int damage = rnd.nextInt(highRandomElement - lowRandomElement) + lowRandomElement;
         int damageIronman = rnd.nextInt(highRandomElementIronman - lowRandomElementIronman)
@@ -131,11 +119,7 @@ class Mage extends Hero {
     }
 
     public boolean isAlive() {
-        if (super.getHealth() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return super.getHealth() > 0;
     }
 
     public void takeDamage(int damage) {
@@ -183,16 +167,12 @@ class Archer extends Hero {
     }
 
     public boolean isAlive() {
-
-        if (super.getHealth() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return super.getHealth() > 0;
     }
 
     public void takeDamage(int damage) {
-        int health = super.getHealth();
+        int health;
+        health = super.getHealth();
         health -= damage;
         super.setHealth(health);
     }
@@ -279,12 +259,8 @@ abstract class Enemy implements Mortal {
     }
 
     public boolean isAlive() {
+return health > 0;
 
-        if (health > 0) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     abstract void attackHero(Hero heroObj);
@@ -368,38 +344,31 @@ class IronMan extends Enemy {
     }
 }
 
+
 interface Mortal {
     boolean isAlive();
 }
 
+
 public class BattleGround {
     public static void main(String[] args) {
-
-        int counterStrikeHero = 0;
-        int counterStrikeEnemy = 0;
-        int idHeroProfile;
-        int idEnemyProfile;
-
-        Hero whoHeroIsReadyToFight = null;
-        Enemy whoEnemyReadyToFight = null;
-
         String invitation01 = ("Choose hero whom you would like to play:\n" +
                 "1. Warrior Vasiliy  - his strikes are middle\n" +
                 "2. Archer Piotr     - his strikes are weak\n" +
                 "3. Mage Marfa       - her strikes are strong\n>>> ");
 
-        Scanner sc = new Scanner(System.in);
-        idHeroProfile = checkScannerIntNumberNew(sc, invitation01);
+        int idHeroProfile;
+        idHeroProfile = checkScannerIntNumberNew(invitation01);
 
         String invitation02 = ("Choose enemy who you would like to fight with:\n" +
                 "1. Zombie Vanno     - his strikes are weak but he reborn! The most dangerous guy\n" +
                 "2. IronMan Mikola   - his strikes are strong and Warriors and Archers have " +
                 "no affect to him. Just Mage can kill him\n>>> ");
 
-        idEnemyProfile = checkScannerIntNumberNew(sc, invitation02);
+        int idEnemyProfile;
+        idEnemyProfile = checkScannerIntNumberNew(invitation02);
 
-
-
+        Hero whoHeroIsReadyToFight = null;
         if (idHeroProfile == 1) {
             Warrior warriorOne = new Warrior("Warrior Vasiliy", 100);
             whoHeroIsReadyToFight = warriorOne;
@@ -411,6 +380,7 @@ public class BattleGround {
             whoHeroIsReadyToFight = mageOne;
         }
 
+        Enemy whoEnemyReadyToFight = null;
         if (idEnemyProfile == 1) {
             Enemy zombieOne = new Zombie("Zombie Vanno", 100, true);
             whoEnemyReadyToFight = zombieOne;
@@ -425,6 +395,7 @@ public class BattleGround {
 
         while (whoEnemyReadyToFight.isAlive() && whoHeroIsReadyToFight.isAlive()) {
 
+            int counterStrikeEnemy = 0;
             counterStrikeEnemy++;
             whoEnemyReadyToFight.attackHero(whoHeroIsReadyToFight);
             if (!whoHeroIsReadyToFight.isAlive()) {
@@ -433,6 +404,7 @@ public class BattleGround {
                 return;
             }
 
+            int counterStrikeHero = 0;
             counterStrikeHero++;
             whoHeroIsReadyToFight.attackEnemy(whoEnemyReadyToFight);
             if (!whoEnemyReadyToFight.isAlive()) {
@@ -442,4 +414,3 @@ public class BattleGround {
         }
     }
 }
-
