@@ -17,338 +17,7 @@
 
 package com.myproject.lection07;
 
-import java.util.Random;
-
 import static com.myproject.utils.Utils.checkScannerIntNumberNew;
-
-abstract class Hero implements Mortal {
-    private String name;
-    private int health;
-
-    Hero(String name, int health) {
-        this.name = name;
-        this.health = health;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    abstract void attackEnemy(Enemy enemyObj);
-
-    abstract void takeDamage(int damage);
-}
-
-
-class Warrior extends Hero {
-
-    Warrior(String name, int health) {
-        super(name, health);
-    }
-
-    public boolean isAlive() {
-        return super.getHealth() > 0;
-    }
-
-    public void takeDamage(int damage) {
-        int health;
-        health = super.getHealth();
-        health -= damage;
-        setHealth(health);
-    }
-
-    @Override
-    public void attackEnemy(Enemy enemyObj) {
-        int highRandomElement = 11;
-        int lowRandomElement = 8;
-        int highRandomElementIronman = 5;
-        int lowRandomElementIronman = 2;
-
-        Random rnd = new Random();
-
-        int damage = rnd.nextInt(highRandomElement - lowRandomElement) + lowRandomElement;
-        int damageIronman = rnd.nextInt(highRandomElementIronman - lowRandomElementIronman)
-                + lowRandomElementIronman;
-
-        if (enemyObj.getArmour()) {
-            enemyObj.takeDamage(damageIronman);
-            System.out.println("   " + super.getName() + " has very little affect for "
-                    + damageIronman + "% and after strike " + enemyObj.getName() + " has "
-                    + enemyObj.getHealth() + "% of health");
-            return;
-        }
-
-        if (enemyObj.isAlive() && (damage >= enemyObj.getHealth()) && enemyObj.getReborn()) {
-            damage = enemyObj.getHealth();
-            enemyObj.takeDamage(damage);
-            enemyObj.setHealth(100);
-            System.out.println("   " + super.getName() + " is attacking for the last "
-                    + damage + "%" + " but " + enemyObj.getName()
-                    + "is reborning and have again with "
-                    + enemyObj.getHealth() + "% health");
-
-        } else if (enemyObj.isAlive() && (damage >= enemyObj.getHealth())) {
-            damage = enemyObj.getHealth();
-            enemyObj.takeDamage(damage);
-            System.out.println("   " + super.getName() + " is attacking for the last "
-                    + damage + "%" + " and " + enemyObj.getName() + " have "
-                    + enemyObj.getHealth() + "% left");
-
-        } else if (enemyObj.isAlive()) {
-            enemyObj.takeDamage(damage);
-            System.out.println("   " + super.getName() + " is attacking "
-                    + " for " + damage + "% damage and " + enemyObj.getName() + " left "
-                    + enemyObj.getHealth() + "%");
-        }
-    }
-}
-
-
-class Mage extends Hero {
-
-    Mage(String name, int health) {
-        super(name, health);
-    }
-
-    public boolean isAlive() {
-        return super.getHealth() > 0;
-    }
-
-    public void takeDamage(int damage) {
-        int health = super.getHealth();
-        health -= damage;
-        setHealth(health);
-    }
-
-    @Override
-    void attackEnemy(Enemy enemyObj) {
-        Random rnd = new Random();
-        int highRandomElement = 25;
-        int lowRandomElement = 20;
-        int damage = rnd.nextInt(highRandomElement - lowRandomElement) + lowRandomElement;
-
-        if (enemyObj.isAlive() && (damage >= enemyObj.getHealth()) && enemyObj.getReborn()) {
-            damage = enemyObj.getHealth();
-            enemyObj.takeDamage(damage);
-            enemyObj.setHealth(100);
-            System.out.println("   " + super.getName() + " is attacking for the last "
-                    + damage + "% but " + enemyObj.getName()
-                    + " is reborning and have again "
-                    + enemyObj.getHealth() + "% health");
-
-        } else if (enemyObj.isAlive() && (damage >= enemyObj.getHealth())) {
-            damage = enemyObj.getHealth();
-            enemyObj.takeDamage(damage);
-            System.out.println("   " + super.getName() + " is attacking for the last "
-                    + damage + "%" + " and " + enemyObj.getName()
-                    + " has " + enemyObj.getHealth() + "% left");
-
-        } else if (enemyObj.isAlive()) {
-            enemyObj.takeDamage(damage);
-            System.out.println("   " + super.getName() + " is attacking "
-                    + " for " + damage + "% damage and " + enemyObj.getName() + " has "
-                    + enemyObj.getHealth() + "% left");
-        }
-    }
-}
-
-
-class Archer extends Hero {
-    Archer(String name, int health) {
-        super(name, health);
-    }
-
-    public boolean isAlive() {
-        return super.getHealth() > 0;
-    }
-
-    public void takeDamage(int damage) {
-        int health;
-        health = super.getHealth();
-        health -= damage;
-        super.setHealth(health);
-    }
-
-    @Override
-    void attackEnemy(Enemy enemyObj) {
-        Random rnd = new Random();
-        int highRandomElement = 10;
-        int lowRandomElement = 7;
-        int damage = rnd.nextInt(highRandomElement - lowRandomElement) + lowRandomElement;
-
-        if (enemyObj.getArmour()) {
-            damage = 0;
-            enemyObj.takeDamage(damage);
-            System.out.println("   " + super.getName() + " doesn't affect at all and "
-                    + enemyObj.getName() + " still has "
-                    + enemyObj.getHealth() + "% of health");
-            return;
-        }
-
-        if (enemyObj.isAlive() && (damage >= enemyObj.getHealth()) && enemyObj.getReborn()) {
-            damage = enemyObj.getHealth();
-            enemyObj.takeDamage(damage);
-            enemyObj.setHealth(100);
-            System.out.println("   " + super.getName() + " is attacking for the last "
-                    + damage + "% but " + enemyObj.getName() + "is reborning and have again "
-                    + enemyObj.getHealth() + "% health");
-
-        } else if (enemyObj.isAlive() && (damage >= enemyObj.getHealth())) {
-            damage = enemyObj.getHealth();
-            enemyObj.takeDamage(damage);
-            System.out.println("   " + super.getName() + " is attacking for the last "
-                    + damage + "%" + " and " + enemyObj.getName() + " has "
-                    + enemyObj.getHealth() + "% left");
-
-        } else if (enemyObj.isAlive()) {
-            enemyObj.takeDamage(damage);
-            System.out.println("   " + super.getName() + " is attacking "
-                    + " for " + damage + "% damage and " + enemyObj.getName() + " left "
-                    + enemyObj.getHealth() + "%");
-        }
-    }
-}
-
-
-abstract class Enemy implements Mortal {
-    private String name;
-    private int health;
-    private boolean reborn;
-    private boolean armour;
-
-    Enemy(String name, int health) {
-        this.name = name;
-        this.health = health;
-        System.out.println("Enemy has health " + health + "% and he is very danger!");
-    }
-
-    public boolean getArmour() {
-        return armour;
-    }
-
-    public boolean getReborn() {
-        return reborn;
-    }
-
-    public void setReborn(boolean reborn) {
-        this.reborn = reborn;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    void takeDamage(int damage) {
-        health -= damage;
-    }
-
-    public boolean isAlive() {
-return health > 0;
-
-    }
-
-    abstract void attackHero(Hero heroObj);
-}
-
-
-class Zombie extends Enemy {
-    private boolean reborn;
-
-    Zombie(String name, int health, boolean reborn) {
-        super(name, health);
-        this.reborn = reborn;
-    }
-
-    public boolean getReborn() {
-        return reborn;
-    }
-
-    public int getHealth() {
-        return super.getHealth();
-    }
-
-    void attackHero(Hero heroObj) {
-        Random rnd = new Random();
-        int highRandomElement = 10;
-        int lowRandomElement = 7;
-        int damage = rnd.nextInt(highRandomElement - lowRandomElement) + lowRandomElement;
-
-        if (heroObj.isAlive() && (damage > heroObj.getHealth())) {
-            damage = heroObj.getHealth();
-            heroObj.takeDamage(damage);
-            System.out.println(super.getName() + " is attacking for the last "
-                    + damage + "%  and " + heroObj.getName() + " has "
-                    + heroObj.getHealth() + "% left");
-
-        } else if (heroObj.isAlive()) {
-            heroObj.takeDamage(damage);
-            System.out.println(super.getName() + " is attacking for "
-                    + damage + "% damage and " + heroObj.getName()
-                    + " has " + heroObj.getHealth() + "% left");
-        }
-    }
-}
-
-
-class IronMan extends Enemy {
-    private boolean armour;
-
-    public IronMan(String name, int health, boolean armour) {
-        super(name, health);
-        this.armour = armour;
-    }
-
-    public boolean getArmour() {
-        return armour;
-    }
-
-    public int getHealth() {
-        return super.getHealth();
-    }
-
-    void attackHero(Hero heroObj) {
-        Random rnd = new Random();
-        int highRandomElement = 20;
-        int lowRandomElement = 10;
-        int damage = rnd.nextInt(highRandomElement - lowRandomElement) + lowRandomElement;
-
-        if (heroObj.isAlive() && (damage > heroObj.getHealth())) {
-            damage = heroObj.getHealth();
-            heroObj.takeDamage(damage);
-            System.out.println(getName() + " is attacking " + heroObj.getName()
-                    + " for the last " + damage + "%" + " and he has "
-                    + heroObj.getHealth() + "% left");
-
-        } else if (heroObj.isAlive()) {
-            heroObj.takeDamage(damage);
-            System.out.println(getName() + " is attacking " + heroObj.getName()
-                    + " for " + damage + "% damage and he left just "
-                    + heroObj.getHealth() + "%");
-        }
-    }
-}
-
-
-interface Mortal {
-    boolean isAlive();
-}
-
 
 public class BattleGround {
     public static void main(String[] args) {
@@ -370,14 +39,11 @@ public class BattleGround {
 
         Hero whoHeroIsReadyToFight = null;
         if (idHeroProfile == 1) {
-            Warrior warriorOne = new Warrior("Warrior Vasiliy", 100);
-            whoHeroIsReadyToFight = warriorOne;
+            whoHeroIsReadyToFight = new Warrior("Warrior Vasiliy", 100);
         } else if (idHeroProfile == 2) {
-            Archer archerOne = new Archer("Archer Piotr", 100);
-            whoHeroIsReadyToFight = archerOne;
+            whoHeroIsReadyToFight = new Archer("Archer Piotr", 100);
         } else if (idHeroProfile == 3) {
-            Mage mageOne = new Mage("Mage Marfa", 100);
-            whoHeroIsReadyToFight = mageOne;
+            whoHeroIsReadyToFight = new Mage("Mage Marfa", 100);
         }
 
         Enemy whoEnemyReadyToFight = null;
@@ -390,18 +56,17 @@ public class BattleGround {
             whoEnemyReadyToFight = ironmanOne;
         }
 
+        assert whoHeroIsReadyToFight != null;
         System.out.println("\n" + whoHeroIsReadyToFight.getName() + " vs "
                 + whoEnemyReadyToFight.getName() + " - FIGHT!!!!\n");
 
+        int counterStrikeEnemy = 0;
         while (whoEnemyReadyToFight.isAlive() && whoHeroIsReadyToFight.isAlive()) {
-
-            int counterStrikeEnemy = 0;
             counterStrikeEnemy++;
             whoEnemyReadyToFight.attackHero(whoHeroIsReadyToFight);
             if (!whoHeroIsReadyToFight.isAlive()) {
                 System.out.println("It tooks " + counterStrikeEnemy
                         + " strikes to kill " + whoHeroIsReadyToFight.getName());
-                return;
             }
 
             int counterStrikeHero = 0;
