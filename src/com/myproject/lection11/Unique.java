@@ -1,13 +1,14 @@
 package com.myproject.lection11;
 
-import com.myproject.utils.ApplicationLogger;
+import org.apache.log4j.Logger;
 
 import java.util.*;
 
-public class Unique {
+public final class Unique {
+    public final static Logger LOGGER = Logger.getLogger(Unique.class);
 
     /**
-     * This method count number of Unique Integer elements in collection.
+     * Counts number of Unique Integer elements in collection.
      * Use TreeSet realisation to contain only unique elements and
      * counter counts numbersList of iteration in TreeMap collection.
      *
@@ -17,17 +18,17 @@ public class Unique {
     public static int countUnique(Collection<Integer> numbersList) {
 
         Iterator<Integer> iteratorInteger = numbersList.iterator();
+
         int counter = 0;
         while (iteratorInteger.hasNext()) {
-            ApplicationLogger.LOGGER.info(iteratorInteger.next());
+            LOGGER.info(iteratorInteger.next());
             counter++;
         }
         return counter;
     }
 
-
     /**
-     * This method acceps Collection and return if Collection's values are unique or not
+     * Accepts Collection and return if Collection's values are unique or not
      * Algorithm:
      * counterDoubles = 0 but after fuirst comparision it will be 1. Then if it more then 1,
      * it means the same values elements appear in Collection.
@@ -36,13 +37,15 @@ public class Unique {
      * @return false if Collection have not Unique values or true if  Collection's values are unique
      */
     public static boolean isUnique(Map<String, String> map) {
-
         Iterator<Map.Entry<String, String>> iterator01 = map.entrySet()
                 .iterator();
+
         Iterator<Map.Entry<String, String>> iterator02 = map.entrySet()
                 .iterator();
 
-        int counterDoubles = 0; // it will be minimum 1 if isUnique because of first comparision the same value
+        /*  it will be minimum 1 if isUnique because of first comparision the same value */
+
+        int counterDoubles = 0;
 
         while (iterator01.hasNext()) {
             Map.Entry<String, String> pair01 = iterator01.next();
@@ -56,15 +59,11 @@ public class Unique {
                     counterDoubles++;
                 }
             }
-            if (counterDoubles > 1) return false;
+            if (counterDoubles > 1) {
+                return false;
+            }
         }
 
         return true;
     }
-
 }
-
-
-
-
-
