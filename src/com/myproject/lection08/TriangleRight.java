@@ -1,29 +1,26 @@
-/**
- * This class define TriangleRight implemented from interface IShape so it should be Overriding
- * methods: public double area(), public String toString().
- *
- * @param public double area() - Overriding method calculate area of TriangleRight and return area, type double
- * @param public String toString() - Overriding method informing you are inside TriangleRight class.
- * @author Kurlovich Alexander
- * @version Lection08 Polymorphism
- */
-
 package com.myproject.lection08;
 
+/**
+ * Defines TriangleRight implemented from IShape, having overriding
+ * methods: public double area(), public String toString().
+ */
 public class TriangleRight implements IShape {
-    double sideA;
-    double sideB;
-
+    private double sideA;
+    private double sideB;
 
     TriangleRight(double sideA, double sideB) {
         this.sideA = sideA;
         this.sideB = sideB;
     }
 
+    /**
+     * Calculates square of Triangle Right
+     *
+     * @return area of TriangleRight
+     */
     @Override
     public double area() {
-        double area = (sideA * sideB) / 2;
-        return area;
+        return (sideA * sideB) / 2;
     }
 
     @Override

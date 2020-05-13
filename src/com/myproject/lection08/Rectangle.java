@@ -1,15 +1,9 @@
-/**
- * This class define Rectangle implemented from interface IShape so it should be Overriding
- * methods: public double area(), public String toString().
- *
- * @param public double area() - Overriding method calculate area of Rectangle and return area, type double
- * @param public String toString() - Overriding method informing you are inside Rectangle class.
- * @author Kurlovich Alexander
- * @version Lection08 Polymorphism
- */
-
 package com.myproject.lection08;
 
+/**
+ * Defines Rectangle implemented from IShape, has overriding
+ * methods: public double area(), public String toString().
+ */
 public class Rectangle implements IShape {
     private double width;
     private double height;
@@ -19,6 +13,11 @@ public class Rectangle implements IShape {
         this.height = height;
     }
 
+    /**
+     * Calculates square of Rectangle
+     *
+     * @return Rectangle's square
+     */
     @Override
     public double area() {
         double area = width * height;
@@ -29,5 +28,4 @@ public class Rectangle implements IShape {
     public String toString() {
         return "Inside class Rectangle";
     }
-
 }

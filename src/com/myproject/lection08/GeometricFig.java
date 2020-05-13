@@ -1,99 +1,83 @@
 package com.myproject.lection08;
 
-
-import com.myproject.utils.ApplicationLogger;
 import org.apache.log4j.Logger;
 
+
 public class GeometricFig {
+
+    public final static Logger LOGGER = Logger.getLogger(GeometricFig.class);
+
     public static void main(String[] args) {
+        IShape shape;
+
         double widthRectangle = 10;
         double heightRectangle = 20;
+        shape = new Rectangle(widthRectangle, heightRectangle);
+        LOGGER.info(shape.toString());
+        ShapeUtils.isShapeIsTriangle(shape);
+        ShapeUtils.isShapeIsRectangle(shape);
+        ShapeUtils.isShapeIsCube(shape);
+        ShapeUtils.isShapeIsOval(shape);
+        ShapeUtils.isShapeIsCircle(shape);
+        ShapeUtils.isShapeIsSquare(shape);
+        LOGGER.info("Rectangle area: " + shape.area() + "\n");
+
+        double cubeLenght = 15;
+        shape = new Cube(cubeLenght);
+        LOGGER.info(shape.toString());
+        ShapeUtils.isShapeIsTriangle(shape);
+        ShapeUtils.isShapeIsRectangle(shape);
+        ShapeUtils.isShapeIsCube(shape);
+        ShapeUtils.isShapeIsOval(shape);
+        ShapeUtils.isShapeIsCircle(shape);
+        ShapeUtils.isShapeIsSquare(shape);
+        LOGGER.info("Cube area: " + shape.area());
+        LOGGER.info("Cube diagonal: " + ((Cube) shape).cubeDiagonal() + "\n");
+
+        shape = ((Cube) shape).new Square();
+        LOGGER.info(shape.toString());
+        ShapeUtils.isShapeIsTriangle(shape);
+        ShapeUtils.isShapeIsRectangle(shape);
+        ShapeUtils.isShapeIsCube(shape);
+        ShapeUtils.isShapeIsOval(shape);
+        ShapeUtils.isShapeIsCircle(shape);
+        ShapeUtils.isShapeIsSquare(shape);
+        LOGGER.info("Square area: " + shape.area() + "\n");
 
         double radiusAOval = 15;
         double radiusBOval = 20;
+        shape = new Oval(radiusAOval, radiusBOval);
+        LOGGER.info(shape.toString());
+        ShapeUtils.isShapeIsTriangle(shape);
+        ShapeUtils.isShapeIsRectangle(shape);
+        ShapeUtils.isShapeIsCube(shape);
+        ShapeUtils.isShapeIsOval(shape);
+        ShapeUtils.isShapeIsCircle(shape);
+        ShapeUtils.isShapeIsSquare(shape);
+        LOGGER.info("Oval area: " + shape.area());
+        LOGGER.info("Oval sum Radius A and Radius B: "
+                + ((Oval) shape).sumRadiusAB() + "\n");
 
-        double cubeLenght = 15;
+        shape = ((Oval) shape).new Circle();
+        LOGGER.info(shape.toString());
+        ShapeUtils.isShapeIsTriangle(shape);
+        ShapeUtils.isShapeIsRectangle(shape);
+        ShapeUtils.isShapeIsCube(shape);
+        ShapeUtils.isShapeIsOval(shape);
+        ShapeUtils.isShapeIsCircle(shape);
+        ShapeUtils.isShapeIsSquare(shape);
+        LOGGER.info("Circle area: " + shape.area() + "\n");
 
         double triangleRightSideA = 10;
         double triangleRightSideB = 15;
-
-
-        IShape shape;
-
-        IShape rectangle = new Rectangle(widthRectangle, heightRectangle);
-        shape = rectangle;
-        ApplicationLogger.LOGGER.info(shape.toString());
+        shape = new TriangleRight(triangleRightSideA, triangleRightSideB);
+        LOGGER.info(shape.toString());
         ShapeUtils.isShapeIsTriangle(shape);
         ShapeUtils.isShapeIsRectangle(shape);
         ShapeUtils.isShapeIsCube(shape);
         ShapeUtils.isShapeIsOval(shape);
         ShapeUtils.isShapeIsCircle(shape);
         ShapeUtils.isShapeIsSquare(shape);
-
-        ApplicationLogger.LOGGER.info("Rectangle area: " + shape.area() + "\n");
-
-
-        IShape cube = new Cube(cubeLenght);
-        shape = cube;
-        ApplicationLogger.LOGGER.info(shape.toString());
-        ShapeUtils.isShapeIsTriangle(shape);
-        ShapeUtils.isShapeIsRectangle(shape);
-        ShapeUtils.isShapeIsCube(shape);
-        ShapeUtils.isShapeIsOval(shape);
-        ShapeUtils.isShapeIsCircle(shape);
-        ShapeUtils.isShapeIsSquare(shape);
-
-        ApplicationLogger.LOGGER.info("Cube area: " + shape.area());
-        ApplicationLogger.LOGGER.info("Cube diagonal: " + ((Cube) shape).cubeDiagonal() + "\n");
-
-
-        Cube.Square square = ((Cube) shape).new Square();
-        shape = square;
-        ApplicationLogger.LOGGER.info(shape.toString());
-        ShapeUtils.isShapeIsTriangle(shape);
-        ShapeUtils.isShapeIsRectangle(shape);
-        ShapeUtils.isShapeIsCube(shape);
-        ShapeUtils.isShapeIsOval(shape);
-        ShapeUtils.isShapeIsCircle(shape);
-        ShapeUtils.isShapeIsSquare(shape);
-
-        ApplicationLogger.LOGGER.info("Square area: " + shape.area() + "\n");
-
-        IShape oval = new Oval(radiusAOval, radiusBOval);
-        shape = oval;
-        ApplicationLogger.LOGGER.info(shape.toString());
-        ShapeUtils.isShapeIsTriangle(shape);
-        ShapeUtils.isShapeIsRectangle(shape);
-        ShapeUtils.isShapeIsCube(shape);
-        ShapeUtils.isShapeIsOval(shape);
-        ShapeUtils.isShapeIsCircle(shape);
-        ShapeUtils.isShapeIsSquare(shape);
-
-        ApplicationLogger.LOGGER.info("Oval area: " + shape.area());
-        ApplicationLogger.LOGGER.info("Oval sum Radius A and Radius B: "
-                + ((Oval) shape).sumRadiusAandB() + "\n");
-
-        Oval.Circle circle = ((Oval) shape).new Circle();
-        shape = circle;
-        ApplicationLogger.LOGGER.info(shape.toString());
-        ShapeUtils.isShapeIsTriangle(shape);
-        ShapeUtils.isShapeIsRectangle(shape);
-        ShapeUtils.isShapeIsCube(shape);
-        ShapeUtils.isShapeIsOval(shape);
-        ShapeUtils.isShapeIsCircle(shape);
-        ShapeUtils.isShapeIsSquare(shape);
-        ApplicationLogger.LOGGER.info("Circle area: " + shape.area() + "\n");
-
-        IShape triangleRight = new TriangleRight(triangleRightSideA, triangleRightSideB);
-        shape = triangleRight;
-        ApplicationLogger.LOGGER.info(shape.toString());
-        ShapeUtils.isShapeIsTriangle(shape);
-        ShapeUtils.isShapeIsRectangle(shape);
-        ShapeUtils.isShapeIsCube(shape);
-        ShapeUtils.isShapeIsOval(shape);
-        ShapeUtils.isShapeIsCircle(shape);
-        ShapeUtils.isShapeIsSquare(shape);
-        ApplicationLogger.LOGGER.info("Triangle area: " + shape.area());
-
+        LOGGER.info("Triangle area: " + shape.area());
     }
 }

@@ -1,32 +1,23 @@
-/**
- * This class has Outer class and Inner class that both implemented from interface IShape so somce
- * methods should be Overriding.
- *
- * @param public double area() - Overriding method calculate area of Rectangle and return area, type double
- * @param public String toString() - Overriding method informing you are inside Rectangle class.
- * @param public double sumRadiusAandB() - method calculate sum of RadiosA+ RadiusB
- * <p>
- * Inner class Circle implements IShape so  area() and toString() methods should be also
- * Overriding.
- * Inner class Circle has own Constructor with NO arguments. This method used Outer class parameter
- * radiusA.
- * @author Kurlovich Alexander
- * @version Lection08 Polymorphism
- */
-
-
 package com.myproject.lection08;
 
+/**
+ * Explores inner class in outer Oval
+ */
 public class Oval implements IShape {
-    double radiusA;
-    double radiusB;
+    private static double radiusA;
+    private static double radiusB;
 
 
     Oval(double radiusA, double radiusB) {
-        this.radiusA = radiusA;
-        this.radiusB = radiusB;
+        Oval.radiusA = radiusA;
+        Oval.radiusB = radiusB;
     }
 
+    /**
+     * Calculates square of Oval
+     *
+     * @return Oval's square
+     */
     @Override
     public double area() {
         double area = ((radiusA + radiusB) / 2) * Math.PI;
@@ -38,18 +29,28 @@ public class Oval implements IShape {
         return "Inside class Oval";
     }
 
-    public double sumRadiusAandB() {
-        double sumRadiusAandB;
-        sumRadiusAandB = radiusA + radiusB;
-        return sumRadiusAandB;
+    /**
+     * Calculates sum Oval's radiusA and radiusB
+     *
+     * @return Oval's radiusA and radiusB
+     */
+    public double sumRadiusAB() {
+        double sumRadiusAB;
+        sumRadiusAB = radiusA + radiusB;
+        return sumRadiusAB;
     }
 
 
     class Circle implements IShape {
 
+        /**
+         * Calculates square of Circle, inner class, outer is Oval
+         *
+         * @return Circle's square
+         */
         @Override
         public double area() {
-            double area = Math.PI * Math.pow(Oval.this.radiusA, 2);
+            double area = Math.PI * Math.pow(Oval.radiusA, 2);
             return area;
         }
 
@@ -59,4 +60,3 @@ public class Oval implements IShape {
         }
     }
 }
-
