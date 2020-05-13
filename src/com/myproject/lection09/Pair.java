@@ -1,18 +1,19 @@
 package com.myproject.lection09;
 
-import com.myproject.utils.ApplicationLogger;
+import org.apache.log4j.Logger;
 
-public class Pair <K, V> {
+public class Pair<K, V> {
+    public final static Logger LOGGER = Logger.getLogger(Pair.class);
+
     private K pairKey;
     private V pairValue;
 
-    Pair(){
+    Pair() {
     }
 
-    Pair (K pairKey, V pairValue) {
+    Pair(K pairKey, V pairValue) {
         this.pairKey = pairKey;
         this.pairValue = pairValue;
-
     }
 
     public K getPairKey() {
@@ -33,10 +34,6 @@ public class Pair <K, V> {
 
     @Transaction
     public static void transactionTesting() {
-        ApplicationLogger.LOGGER.info("Transaction processing, please wait");
-
+        LOGGER.info("Transaction processing, please wait");
     }
-
 }
-
-

@@ -1,25 +1,16 @@
 package com.myproject.lection09;
 
-
-import java.util.List;
-
-/**
- * This class swap two values.
- * static <K, V> Pair<K, V> swap(Pair<K, V> obj)
- * method Generics <K, V>
- * method accept (Pair<K, V> obj)
- * method return Pair<V, K>
- * Important! 'swappedPair' is another object and not 'initialPair' because swapping
- * two elements different types 'V' and 'K' is ClassCastException.
- *
- *
- */
 public class PairUtil {
 
+    /**
+     * Swaps key and value
+     *
+     * @param initialPair - Pair object key, value
+     * @param <K>         key
+     * @param <V>         value
+     * @return swapped key and value Pair<K, V> object
+     */
     static <K, V> Pair<K, V> swap(Pair<K, V> initialPair) {
-
-        Pair swappedPair = new Pair(initialPair.getPairValue(), initialPair.getPairKey());
-
-        return swappedPair;
+        return new Pair(initialPair.getPairValue(), initialPair.getPairKey());
     }
 }

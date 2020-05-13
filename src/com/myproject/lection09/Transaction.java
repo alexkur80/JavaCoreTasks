@@ -1,4 +1,3 @@
-
 package com.myproject.lection09;
 
 import java.lang.annotation.ElementType;

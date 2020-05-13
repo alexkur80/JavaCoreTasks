@@ -1,6 +1,6 @@
 package com.myproject.lection09;
 
-import com.myproject.utils.ApplicationLogger;
+import org.apache.log4j.Logger;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
@@ -8,161 +8,147 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-
 /**
- * This class analyze Object obj) for some hidden information like fields, methods,
+ * Analyzes Object for some hidden information like fields, methods,
  * annotations, constructors, class name, superclass name using API reflection.
  */
 public class ClassAnalyzer {
+    public final static Logger LOGGER = Logger.getLogger(ClassAnalyzer.class);
 
     /**
-     * This method analyze class structure
+     * Analyzes class structure
      *
      * @param obj acceps class object which analyse for class name, superclass name, methods, fields,
      *            constructors, annotations
      */
-    public static void analizeClass(Object obj) {
+    public static void analyzeClass(Object obj) {
+        /*  common class analyzes */
 
-// comomon class analizer
         Class clazz = obj.getClass();
-        ApplicationLogger.LOGGER.info("Class info:");
-        ApplicationLogger.LOGGER.info("Class: " + clazz.getName());
-        ApplicationLogger.LOGGER.info("Class modifier: " + clazz.getModifiers());
-        ApplicationLogger.LOGGER.info("Super Class: " + clazz.getSuperclass());
-        ApplicationLogger.LOGGER.info("Super modifier: " + clazz.getModifiers());
-        ApplicationLogger.LOGGER.info("");
+        LOGGER.info("Class info:");
+        LOGGER.info("Class: " + clazz.getName());
+        LOGGER.info("Class modifier: " + clazz.getModifiers());
+        LOGGER.info("Super Class: " + clazz.getSuperclass());
+        LOGGER.info("Super modifier: " + clazz.getModifiers());
+        LOGGER.info("");
 
+        /* common methods analyzes */
 
-// common methods analize
         Method[] methods = clazz.getDeclaredMethods();
+        LOGGER.info("Methods:");
 
-        int counter01 = 0;
-        ApplicationLogger.LOGGER.info("Methods:");
 
+        int methodsCounter = 0;
         for (Method method : methods) {
-            ApplicationLogger.LOGGER.info("Method #" + counter01 + " " + method.getName() + " Return: " + method.getReturnType());
-            counter01++;
+            LOGGER.info("Method #" + methodsCounter + " " + method.getName() + " Return: " + method.getReturnType());
+            methodsCounter++;
         }
-        ApplicationLogger.LOGGER.info("");
 
+        /* common fields analyzes */
 
-// common fields analyze
         Field[] fields = clazz.getDeclaredFields();
-        int counter02 = 0;
-        ApplicationLogger.LOGGER.info("Fields:");
+        LOGGER.info("Fields:");
 
+        int fieldsCounter = 0;
         for (Field field : fields) {
-            ApplicationLogger.LOGGER.info("Field #" + counter02 + " " + field.getName());
-            counter02++;
+            LOGGER.info("Field #" + fieldsCounter + " " + field.getName());
+            fieldsCounter++;
         }
-        ApplicationLogger.LOGGER.info("");
 
+        /* common annotation of every method analyze */
 
-// common annotation analyze
-        ApplicationLogger.LOGGER.info("Annotations:");
-        int counter03 = 0;
+        LOGGER.info("Annotations:");
+        int annotationsCounter = 0;
         for (Method method : methods) {
             Annotation[] annotations = method.getAnnotations();
 
             for (Annotation annotation : annotations) {
-                ApplicationLogger.LOGGER.info("Annotation #" + counter03 + " " + annotation.toString());
-
+                LOGGER.info("Annotation #" + annotationsCounter + " " + annotation.toString());
             }
-            counter03++;
+            annotationsCounter++;
         }
-        ApplicationLogger.LOGGER.info("");
 
+        /* common Constructor analyze */
 
-// common Constructor analyze
         Constructor[] constructors = clazz.getDeclaredConstructors();
-        int counter04 = 0;
-        ApplicationLogger.LOGGER.info("Constructors:");
+        LOGGER.info("Constructors:");
 
+        int constructorsCounter = 0;
         for (Constructor constructor : constructors) {
-            ApplicationLogger.LOGGER.info("Constructor #" + counter04 + " " + constructors[counter04].getName());
-
-            counter04++;
+            LOGGER.info("Constructor #" + constructorsCounter + " " + constructor.getName());
+            constructorsCounter++;
         }
-        ApplicationLogger.LOGGER.info("");
-
     }
 
-
     /**
-     * Overloading class accepting Class clazz and do equal business logic above.
+     * Overloads class accepting Class clazz and do equal business logic of analyzeClass(Object obj)
      */
-    public static void analizeClass(Class clazz) {
+    public static void analyzeClass(Class clazz) {
+        /*  common class analyzer */
 
-// comomon class analizer
-        ApplicationLogger.LOGGER.info("Class info:");
-        ApplicationLogger.LOGGER.info("Class: " + clazz.getName());
-        ApplicationLogger.LOGGER.info("Class modifier: " + clazz.getModifiers());
-        ApplicationLogger.LOGGER.info("Super Class: " + clazz.getSuperclass());
-        ApplicationLogger.LOGGER.info("Super modifier: " + clazz.getModifiers());
-        ApplicationLogger.LOGGER.info("");
+        LOGGER.info("Class info:");
+        LOGGER.info("Class: " + clazz.getName());
+        LOGGER.info("Class modifier: " + clazz.getModifiers());
+        LOGGER.info("Super Class: " + clazz.getSuperclass());
+        LOGGER.info("Super modifier: " + clazz.getModifiers());
 
+        /* common methods analyze */
 
-// common methods analize
         Method[] methods = clazz.getDeclaredMethods();
 
-        int counter01 = 0;
-        ApplicationLogger.LOGGER.info("Methods:");
+        int methodsCounter = 0;
+        LOGGER.info("Methods:");
 
         for (Method method : methods) {
-            ApplicationLogger.LOGGER.info("Method #" + counter01 + " " + method.getName() + " Return: " + method.getReturnType());
-            counter01++;
+            LOGGER.info("Method #" + methodsCounter + " " + method.getName() + " Return: " + method.getReturnType());
+            methodsCounter++;
         }
-        ApplicationLogger.LOGGER.info("");
 
+        /* common fields analyzes */
 
-// common fields analyze
         Field[] fields = clazz.getDeclaredFields();
-        int counter02 = 0;
-        ApplicationLogger.LOGGER.info("Fields:");
+        int fieldsCounter = 0;
+        LOGGER.info("Fields:");
 
         for (Field field : fields) {
-            ApplicationLogger.LOGGER.info("Field #" + counter02 + " " + field.getName());
-            counter02++;
+            LOGGER.info("Field #" + fieldsCounter + " " + field.getName());
+            fieldsCounter++;
         }
-        ApplicationLogger.LOGGER.info("");
 
+        /* common annotation of every method analyze */
 
-// common annotation analyze
-        ApplicationLogger.LOGGER.info("Annotations:");
-        int counter03 = 0;
+        LOGGER.info("Annotations:");
+
+        int annotationsCounter = 0;
         for (Method method : methods) {
             Annotation[] annotations = method.getAnnotations();
 
             for (Annotation annotation : annotations) {
-                ApplicationLogger.LOGGER.info("Annotation #" + counter03 + " " + annotation.toString());
-
+                LOGGER.info("Annotation #" + annotationsCounter + " " + annotation.toString());
             }
-            counter03++;
+            annotationsCounter++;
         }
-        ApplicationLogger.LOGGER.info("");
 
+        /* common Constructor analyze */
 
-// common Constructor analyze
         Constructor[] constructors = clazz.getDeclaredConstructors();
-        int counter04 = 0;
-        ApplicationLogger.LOGGER.info("Constructors:");
+        LOGGER.info("Constructors:");
 
+        int constructorsCounter = 0;
         for (Constructor constructor : constructors) {
-            ApplicationLogger.LOGGER.info("Constructor #" + counter04 + " " + constructors[counter04].getName());
+            LOGGER.info("Constructor #" + constructorsCounter + " " + constructor.getName());
 
-            counter04++;
+            constructorsCounter++;
         }
-        ApplicationLogger.LOGGER.info("");
-
     }
 
 
     /**
-     * This method output message "Transaction is started" before transaction started, then
+     * Outputs message "Transaction is started" before transaction started, then
      * processing method with annotation '@Transaction' and output message "Transaction is ended".
      * This is useful to be sure method, annotated with '@Transaction' executed successfully and
      * nothing in transaction lost.
-     * Alghoritm. First using Reflection API we check ckass methods of object 'Object obj'
+     * Algorithm: First using Reflection API we check ckass methods of object 'Object obj'
      * Then checking if method have annotation @Transaction and if it has - it execute here: method.invoke(new Object())
      * and in for each cucle checking every methods in class that marks with @Transaction  and execute .
      *
@@ -174,27 +160,24 @@ public class ClassAnalyzer {
         Method[] methods = clazz.getMethods();
 
         for (Method method : methods) {
-            if (true) {
-                Annotation[] annotations = method.getAnnotations();
-                for (Annotation annotation : annotations) {
-                    if (annotation instanceof Transaction) {
-                        ApplicationLogger.LOGGER.info("Transaction is started");
-                        try {
-                            method.invoke(new Object());
+            Annotation[] annotations = method.getAnnotations();
+            for (Annotation annotation : annotations) {
+                if (annotation instanceof Transaction) {
+                    LOGGER.info("Transaction is started");
+                    try {
+                        method.invoke(new Object());
 
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-
-                        } catch (InvocationTargetException e) {
-                            e.printStackTrace();
-                        }
-                        ApplicationLogger.LOGGER.info("Transaction is ended");
+                    } catch (IllegalAccessException e) {
+                        LOGGER.error(e);
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
+                    } finally {
+                        LOGGER.info("Transaction is ended");
                     }
+
                 }
             }
         }
     }
 }
-
-
-
