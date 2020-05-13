@@ -1,6 +1,6 @@
 package com.myproject.lection10;
 
-import com.myproject.utils.ApplicationLogger;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,9 +11,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class IntegerConsoleRegular {
+    public final static Logger LOGGER = Logger.getLogger(IntegerConsoleRegular.class);
 
     /**
-     * This Utilite Method accepts input numbers from console, then uses RegEx parsing line and
+     * Accepts input numbers from console, then uses RegEx parsing line and
      * extract numbers. Then put all numbers in 'List' collection and return.
      * <p>
      * Numbers should be typed using 'SPACE' to divide numbers from each other, numbers+letters or
@@ -26,7 +27,7 @@ public class IntegerConsoleRegular {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        ApplicationLogger.LOGGER.info("Input numbers for input using SPACES to divide every number" +
+        LOGGER.info("Input numbers for input using SPACES to divide every number" +
                 "but number will be ignored: ");
 
         String number = reader.readLine();
@@ -36,13 +37,9 @@ public class IntegerConsoleRegular {
         List<Integer> input = new ArrayList<>();
 
         while (matcher.find()) {
-
-            String string = matcher.group()
-                    .toString();
+            String string = matcher.group();
             input.add(Integer.valueOf(string));
         }
-
         return input;
     }
-
 }

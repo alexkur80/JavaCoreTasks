@@ -1,10 +1,11 @@
 package com.myproject.lection10;
 
-import com.myproject.utils.ApplicationLogger;
+import org.apache.log4j.Logger;
 
 import java.util.*;
 
 public class Students {
+    public final static Logger LOGGER = Logger.getLogger(Students.class);
 
     @Override
     public int hashCode() {
@@ -17,56 +18,54 @@ public class Students {
     }
 
     /**
-     * This method filling list with ListIterator  random marks and after delete not good marks (<6).
-     * Also output MAX mark
+     * Fills List with ListIterator by random marks and after delete not good marks (<6).
+     * Outputs in LOGGER MAX mark
      */
     public static void studentMarks() {
-
-        List<Integer> list = new LinkedList<>();
-        ListIterator<Integer> iterator = list.listIterator();
-
+        List<Integer> studentMarks = new LinkedList<>();
+        ListIterator<Integer> iterator = studentMarks.listIterator();
         Random rnd = new Random();
 
-
-        for (int i = 0; i < 10; i++) {
-            int mark = rnd.nextInt(10) + 1;
+        int numberOfMarks = 10;                        // number of marks
+        for (int i = 0; i < numberOfMarks; i++) {
+            int mark = rnd.nextInt(10) + 1;     // marks from 1 to 10
             iterator.add(mark);
-
         }
 
-        ApplicationLogger.LOGGER.info("Number of marks: " + list.size());
-        int tmp = 0;
-        for (int i = 0; i < list.size(); i++) {
-            ApplicationLogger.LOGGER.info("Student mark0" + i + "=" + list.get(i));
-            if (tmp < list.get(i)) {
-                tmp = list.get(i);
+        LOGGER.info("Number of marks: " + studentMarks.size());
+
+        int maxMark = studentMarks.get(0);                     // first mars is maximal
+        for (int i = 0; i < studentMarks.size(); i++) {
+            LOGGER.info("Student mark0" + i + "=" + studentMarks.get(i));
+            if (maxMark < studentMarks.get(i)) {
+                maxMark = studentMarks.get(i);
             }
         }
-        ApplicationLogger.LOGGER.info("Maximum student mark is " + tmp);
+        LOGGER.info("Maximum student mark is " + maxMark);
 
-
-        iterator = list.listIterator();
+        int markBad =6;
+        int mark;
+        iterator = studentMarks.listIterator();
         while (iterator.hasNext()) {
-            int mark = iterator.next();
-            if (mark < 6) {
+            mark = iterator.next();
+            if (mark < markBad) {
                 iterator.remove();
             }
         }
 
-        ApplicationLogger.LOGGER.info("Number of marks after removing bad " + list.size());
-        for (int i = 0; i < list.size(); i++) {
-            ApplicationLogger.LOGGER.info("Student mark0" + i + "=" + list.get(i));
+        LOGGER.info("Marks after removing bad " + studentMarks.size());
 
+        for (Integer marks : studentMarks) {
+            LOGGER.info(marks);
         }
     }
 
     /**
-     * This method output students in assending and descending more, using two variants.
-     * First - using for cycle,
+     * Outputs students in ascending and descending more, using two variants.
+     * First - using cycle,
      * Second - using iterator
      */
     public static void studentList() {
-
         List<String> studentName = new LinkedList<>() {
             {
                 add("Vasiliy");
@@ -78,53 +77,38 @@ public class Students {
                 add("Polina");
                 add("Venera");
                 add("Andrey");
-
             }
         };
 
-        ApplicationLogger.LOGGER.info("Students name in ascending mode, cycle output");
-        for (int i = 0; i < studentName.size(); i++) {
-            ApplicationLogger.LOGGER.info("Name #" + i + " " + studentName.get(i));
+        LOGGER.info("Student's name in ascending mode, cycle output");
 
+        for (int i = 0; i < studentName.size(); i++) {
+            LOGGER.info("Name #" + i + " " + studentName.get(i));
         }
 
         Collections.reverse(studentName);
 
-        ApplicationLogger.LOGGER.info("Students name in descending mode, cycle output");
+        LOGGER.info("Students name in descending mode, cycle output");
         for (int i = 0; i < studentName.size(); i++) {
-            ApplicationLogger.LOGGER.info("Name #" + i + " " + studentName.get(i));
-
+            LOGGER.info("Name #" + i + " " + studentName.get(i));
         }
 
-        ApplicationLogger.LOGGER.info("Students name in ascending mode, iterator  output");
+        LOGGER.info("Students name in ascending mode, iterator  output");
+
         ListIterator<String> iterator = studentName.listIterator();
-        int counter01 = 0;
+        int counterAscending = 0;
         while (iterator.hasNext()) {
             String next = iterator.next();
-            ApplicationLogger.LOGGER.info("Name #" + counter01 + " " + next);
-            counter01++;
+            LOGGER.info("Name #" + counterAscending + " " + next);
+            counterAscending++;
         }
 
-        ApplicationLogger.LOGGER.info("Students name in decending mode, iterator  output");
-        int counter02 = 0;
+        LOGGER.info("Students name in descending mode, iterator  output");
+        int counterDescending = 0;
         while (iterator.hasPrevious()) {
             String previous = iterator.previous();
-            ApplicationLogger.LOGGER.info("Name #" + counter02 + " " + previous);
-            counter02++;
+            LOGGER.info("Name #" + counterDescending + " " + previous);
+            counterDescending++;
         }
-
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-

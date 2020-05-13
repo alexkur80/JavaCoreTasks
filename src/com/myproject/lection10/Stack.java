@@ -1,38 +1,33 @@
-/**
- * This class realize 'Push' and  'Pop' methods.
- *
- * @author akurlovich
- * @version 03/25/2020
- */
-
 package com.myproject.lection10;
 
-import com.myproject.utils.ApplicationLogger;
+import org.apache.log4j.Logger;
 
 import java.util.*;
 
+/**
+ * Organises Push and Pop stack methods
+ */
 public class Stack {
-    private int stackSize;
+    public final static Logger LOGGER = Logger.getLogger(Stack.class);
+
+    private int stackSizeInitialize;
     private List<Integer> list;
     private int tailOfStack;
-    private List<Integer> stackList;
+    private List<Integer> stackList = new ArrayList<>(0);
 
 
-    public Stack(int stackSize, List<Integer> list) {
-        this.stackSize = stackSize;
+    public Stack(int stackSizeInitialize, List<Integer> list) {
+        this.stackSizeInitialize = stackSizeInitialize;
         this.list = list;
         tailOfStack = -1;
-        this.stackList = null;
     }
-
 
     public void setStackList(List<Integer> stackList) {
         this.stackList = stackList;
     }
 
-
     /**
-     * This method realize Stack. It works with stack object so it shows OOP incapsulation.
+     * Pushes in stack.
      * Push stack realize by adding List collection elements from one collection to other.
      * tailOfStack = -1 which empty stack. This parameter is -1 first and creates with
      * 'new Stack' so we don't need make it in method.
@@ -41,55 +36,49 @@ public class Stack {
      * Moving through elements using tailOfStack.
      */
     public void push() {
-        List<Integer> stackList = new ArrayList<>();
+        List<Integer> stackList = new ArrayList<>(0);
 
-        ApplicationLogger.LOGGER.info("Preparing stack filling");
-        ApplicationLogger.LOGGER.info("Stack pointer before adding: " + tailOfStack);
-        ApplicationLogger.LOGGER.info("Stack size: " + list.size());
-        ApplicationLogger.LOGGER.info("Filling stack started");
+        LOGGER.info("Preparing stack filling");
+        LOGGER.info("Stack pointer before adding: " + tailOfStack);
+        LOGGER.info("Stack size: " + list.size());
+        LOGGER.info("Filling stack started");
 
         for (int i = 0; i < list.size(); i++) {
             if (tailOfStack == (list.size() - 1)) {
-                ApplicationLogger.LOGGER.info("Stack is full");
+                LOGGER.info("Stack is full");
             } else {
                 stackList.add(list.get(++tailOfStack));
-                ApplicationLogger.LOGGER.info("Added number " + stackList.get(tailOfStack));
+                LOGGER.info("Added number " + stackList.get(tailOfStack));
             }
         }
-        ApplicationLogger.LOGGER.info("Amount of filled numbers: " + stackList.size());
-        ApplicationLogger.LOGGER.info("Stack pointer after adding: " + tailOfStack);
-        ApplicationLogger.LOGGER.info("Filling stack ended sucessfully");
-        setStackList(stackList); // setting stackList in class variable so it can use used for 'pop' method.
+        LOGGER.info("Amount of filled numbers: " + stackList.size());
+        LOGGER.info("Stack pointer after adding: " + tailOfStack);
+        LOGGER.info("Filling stack ended sucessfully");
+        setStackList(stackList);       // setting stackList in class variable so it can use used for 'pop' method.
     }
 
 
     /**
-     * This method popping out numbers from stack.
-     * It uses class variable : tailOfStack
+     * Pops out from stack.
+     * tailOfStack = -1  stack is empty
      * it uses class List<Integer>  stackList which generating using Push method.
-     *
+     * <p>
      * After every element added tailOfStack increments ++.
-     * Moving through elements using tailOfStack. *
+     * Moving through elements using tailOfStack.
      */
     public void pop() {
-        ApplicationLogger.LOGGER.info("Preparing stack Popping out");
-        ApplicationLogger.LOGGER.info("Stack pointer before popping out: " + tailOfStack);
-        ApplicationLogger.LOGGER.info("Stack size: " + list.size());
-        ApplicationLogger.LOGGER.info("Popping out stack started");
+        LOGGER.info("Preparing stack Popping out");
+        LOGGER.info("Stack pointer before popping out: " + tailOfStack);
+        LOGGER.info("Stack size: " + list.size());
+        LOGGER.info("Popping out stack started");
 
         for (int i = 0; i < stackList.size(); i++) {
             if (tailOfStack < 0) {
-                ApplicationLogger.LOGGER.info("Stack is Empty");
+                LOGGER.info("Stack is Empty");
             } else {
-                ApplicationLogger.LOGGER.info("Popping out number " + stackList.get(tailOfStack--));
-
+                LOGGER.info("Popping out number " + stackList.get(tailOfStack--));
             }
         }
-        ApplicationLogger.LOGGER.info("Popping out stack ended");
-
+        LOGGER.info("Popping out stack ended");
     }
-
 }
-
-
-

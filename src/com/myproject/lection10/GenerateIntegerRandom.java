@@ -1,29 +1,27 @@
 package com.myproject.lection10;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Random;
 
-public class GenerateIntegerRandom {
-
+public final class GenerateIntegerRandom {
 
     /**
-     * This method uses more then one time so I decided to write separate utilite method.
-     * It fills with random generating numbers any 'Collection <Integer>  collections
+     * Generates numbers any Collection <Integer>
      *
-     * @param min        Min int number for generating
-     * @param max        Max int number for generating
-     * @param iterations number of iterations
-     * @param collection collection which fill with generating numbers
-     * @return collection with random generating numbers
+     * @param min              Min int number for generating
+     * @param max              Max int number for generating
+     * @param numberOfIntegers number of numberOfIntegers
+     * @return collection with random generating numbers from 'min' to 'max'
      */
-    public static Collection<Integer> randomInt(int min, int max, int iterations, Collection<Integer> collection) {
+    public static Collection<Integer> randomInt(int min, int max, int numberOfIntegers) {
+        Collection<Integer> collection = new ArrayList<>();
 
         Random rnd = new Random();
-        for (int i = 0; i < iterations; i++) {
+        for (int i = 0; i < numberOfIntegers; i++) {
             int number = rnd.nextInt(max - min) + min;
             collection.add(number);
         }
         return collection;
     }
 }
-

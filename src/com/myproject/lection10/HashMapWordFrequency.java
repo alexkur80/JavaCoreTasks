@@ -1,13 +1,14 @@
 package com.myproject.lection10;
 
-import com.myproject.utils.ApplicationLogger;
+import org.apache.log4j.Logger;
 
 import java.util.*;
 
 public class HashMapWordFrequency {
+    public final static Logger LOGGER = Logger.getLogger(HashMapWordFrequency.class);
 
     /**
-     * This method read text and create frequency word vocabulary output
+     * Reads text and create frequency word vocabulary output
      * Ex:  to:2    the:1   in:3
      * Algorithm description:
      * #1 Using RegEx and 'split' utilMethod create array of words from text, excluding
@@ -20,47 +21,36 @@ public class HashMapWordFrequency {
     public static Map<String, Integer> wordFrequencyVocabulary(String text) {
 
         String[] words = text.split("[^a-zA-Zа-яА-ЯёЁ]+");
-        List<String> listWords = new ArrayList<>();
 
-        // Putting words in ArrayList
-
-        int i = 0;
+        int counterTmp01 = 0;
         for (String word : words) {
-            ApplicationLogger.LOGGER.info("#" + i++ + word);
-
+            LOGGER.info("#" + counterTmp01++ + " " + word);
         }
 
+        /* Checking if word is in Hashmap <String, Integer> add counter, otherwise put counter  = 1 */
 
-        Map<String, Integer> wordCounterMap = new HashMap<>();
-        Integer counter = 0;
+        Map<String, Integer> wordCounterMap = new HashMap<>(0);
+        Integer counterWords = 0;
         for (String word : words) {
             if (wordCounterMap.containsKey(word)) {
-                counter = wordCounterMap.get(word);
-                counter++;
-                wordCounterMap.put(word, counter);
+                counterWords = wordCounterMap.get(word);
+                counterWords++;
+                wordCounterMap.put(word, counterWords);
             } else {
                 wordCounterMap.put(word, 1);
             }
-
         }
 
-        ApplicationLogger.LOGGER.info("Output unique Key:Value");
+        LOGGER.info("Output unique Key: Value");
 
         Iterator<Map.Entry<String, Integer>> entries = wordCounterMap.entrySet()
                 .iterator();
 
-        int counterTmp02 = 0;
+        int counterWordIndex = 0;
         while (entries.hasNext()) {
             Map.Entry<String, Integer> entry = entries.next();
-            ApplicationLogger.LOGGER.info("#" + counterTmp02++ + " " + entry.getKey() + ":" + entry.getValue());
+            LOGGER.info("#" + counterWordIndex++ + " " + entry.getKey() + ":" + entry.getValue());
         }
-
         return wordCounterMap;
-
     }
-
 }
-
-
-
-

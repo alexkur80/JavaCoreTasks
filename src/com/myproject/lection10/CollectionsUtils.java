@@ -1,96 +1,54 @@
 package com.myproject.lection10;
 
-import com.myproject.utils.ApplicationLogger;
+import org.apache.log4j.Logger;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.TreeSet;
 
-public class CollectionsUtils {
-
+public final class CollectionsUtils {
+    public final static Logger LOGGER = Logger.getLogger(CollectionsUtils.class);
 
     /**
-     * This method generate Collection <Integer> with random numbers
+     * Generates Collection <Integer> with random numbers
      *
-     * @return Collection <Integer> setOne
+     * @return Collection <Integer>
      */
-    public static Collection<Integer> collectionFirst() {
+    public static Collection<Integer> getRandomCollectionInteger(int min, int max, int numberOfIntegers) {
 
-        // Random filled first collection
-        Collection<Integer> setOne = new TreeSet<>();
-        setOne = GenerateIntegerRandom.randomInt(15, 25, 10, setOne);
+        /* Fills collection with random Integer */
 
+        Collection<Integer> collectionRandom = GenerateIntegerRandom.randomInt(min, max, numberOfIntegers);
 
-        Iterator<Integer> iteratorSetOne = setOne.iterator();
+        LOGGER.info("Collection numbers:");
 
-        ApplicationLogger.LOGGER.info("TreeSet First:");
+        Iterator<Integer> iteratorSetOne = collectionRandom.iterator();
         while (iteratorSetOne.hasNext()) {
-            ApplicationLogger.LOGGER.info(iteratorSetOne.next());
-
+            LOGGER.info(iteratorSetOne.next());
         }
-
-        return setOne;
-
+        return collectionRandom;
     }
 
-
     /**
-     * This method generate Collection <Integer> with random numbers
+     * Adds collections.  Use utility java 'addAll' method
      *
-     * @return Collection <Integer> setOne
-     */
-    public static Collection<Integer> collectionSecond() {
-
-        // Random filled second collection
-        Collection<Integer> setSecond = new TreeSet<>();
-        setSecond = GenerateIntegerRandom.randomInt(14, 30, 10, setSecond);
-
-        Iterator<Integer> iteratorSetSecond = setSecond.iterator();
-
-        ApplicationLogger.LOGGER.info("TreeSet Second:");
-        while (iteratorSetSecond.hasNext()) {
-            ApplicationLogger.LOGGER.info(iteratorSetSecond.next());
-
-        }
-
-        return setSecond;
-    }
-
-
-    /**
-     * This method adding collections.  Use utilite java 'addAll' method
-     *
-     * @return resulting Collection
+     * @return Collection<Integer>
      */
     public static Collection<Integer> myAddAll(Collection<Integer> setOne, Collection<Integer> setSecond) {
-
         Collection<Integer> setAddAll = new TreeSet<>(setOne);
         setAddAll.addAll(setSecond);
-        Iterator<Integer> iteratorAddAll = setAddAll.iterator();
-
-        ApplicationLogger.LOGGER.info("Adding TreeSet:");
-        while (iteratorAddAll.hasNext()) {
-            ApplicationLogger.LOGGER.info(iteratorAddAll.next());
-
-        }
         return setAddAll;
     }
 
-
     /**
-     * This method Retaining collections. Use Utilite java 'retainAll' method
+     * Retains collections. Use utility java 'retainAll' method
      *
-     * @return resulting Collection
+     * @return Collection <Integer>
      */
     public static Collection<Integer> myRetainAll(Collection<Integer> setOne, Collection<Integer> setSecond) {
-
         Collection<Integer> setRetainAll = new TreeSet<>(setOne);
         setRetainAll.retainAll(setSecond);
-        Iterator<Integer> iteratorRetainAll = setRetainAll.iterator();
 
-        ApplicationLogger.LOGGER.info("Retaining TreeSet:");
-        while (iteratorRetainAll.hasNext()) {
-            ApplicationLogger.LOGGER.info(iteratorRetainAll.next());
-
-        }
         return setRetainAll;
     }
 }

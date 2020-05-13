@@ -1,6 +1,6 @@
 package com.myproject.lection10;
 
-import com.myproject.utils.ApplicationLogger;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,10 +8,11 @@ import java.util.Collections;
 import java.util.Iterator;
 
 public class SortIntegerAscending {
+    public final static Logger LOGGER = Logger.getLogger(SortIntegerAscending.class);
 
     /**
-     * This method sort collection in ascending mode. It uses
-     * CollectionUtils.randomInt metrhod to generate random number Collection.
+     * Sorts collection in ascending mode. It uses
+     * CollectionUtils.randomInt generates random number Collection.
      * To use Collection.sort() algorithm  we must have ArrayList collection so we create
      * new ArrayList collection and filling it with receiving collection date.
      *
@@ -19,34 +20,28 @@ public class SortIntegerAscending {
      */
 
     public static ArrayList<Integer> sortReverse() {
+        Collection<Integer> collection = GenerateIntegerRandom.randomInt(-10, 5, 10);
 
+        LOGGER.info("Non sorted collection:");
 
-        Collection<Integer> collection = new ArrayList<>();
         ArrayList<Integer> arrayList = new ArrayList<>();
-
-        collection = GenerateIntegerRandom.randomInt(-10, 5, 10, collection);
-
-        ApplicationLogger.LOGGER.info("Non sorted collection:");
 
         Iterator<Integer> iteratorCollection = collection.iterator();
         while (iteratorCollection.hasNext()) {
             Integer number = iteratorCollection.next();
             arrayList.add(number);
-            ApplicationLogger.LOGGER.info(number);
+            LOGGER.info(number);
         }
 
         Collections.sort(arrayList);
         Collections.reverse(arrayList);
 
         Iterator<Integer> iteratorArrayList = arrayList.iterator();
-        ApplicationLogger.LOGGER.info("Sorted and reverse  - Ascending mode");
+        LOGGER.info("Sorted and reverse  - Ascending mode");
 
         while (iteratorArrayList.hasNext()) {
-            ApplicationLogger.LOGGER.info(iteratorArrayList.next());
+            LOGGER.info(iteratorArrayList.next());
         }
-return arrayList;
+        return arrayList;
     }
-
-
 }
-
