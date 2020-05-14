@@ -1,17 +1,14 @@
-## Занятие 11. Коллекции. Set. Map.
+## Занятие 11. Исключения.
 
-* [Unique](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection11/Unique.java) Написать метод countUnique, который принимает целочисленный список в качестве параметра и возвращает количество уникальных целых чисел в этом списке.
-При получении пустого списка метод должен возвращать 0.
-Пример: [3, 7, 3, -1, 2, 3, 7, 2, 15, 15] вернёт 5.
-
-* [Unique](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection11/Unique.java) Написать метод isUnique, который принимает Map<String, String> и возвращает true,
-если два различных ключа не соответствуют двум одинаковым значениям.
-Например, в данном случае вернётся true:  {Marty=Stepp, Stuart=Reges, Jessica=Miller, Amanda=Camp, Hal=Perkins}
-А в данном - false: {Kendrick=Perkins, Stuart=Reges, Jessica=Miller, Bruce=Reges, Hal=Perkins} 
-
-* [Polynomial](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection11/Polynomial.java) Сложить два многочлена заданной степени, если коэффициенты многочленов хранятся в двух объектах HashMap в виде:
-Ключ: номер степени
-Значение: значение множителя
-Вывести результирующий многочлен в виде строки: ax^6 + bx^4 + cx^3 + dx + 8
-
-* [BlackBox](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection11/BlackBox.java) Реализовать структуру «Черный ящик» хранящую целые числа. Структура должна поддерживать операции добавления числа и возвращение К-го по минимальности числа и N-ного по максимальности элемента из ящика.
+* [ExceptionTesting](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/ExceptionTesting.java) Объявите переменную со значением null. Вызовите метод у этой переменной.
+Отловите возникшее исключение.
+* [ownWrittenArrayIndexOutOfBoundsException()](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/UtilsException.java) Написать код, который создаст, а затем отловит ArrayIndexOutOfBoundsException.
+* [MyDefaultException](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/MyDefaultException.java) Создать собственный класс-исключение - наследник класса Exception. Создать метод, выбрасывающий это исключение.
+Вызвать этот метод и отловить исключение. Вывести stacktrace в консоль.
+* [IsZeroRuntimeException](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/IsZeroRuntimeException.java) Повторить предыдущее упражнение, но наследуя свой класс от класса RuntimeException.
+Добавить вконструктор своего класса возможность указания сообщения.
+* [reCatchException()](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/UtilsException.java) Бросить одно из существующих в JDK исключений, отловить его и выбросить своё собственное, указав в качестве причины отловленное.
+* [randomThrowsException()](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/UtilsException.java) Создать метод случайным образом выбрасывающий одно из 3-х видов исключений.
+Вызвать этот метод в блоке try-catch, отлавливающем любое из 3-х.
+* [percent50Exception()](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/UtilsException.java) Написать метод, который в 50% случаев бросает исключение.
+Вызвать этот метод в конструкции try-catch-finally. Протестировать работу блока finally. 

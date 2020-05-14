@@ -6,7 +6,7 @@
  * @version Lection12 Exceptions
  */
 
-package com.myproject.lection12;
+package com.myproject.lection11;
 
 public class IllegalAgeException extends Exception {
     private String message;

@@ -1,4 +1,4 @@
-package com.myproject.lection12;
+package com.myproject.lection11;
 
 public class MyDefaultException extends Exception {
     private String message;
