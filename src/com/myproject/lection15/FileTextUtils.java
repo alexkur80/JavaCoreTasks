@@ -1,23 +1,20 @@
-/**
- * This class include methods to work with reading external file and manipulation with text from this file.
- */
-
 package com.myproject.lection15;
 
-import com.myproject.lection16.FileUtilsCopy01;
-import com.myproject.utils.ApplicationLogger;
+import com.myproject.lection14.RegExpTesting;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class FileTextUtils {
+    public final static Logger LOGGER = Logger.getLogger(RegExpTesting.class);
+
     /**
-     * This method accepts 'file', read it and oputput in console by lines.
+     * Accepts 'file', read it and output in console by lines.
      *
      * @param filePath File path for reading and output in console by linies
      */
@@ -25,33 +22,31 @@ public class FileTextUtils {
         boolean isExistIsFile = FileUtils.isFileExistIsFile(filePath);
 
         if (isExistIsFile) {
-
             File file = new File(File.separator + filePath);
+
             try (BufferedReader fileIn = new BufferedReader(new FileReader(file))) {
                 String line;
 
                 while ((line = fileIn.readLine()) != null) {
-                    ApplicationLogger.LOGGER.info(line);
+                    LOGGER.info(line);
                 }
-
-            } catch (IOException e) {
-                ApplicationLogger.LOGGER.error("Error opening and reading file " + file.getName());
-                e.printStackTrace();
+            } catch (IOException ioe) {
+                LOGGER.error("Error opening and reading file " + ioe + file.getName());
+                ioe.printStackTrace();
             }
         }
     }
 
 
     /**
-     * This method calculate maximum numbers of equal digits in every line of text.
+     * Calculates maximum numbers of equal digits in every line of text.
      *
      * @param filePath file path
      */
-    public static void dublesDigits(String filePath) {
+    public static void doublesDigits(String filePath) {
         boolean isExistIsFile = FileUtils.isFileExistIsFile(filePath);
 
         if (isExistIsFile) {
-
             File file = new File(File.separator + filePath);
 
             ArrayList<String> list = new ArrayList<>();
@@ -59,13 +54,12 @@ public class FileTextUtils {
 
             try (BufferedReader fileIn = new BufferedReader(new FileReader(file))) {
 
-                int i = 0;
                 while ((line = fileIn.readLine()) != null) {
                     list.add(line);
                 }
-            } catch (IOException e) {
-                ApplicationLogger.LOGGER.error("Error opening and reading file " + file.getName());
-                e.printStackTrace();
+            } catch (IOException ioe) {
+                LOGGER.error("Error opening and reading file " + ioe + file.getName());
+                ioe.printStackTrace();
             }
 
             Pattern pattern = Pattern.compile("(\\d)\\1*");
@@ -82,14 +76,13 @@ public class FileTextUtils {
                     System.out.print(matcher.group());
                     System.out.print(" ");
                 }
-                System.out.print("  Maxinum dubles in line:" + resultWordInLine.length() + "\n");
+                LOGGER.info("  Maximum doubles in line:" + resultWordInLine.length() + "\n");
             }
         }
     }
 
-
     /**
-     * This method reads text from file and output words, starting with vowel letter.
+     * Reads text from file and output words, starting with vowel letter.
      * Algorithm:
      * 1) Accept file path
      * 2) validate if file exist and if file is file
@@ -100,7 +93,6 @@ public class FileTextUtils {
         boolean isExistIsFile = FileUtils.isFileExistIsFile(filePath);
 
         if (isExistIsFile) {
-
             File file = new File(File.separator + filePath);
 
             StringBuilder stringbuilder = new StringBuilder();
@@ -110,11 +102,10 @@ public class FileTextUtils {
 
                 while ((line = fileIn.readLine()) != null) {
                     stringbuilder.append(line);
-
                 }
-            } catch (IOException e) {
-                ApplicationLogger.LOGGER.error("Error opening and reading file " + file.getName());
-                e.printStackTrace();
+            } catch (IOException ioe) {
+                LOGGER.error("Error opening and reading file " + ioe + file.getName());
+                ioe.printStackTrace();
             }
 
             Pattern pattern = Pattern.compile("\\b([aeiouyAEIOUY]\\w*)");
@@ -125,13 +116,12 @@ public class FileTextUtils {
                 stringBuilderVowel.append(matcher.group())
                         .append(" ");
             }
-            System.out.println(stringBuilderVowel);
+            LOGGER.info(stringBuilderVowel);
         }
     }
 
-
     /**
-     * This method print in console only words, if their last letter equal next word's first letter.
+     * Outputs in console only words, if their last letter equal next word's first letter.
      *
      * @param filePath file with text which explore
      */
@@ -141,7 +131,6 @@ public class FileTextUtils {
         if (isExistIsFile) {
 
             File file = new File(File.separator + filePath);
-
             StringBuilder stringbuilder = new StringBuilder();
 
             try (BufferedReader fileIn = new BufferedReader(new FileReader(file))) {
@@ -149,11 +138,10 @@ public class FileTextUtils {
 
                 while ((line = fileIn.readLine()) != null) {
                     stringbuilder.append(line);
-
                 }
-            } catch (IOException e) {
-                ApplicationLogger.LOGGER.error("Error opening and reading file " + file.getName());
-                e.printStackTrace();
+            } catch (IOException ioe) {
+                LOGGER.error("Error opening and reading file " + ioe + file.getName());
+                ioe.printStackTrace();
             }
 
             String textFromFile = stringbuilder.toString();
@@ -172,9 +160,8 @@ public class FileTextUtils {
         }
     }
 
-
     /**
-     * This method read java-code file and write copy in file every line in
+     * Reads java-code file and write copy in file every line in
      * reverse order. New file name adds 'copy' extension.
      */
     public static void doReverseFileCopy(String filePath) {
@@ -191,51 +178,55 @@ public class FileTextUtils {
                 String line;
 
                 while ((line = fileIn.readLine()) != null) {
-                    stringBuilder.setLength(0); // clear stringBuilder
+                    stringBuilder.setLength(0);                 // clears stringBuilder
                     line = stringBuilder.append(line)
                             .reverse()
                             .toString();
                     fileOut.write(line + " \n");
                 }
-            } catch (IOException e) {
-                ApplicationLogger.LOGGER.error("Error opening, reading or writing file ");
-                e.printStackTrace();
+            } catch (IOException ioe) {
+                LOGGER.error("Error opening, reading or writing file " + ioe);
+                ioe.printStackTrace();
             }
         }
     }
 
-
+    /**
+     * Writes in file 20 int numbers > 255. Read file and output average number
+     *
+     * @param list - list <Integer> twenty numbers more then 255
+     */
     public static void writeIntOwnRealization(List<Integer> list, String filePath) {
         File file = new File(filePath);
         try {
             file.createNewFile();
-        } catch (IOException e) {
-            ApplicationLogger.LOGGER.error("Unable to create file " + file.getName());
+            LOGGER.info("Successful creation  file " + filePath);
+        } catch (IOException ioe) {
+            LOGGER.error("Unable to create file " + ioe + file.getName());
         }
 
         boolean isExistIsFile = FileUtils.isFileExistIsFile(filePath);
-
 
         if (isExistIsFile) {
             try (DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(File.separator + filePath));
                  DataInputStream dataInputStream = new DataInputStream(new FileInputStream(File.separator + filePath))) {
 
-                ApplicationLogger.LOGGER.info("List of generated int numbers:");
+                LOGGER.info("List of generated int numbers:");
                 Iterator<Integer> iterator = list.iterator();
 
 
-//                /**
-//                 *  This commented method write int to binary file, using utility method 'writeInt'
-//                 *  but below provides the same functionality using bit moving & 0xFF
-//                 */
-//
-//                while (iterator.hasNext()) {
-//                Integer number = iterator.next();
-//                dataOutputStream.writeInt(number);
-//                ApplicationLogger.LOGGER.info("Writing  int numbers to  binary file: " + number);
-//                }
+/*
+                This commented method write int to binary file, using utility method 'writeInt'
+                but below provides the same functionality using bit moving & 0xFF
 
 
+                while (iterator.hasNext()) {
+                Integer number = iterator.next();
+                dataOutputStream.writeInt(number);
+                ApplicationLogger.LOGGER.info("Writing  int numbers to  binary file: " + number);
+                }
+
+*/
                 while (iterator.hasNext()) {
                     Integer number = iterator.next();
 
@@ -244,10 +235,8 @@ public class FileTextUtils {
                     dataOutputStream.write((number >>> 8) & 0b11111111);
                     dataOutputStream.write((number) & 0b11111111);
 
-                    ApplicationLogger.LOGGER.info("Writing  int numbers to  binary file: " + number);
-
+                    LOGGER.info("Writing  int numbers to  binary file: " + number);
                 }
-
 
                 StringBuilder stringBuilder = new StringBuilder();
                 int sumAllNumbers = 0;
@@ -262,21 +251,16 @@ public class FileTextUtils {
                     counter++;
                 }
 
-                ApplicationLogger.LOGGER.info("Reading int numbers from binary file: " + stringBuilder);
-                ApplicationLogger.LOGGER.info("Average of all numbers: " + sumAllNumbers / counter);
+                LOGGER.info("Reading int numbers from binary file: " + stringBuilder);
+                LOGGER.info("Average of all numbers: " + sumAllNumbers / counter);
 
-
-            } catch (FileNotFoundException e) {
-                ApplicationLogger.LOGGER.error("Error FileNotFoundException");
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (FileNotFoundException fnfe) {
+                LOGGER.error("Error FileNotFoundException" + fnfe);
+                fnfe.printStackTrace();
+            } catch (IOException ioe) {
+                LOGGER.error("Error IOException" + ioe);
+                ioe.printStackTrace();
             }
         }
     }
 }
-
-
-
-
-
