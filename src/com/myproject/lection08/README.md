@@ -1,13 +1,13 @@
 ## Занятие 08. Коллекции. Set. Map.
 
 * [Unique](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection08/Unique.java) 
-Написать метод countUnique [countUnique(Collection<Integer> numbersList)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection08/Unique.java) , 
+Написать метод countUnique [countUnique(Collection\<Integer> numbersList)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection08/Unique.java) , 
 который принимает целочисленный список в качестве параметра и возвращает количество уникальных целых чисел в этом списке.
 При получении пустого списка метод должен возвращать 0.
 Пример: [3, 7, 3, -1, 2, 3, 7, 2, 15, 15] вернёт 5.
 
 * [Unique](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection08/Unique.java) Написать метод 
-isUnique [isUnique(Map<String, String> map)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection08/Unique.java), который принимает Map<String, String> и возвращает true,
+isUnique [isUnique(Map\<String, String> map)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection08/Unique.java), который принимает Map<String, String> и возвращает true,
 если два различных ключа не соответствуют двум одинаковым значениям.
 Например, в данном случае вернётся true:  {Marty=Stepp, Stuart=Reges, Jessica=Miller, Amanda=Camp, Hal=Perkins}
 А в данном - false: {Kendrick=Perkins, Stuart=Reges, Jessica=Miller, Bruce=Reges, Hal=Perkins} 
