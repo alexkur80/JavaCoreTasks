@@ -1,53 +1,50 @@
 package com.myproject.lection16;
 
-import com.myproject.lection16.FileUtilsCopy01;
-import com.myproject.utils.ApplicationLogger;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 
-public class SerializationUtils {
-
+public class SerializationDeserializationUtils {
+    public final static Logger LOGGER = Logger.getLogger(SerializationDeserializationUtils.class);
 
     /**
-     * This method is Utility for  serialize object
+     * Serializes object
      *
      * @param computer Object which serialize
      * @param filePath file where store serialization
      */
     public static void serialization(Object computer, String filePath) {
 
-        boolean isExistIsFile = FileUtilsCopy01.isFileExistIsFile(filePath);
+        boolean isExistIsFile = FileUtils.isFileExistIsFile(filePath);
 
         if (isExistIsFile) {
             File fileSerialization = new File(File.separator + filePath);
 
             try (FileOutputStream fileOutputStream = new FileOutputStream(fileSerialization);
                  ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
-
                 objectOutputStream.writeObject(computer);
+                LOGGER.info("Successfully serialized" + fileSerialization.getName());
+
 
             } catch (FileNotFoundException e) {
-                ApplicationLogger.LOGGER.error("Error opening for reading file " + fileSerialization.getName());
+                LOGGER.error("Error opening for reading file " + fileSerialization.getName());
                 e.printStackTrace();
-            } catch (IOException e) {
-                ApplicationLogger.LOGGER.error("Error serialization");
-                e.printStackTrace();
+            } catch (IOException ioe) {
+                LOGGER.error("Error serialization" + ioe);
             }
         }
     }
 
-
     /**
-     * This method is Utility for  deserialize object
+     * Deserializates object
      *
      * @param filePath file where deserialization from
-     * @return deserializated object
+     * @return deserializated object or null if fail
      */
     public static Object deserialization(String filePath) {
-        boolean isExistIsFile = FileUtilsCopy01.isFileExistIsFile(filePath);
+        boolean isExistIsFile = FileUtils.isFileExistIsFile(filePath);
 
         if (isExistIsFile) {
-
             File fileDeserialization = new File(File.separator + filePath);
 
             try (FileInputStream fileInputStream = new FileInputStream(fileDeserialization);
@@ -55,13 +52,9 @@ public class SerializationUtils {
 
                 return objectInputStream.readObject();
             } catch (Exception e) {
-                ApplicationLogger.LOGGER.info("Error serialization");
+                LOGGER.info("Error serialization" + e);
             }
-
         }
         return null;
     }
 }
-
-
-

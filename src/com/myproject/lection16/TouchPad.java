@@ -1,14 +1,13 @@
 package com.myproject.lection16;
 
-public class Touchpad {
+public class TouchPad {
     private String brandName;
 
     public String getBrandName() {
         return brandName;
     }
 
-    Touchpad(String brandName) {
+    TouchPad(String brandName) {
         this.brandName = brandName;
-
     }
 }

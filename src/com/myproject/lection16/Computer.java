@@ -1,11 +1,10 @@
-/**
- * This class for Testing: Serialize and deserialize.
- */
-
 package com.myproject.lection16;
 
 import java.io.Serializable;
 
+/**
+ * Tests Serialize and deserialize.
+ */
 public class Computer implements Serializable {
     private String modelName;
     private int memory;
@@ -27,13 +26,10 @@ public class Computer implements Serializable {
         this.modelName = modelName;
         this.memory = memory;
         this.price = price;
-
-
     }
 
     @Override
     public String toString() {
         return "Super computer model " + modelName + " with RAM " + memory + "Kb for fantastic price $" + price;
-
     }
 }
