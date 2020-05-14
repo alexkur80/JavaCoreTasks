@@ -1,4 +1,4 @@
-package com.myproject.lection17;
+package com.myproject.lection15;
 
 public class Person {
     private String firstName;

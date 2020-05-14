@@ -1,13 +1,14 @@
-## Занятие 15. Потоки ввода-вывода. Часть 1.
-* [outputLinesFromFileToConsole(String filePath)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection15/FileUtils.java) Задан файл с многострочным тестом. Прочитать и вывести этот файл в консоль построчно.
+## Занятие 15. Лямбда выражения. Stream API.
 
-* [wordsFirstVowelLetter(String filePath)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection15/FileUtils.java) Задан файл с текстом, найти и вывести в консоль все слова, начинающиеся с гласной буквы.
+* [getAverageNotEvenDiv5(List\<Integer> intList)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection17/StreamUtil.java) Дан список целых чисел. Найти среднее всех нечётных чисел, делящихся на 5.
 
-* [allWordsLastLetterNextFirstLetterEqual(String filePath)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection15/FileUtils.java) Задан файл с текстом, найти и вывести в консоль все слова,  для которых последняя буква одного слова совпадает с первой буквой следующего слова
+* [getUniqueLinesLonger8symbols(List\<String> stringList)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection17/StreamUtil.java) Дан список строк. Найти количество уникальных строк длиной более 8 символов.
 
-* [doublesDigits(String filePath)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection15/FileUtils.java) Задан файл с текстом. В каждой строке найти и вывести наибольшее число цифр, идущих подряд.
+* [getSumMapKeysLonger7Symbols(Map\<String, Integer> map)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection17/StreamUtil.java) Дана Map<String, Integer>. Найти сумму всех значений, длина ключей которых меньше 7 символов.
 
-* [writeIntOwnRealization(List<Integer> list, String filePath)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection15/FileUtils.java) Записать в двоичный файл 20 случайных чисел типа int со значением больше 255. Прочитать записанный файл, распечатать числа и их среднее арифметическое. DataOutputStream.writeInt - ну
-но это нельзя испольщзовать, нужно самому написать со смещением и маской
-* [dirFileListRecursive(String filePath)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection15/FileUtils.java) Вывести список файлов и каталогов выбранного каталога на диске с учетом вложенности директориев. Для этого использовать рекурсию (пример рекурсии тут и тут).
-* [doReverseFileCopy(String filePath)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection15/FileUtils.java) Задан файл с java-кодом. Прочитать текст программы из файла и записать в другой файл в обратном порядке символы каждой строки. 
+* [getNumberToString(List\<Integer> intNum)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection17/StreamUtil.java) Дан список целых чисел, вывести строку, представляющую собой конкатенацию строковых представлений этих чисел.
+    * Пример: список {5, 2, 4, 2, 1}
+    * Результирующая строка: "52421"
+
+* [getFullNameOlderAge(List\<Person> personList)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection17/StreamUtil.java) Дан класс Person с полями firstName, lastName, age.
+Вывести полное имя самого старшего человека, у которого длина этого имени не превышает 15 символов.
