@@ -1,33 +1,26 @@
-/**
- * This class includes Methods utilities
- *
- * @author Kurlovich Alexander
- * @version Lection13 Strings, StringBuilder Formatter, Methods
- * @date 03/17/2020
- */
-
 package com.myproject.lection13;
 
-import com.myproject.lection08.ApplicationLogger;
+import org.apache.log4j.Logger;
 
 import java.util.Formatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class UtilsString {
+    public final static Logger LOGGER = Logger.getLogger(UtilsString.class);
 
     /**
-     * Method compare what waster concatinate - standart 'str1+str2' or ;strilngBuilder.append(str1)'
-     * important moment - in StringBuilder conctructor we put capacity of symbols that probably
-     * we keep in StringBuilder because this way concatenation algorithm using append become much more faster/
+     * Compares what is faster:  'concat: str1+str2' or 'stringBuilder.append(str1)'
+     * Important moment - in StringBuilder constructor we decline capacity
      *
-     * @param str1              string one to concatenate
-     * @param str2              string two to concatinate
+     * @param str1              string one
+     * @param str2              string two
      * @param numberOfIteration number of concatenation iterations
-     * @return time1Method/time2Method
+     * @return time1Method divide time2Method
      * @throws OutOfMemoryError if numberOfIteration > 1000000000 (type int)
      */
     public static String stringBuilderVSString(String str1, String str2, int numberOfIteration) throws OutOfMemoryError {
-
-        StringBuilder strBuilder = new StringBuilder(1400000);
+        StringBuilder strBuilder = new StringBuilder(1500000);
 
         long startTime = System.nanoTime();
 
@@ -51,9 +44,8 @@ class UtilsString {
         double str1AppendStr2Time = endTime - startTime;
 
         double resultWhatFaster = str1SumStr2Time / str1AppendStr2Time;
-        ApplicationLogger.LOGGER.info("\" str1 + str2 \" takes " + str1SumStr2Time + " ns");
-        ApplicationLogger.LOGGER.info("\" str1.append(str2) \" takes " + str1AppendStr2Time + " ns");
-
+        LOGGER.info("\" str1 + str2 \" takes " + str1SumStr2Time + " ns");
+        LOGGER.info("\" str1.append(str2) \" takes " + str1AppendStr2Time + " ns");
 
         StringBuilder strBuilderResult = new StringBuilder("Result:");
 
@@ -64,127 +56,71 @@ class UtilsString {
                     .append("times then \" str1.append(str2) \" in ")
                     .append(numberOfIteration)
                     .append(" iterations");
-
-        } else if (
-                str1AppendStr2Time < str1SumStr2Time) {
+        } else if (str1AppendStr2Time < str1SumStr2Time) {
             strBuilderResult
                     .append("\" str1.append(str2) \" faster ")
                     .append(resultWhatFaster)
                     .append(" times then \" str1 + str2 \" in ")
                     .append(numberOfIteration)
                     .append(" iterations");
-
         } else if (str1AppendStr2Time == str1SumStr2Time) {
             strBuilderResult
                     .append("\" str1.append(str2) \" takes EQUAL time ")
                     .append("as  \" str1 + str2 \" in ")
                     .append(numberOfIteration)
                     .append(" iterations");
-
         }
-        String result = strBuilderResult + "";
-        return result;
+
+        return strBuilderResult.toString();
     }
 
-
     /**
-     * @param string - sentence that checked for first and last word
-     * @param world  - word, that is looking for in the beginning and in the end of string
-     * @return boolean true or false - if word contains in the first and last word of string
+     * Validates is string starts and finish with defined symbol.
+     *
+     * @param string - sentence which validate for first and last word
+     * @param world  - word looking for in the beginning and in the end of string
+     * @return true or false - if word contains in the first and last word of string
      */
     public static boolean ifStringStartAndFinishWord(String string, String world) {
-        boolean ifStringStartAndFinishWord = false;
-
-        if (string.startsWith(world) && string.endsWith(world)) {
-            ifStringStartAndFinishWord = true;
-        }
-        return ifStringStartAndFinishWord;
+        return string.startsWith(world) && string.endsWith(world);
     }
-
-
-/* countWordsInString Using RegExp
-
-
-    public static int countWordsInString(String string) {
-
-        Pattern pattern = Pattern.compile("[a-zA-Zа-яёА-ЯЁ0-9]+");
-        Matcher matcher = pattern.matcher(string);
-
-        int counter = 0;
-        while (matcher.find()) {
-            counter++;
-        }
-        return counter;
-    }
-*/
 
     /**
-     * This method count number of words in sentence. It used String method 'split' with RegEx
+     * Counts numbers of words in string. It used String method 'split' with RegEx
      * '\\S+' means  - everything but space symbols so it include words.
      *
      * @param string any text
      * @return number of words in string
      */
     public static int countWordsInString(String string) {
+        String[] words = string.split("\\S+");    // splitter is NON space symbol one ir more
 
-        String[] words = string.split("\\S+"); // splitter is NON space symbol one ir more
         int counter = 0;
-
         for (String str : words) {
             counter++;
         }
-
         return counter;
     }
 
-
-    /* strReplace using RegExp
-
-        public static String strReplace(String string) {
-        String symbolOldRegExp = ":\\(";
-        String symbolNew = ":)";
-
-        Pattern patterns = Pattern.compile(symbolOldRegExp);
-        Matcher matcher = patterns.matcher(string);
-
-        String replacedString = matcher.replaceAll(symbolNew);
-                return replacedString;
-        }
-
-    */
-
     /**
-     * Method replace all 'oldSubstring' by  'newSubstring'
-     *
-     * @param string       any text
-     * @param oldSubstring find all substring in 'string'
-     * @param newSubstring replace all 'oldSubstring' by  'newSubstring'
-     * @return string replaces text
-     * @version
-     */
-    public static String strReplace(String string, String oldSubstring, String newSubstring) {
-
-        String replacedString = string.replace(oldSubstring, newSubstring);
-        return replacedString;
-    }
-
-
-    /**
-     * @param string any text
-     * @return text without duplicated symbols. Ex: Text before: 'ddFFFBBBaaaQQQQQQadddddddd'
+     * Defines duplicated letters and replace with one symbol <p>
+     * Ex: Text before: 'ddFFFBBBaaaQQQQQQadddddddd' <p>
      * Text after: dFBaQad
+     *
+     * @param string any text
+     * @return text without duplicated symbols.
      */
     public static String removeDuplicate(String string) {
-
         StringBuilder stringToRemoveDuplicates = new StringBuilder(string);
 
-        ApplicationLogger.LOGGER.info("This algorithm replacing duplicates");
+        LOGGER.info("This algorithm replacing duplicates");
+
         for (int i = 0; i < stringToRemoveDuplicates.length() - 1; i++) {
             if (stringToRemoveDuplicates.charAt(i) == stringToRemoveDuplicates.charAt(i + 1)) {
                 stringToRemoveDuplicates.replace(i, i + 1, "*");
             }
 
-            ApplicationLogger.LOGGER.info(stringToRemoveDuplicates);
+            LOGGER.info(stringToRemoveDuplicates);
         }
 
         String text = stringToRemoveDuplicates.toString();
@@ -192,9 +128,35 @@ class UtilsString {
         return text;
     }
 
+    /**
+     * Replaces all 'oldSubstring' by  'newSubstring'
+     *
+     * @param string       any text
+     * @param oldSubstring find all substring in 'string'
+     * @param newSubstring replace all 'oldSubstring' by  'newSubstring'
+     * @return string replaces text
+     */
+    public static String strReplace(String string, String oldSubstring, String newSubstring) {
+        return string.replace(oldSubstring, newSubstring);
+    }
 
     /**
-     * This method find first symbols in first name, second name, father's name and output first
+     * Replaces all 'oldSubstring' by  'newSubstring' using RegExp
+     *
+     * @param string - string replaces text
+     */
+    public static String strReplaceRegEx(String string) {
+        String symbolOldRegExp = ":\\(";
+        String symbolNew = ":)";
+
+        Pattern patterns = Pattern.compile(symbolOldRegExp);
+        Matcher matcher = patterns.matcher(string);
+
+        return matcher.replaceAll(symbolNew);
+    }
+
+    /**
+     * Finds first symbols in first name, second name, father's name and output first
      * symbols only delimited by "." in upper case. Alghoritm:
      * 1) Trims claces in the beginning and in the end
      * 2) Split 'spaces' and put all words in String[] words
@@ -210,30 +172,26 @@ class UtilsString {
      * @throws ArrayIndexOutOfBoundsException catch in main()
      */
     public static String personFIO(String string) throws ArrayIndexOutOfBoundsException {
-
-        String firstSymbolOfPersonFIO[] = new String[3];
+        int FIO = 3;                                               // first name, second name, third name == 3
+        String[] firstSymbolOfPersonFIO = new String[FIO];
         String string2 = string.trim();
-        String[] words = string2.split("\\s+"); // splitter is NON space symbol one ir more
+        String[] words = string2.split("\\s+");             // splitter is NON space symbol one or more
         StringBuilder stringbuilder = new StringBuilder();
 
         for (int i = 0; i < words.length; i++) {
-
             firstSymbolOfPersonFIO[i] = words[i].substring(0, 1);
-
-            stringbuilder = stringbuilder
+            stringbuilder
                     .append(firstSymbolOfPersonFIO[i])
                     .append(".");
         }
-
-        String text = stringbuilder.toString()
+        return stringbuilder.toString()
                 .toUpperCase();
-        return text;
     }
 
 
     /**
      * Variant01
-     * This method accepts long number and fill with '0' from left up to 10 symbols. If 'numberL'  more then
+     * Accepts long number and fill with '0' from left up to 10 symbols. If 'numberL'  more then
      * 10 symbols - replace all symbols to '0'
      * Algorithm use class 'Formatter":
      * 1) convert 'long' to 'String' so we have some methods available to operate.
@@ -241,34 +199,31 @@ class UtilsString {
      * and output string filled with '0'
      * 3) Else use class 'Formatter' to output result in proper format
      *
-     * @param number
+     * @param number long number
      * @return 10 symbol outpiut, filled with '0' from the end or all '0'. Ex1: 0000000124 Ex2:0000000000
      */
     public static String longToStringFilledByZero01(long number) {
-        Formatter numberFormatted;
-        int numberLenght = 0;
-
-        // convert long to String;
         String numberToString = number + "";
+        int numberLength;
 
-        numberLenght = numberToString.length();
-        if (numberLenght > 10) {
+        numberLength = numberToString.length();
+        if (numberLength > 10) {
             number = 0;
         }
 
         Formatter fmt = new Formatter();
 
+        Formatter numberFormatted;
         numberFormatted = fmt.format("First method 'Formatter'      %010d", number);
 
-        // Convert 'Formatter' to 'String'
-        String stringFormatted = numberFormatted + "";
-        return stringFormatted;
-    }
+        /* Converts 'Formatter' to 'String'*/
 
+        return numberFormatted + "";
+    }
 
     /**
      * Variant02
-     * This method accepts 'numberl' and fill with '0' from left up to 10 symbols. If 'numberL'  more then
+     * Accepts long 'number' and fill with '0' from left up to 10 symbols. If 'numberL'  more then
      * 10 symbols - replace all symbols to '0' from the left
      * Algorithm use class Stringbuilder:
      * 1) convert 'long' to 'String' so we have some methods available to operate.
@@ -279,34 +234,34 @@ class UtilsString {
      * <p>
      * maxNumberOfSymbolsOutput - number of digits to output  after that fill all with '0'
      *
-     *
-     * @param number
+     * @param number long number
      * @return stringFormatted contains 10 symbol outpiut, filled with '0' from the end or all '0'.
      * Ex1: 0000000124 Ex2:0000000000
      */
     public static String intToStringFilledByZero02(long number) {
-
-        String stringFormatted = "";
         int maxNumberOfSymbolsOutput = 10;
-        StringBuilder stringbuilder = new StringBuilder("");
+        StringBuilder stringbuilder = new StringBuilder();
 
-        // Convert 'long' to 'String'
+        /* Convert 'long' to 'String' */
+
         String numberToString = number + "";
 
-        int numberLenght = numberToString.length();
-        if (numberLenght > maxNumberOfSymbolsOutput) {
+        String stringFormatted;
+        int numberLength = numberToString.length();
+        if (numberLength > maxNumberOfSymbolsOutput) {
             for (int i = 0; i < maxNumberOfSymbolsOutput; i++) {
-
                 stringbuilder.append("0");
             }
 
-            // Convert 'Appendable' to 'String'
+            /* Convert 'Appendable' to 'String' */
+
             stringFormatted = "Second method 'StringBuffer'  " + stringbuilder;
             return stringFormatted;
         }
 
-        // Now we fill the rest symbols from the left by '0'
-        for (int i = 0; i < maxNumberOfSymbolsOutput - numberLenght; i++) {
+        /* Now we fill the rest symbols from the left by '0' */
+
+        for (int i = 0; i < maxNumberOfSymbolsOutput - numberLength; i++) {
             stringbuilder.append("0");
         }
 
@@ -315,10 +270,9 @@ class UtilsString {
         return stringFormatted;
     }
 
-
     /**
      * Variant03
-     * This method accepts 'numberl' and fill with '0' from left up to 10 symbols. If 'numberL'  more then
+     * Accepts long 'number' and fill with '0' from left up to 10 symbols. If 'numberL'  more then
      * 10 symbols - replace all symbols to '0' from the left
      * Algorithm use class String:
      * <p>
@@ -327,42 +281,32 @@ class UtilsString {
      * @return stringFormatted contains 10 symbol outpiut, filled with '0' from the end or all '0'.
      * Ex1: 0000000124 Ex2:0000000000
      */
-
     public static String intToStringFilledByZero03(long number) {
-        String stringFormatted = "";
+        StringBuilder stringFormatted = new StringBuilder();
         int maxNumberOfSymbolsOutput = 10;
 
-        // Convert 'long' to 'String'
+        /* Convert 'long' to 'String' */
+
         String numberToString = number + "";
 
-        int numberLenght = numberToString.length();
-        if (numberLenght > maxNumberOfSymbolsOutput) {
+        int numberLength = numberToString.length();
+        if (numberLength > maxNumberOfSymbolsOutput) {
             for (int i = 0; i < maxNumberOfSymbolsOutput; i++) {
 
-                stringFormatted += "0";
+                stringFormatted.append("0");
             }
 
-            stringFormatted = "Third method 'String'        " + stringFormatted;
-            return stringFormatted;
+            stringFormatted.insert(0, "Third method 'String' ");
+            return stringFormatted.toString();
         }
 
-        // Now we fill the rest symbols from the left by '0'
-        for (int i = 0; i < maxNumberOfSymbolsOutput - numberLenght; i++) {
-            stringFormatted += "0";
+        /* Now we fill the rest symbols from the left by '0' */
+
+        for (int i = 0; i < maxNumberOfSymbolsOutput - numberLength; i++) {
+            stringFormatted.append("0");
         }
 
-        stringFormatted = "Third method 'String'        " + stringFormatted + numberToString;
-        return stringFormatted;
+        stringFormatted = new StringBuilder("Third method 'String'  " + stringFormatted + numberToString);
+        return stringFormatted.toString();
     }
-
 }
-
-
-
-
-
-
-
-
-
-
