@@ -1,22 +1,22 @@
 ## Занятие 12. Регулярные выражения.
 
 
-* [emailValidator(String emailToValidate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection14/UtilsRegExp.java) Написать программу, проверяющую, является ли введённая строка адресом электронного почтового ящика.
+* [emailValidator(String emailToValidate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/UtilsRegExp.java) Написать программу, проверяющую, является ли введённая строка адресом электронного почтового ящика.
 В названии почтового ящика разрешить использование только букв, цифр и нижних подчёркиваний, при этом оно должно начинаться с буквы.
 Возможные домены верхнего уровня: .org .com
 
-* [hexValidator(String hexToValidate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection14/UtilsRegExp.java) Написать программу, выполняющую поиск в строке шестнадцатеричных чисел, записанных по правилам Java,
+* [hexValidator(String hexToValidate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/UtilsRegExp.java) Написать программу, выполняющую поиск в строке шестнадцатеричных чисел, записанных по правилам Java,
 с помощью регулярных выражений и выводящую их на страницу.
 
-* [tegReplacement(String tegToReplace, String replacementTemplate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection14/UtilsRegExp.java) Написать программу, выполняющую поиск в строке всех тегов абзацев,
+* [tegReplacement(String tegToReplace, String replacementTemplate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/UtilsRegExp.java) Написать программу, выполняющую поиск в строке всех тегов абзацев,
  в т.ч. тех, у которых есть параметры, например \<p id ="p1">,
 и замену их на простые теги абзацев \<p>.
 
-* [phoneValidator(String phoneNumToValidate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection14/UtilsRegExp.java) Написать программу, выполняющую поиск в строке мобильных телефонных номеров в формате +375XXYYYYYYY
+* [phoneValidator(String phoneNumToValidate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/UtilsRegExp.java) Написать программу, выполняющую поиск в строке мобильных телефонных номеров в формате +375XXYYYYYYY
 и заменяющую каждый телефон на тот же, но в формате +375 (XX) YYY-YY-YY
 X - код оператора
 Y - номер телефона
-* [ipV4Validator(String ipv4ToValidate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection14/UtilsRegExp.java) Написать метод, который проверяет, является ли строка адресом IPv4.
+* [ipV4Validator(String ipv4ToValidate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/UtilsRegExp.java) Написать метод, который проверяет, является ли строка адресом IPv4.
     * Пример корректных IPv4 <p>
 0.0.0.0  <p>
 0.0.1.0 <p>
