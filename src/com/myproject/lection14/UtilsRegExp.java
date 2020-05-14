@@ -1,23 +1,15 @@
-/**
- * This class include RegExt Methods
- *
- * @author Kurlovich Alexander
- * @version Lection14 RegExp
- * @date 03/18/2020
- */
-
 package com.myproject.lection14;
 
-import com.myproject.utils.ApplicationLogger;
+import org.apache.log4j.Logger;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class UtilsRegExp {
-
+    public final static Logger LOGGER = Logger.getLogger(UtilsRegExp.class);
 
     /**
-     * This method uses RegEx to validate email addresses from raw text. Email template should have digits, letters,
+     * Validates correct email addresses from raw text. Email template should have digits, letters,
      * sign '_' but not start with '_'. It should have domen upper level org.com.by
      * It have restriction on domen length    - from 1 to 7 symbols/
      * Domen doesn't should end by '_'
@@ -38,26 +30,23 @@ public final class UtilsRegExp {
      * @param emailToValidate raw text where to find correct emails;
      */
     public static String emailValidator(String emailToValidate) {
-
         Pattern pattern = Pattern.compile("(?<=\\s|^)([^\\W_0-9]\\w+)[@]([^\\W_]+\\.)+[^\\W_]{2,4}(?=\\s|$)", Pattern.MULTILINE);
         Matcher matcher = pattern.matcher(emailToValidate);
         StringBuilder stringbuilder = new StringBuilder();
 
         while (matcher.find()) {
-
             stringbuilder.append(matcher.group())
                     .append(" ");
         }
 
-        ApplicationLogger.LOGGER.info("Before: " + emailToValidate);
+        LOGGER.info("Before: " + emailToValidate);
+
         String result = stringbuilder.toString();
         return "After " + result;
-
     }
 
-
     /**
-     * This method uses RegEx to find valid HEX numbers and get them.
+     * Validates correct HEX numbers.
      * RegExp   0x([0-9]|[a-fA-F])+
      * Description
      * 0x    - start from 0x
@@ -67,7 +56,6 @@ public final class UtilsRegExp {
      * @param hexToValidate raw text where to find correct HEX numbers;
      */
     public static String hexValidator(String hexToValidate) {
-
         Pattern pattern = Pattern.compile("0x([0-9]|[a-fA-F])+", Pattern.MULTILINE);
         Matcher matcher = pattern.matcher(hexToValidate);
         StringBuilder stringbuilder = new StringBuilder();
@@ -77,16 +65,15 @@ public final class UtilsRegExp {
                     .append(" ");
         }
 
-        ApplicationLogger.LOGGER.info("Before:" + hexToValidate);
+        LOGGER.info("Before:" + hexToValidate);
+
         String result = stringbuilder.toString();
         return "After " + result;
-
     }
 
 
     /**
-     * This method uses RegEx to find symbols between tegs <qwqwe 2SDASD> and replace
-     * by <p>
+     * Finds symbols between tegs <qwqwe 2SDASD> and replace by
      * RegExp   <(.|\n)*?>
      * Description
      * < start with '<'
@@ -94,24 +81,21 @@ public final class UtilsRegExp {
      * and repeat it many times or not and '?' means preveous action is not nessesarry.
      * Finish with > teg
      *
-     * @param tegToReplace
-     * @param replacementTemplate
+     * @param tegToReplace        tegs which replace
+     * @param replacementTemplate tegs which to be replaced
      */
     public static String tegReplacement(String tegToReplace, String replacementTemplate) {
-
         Pattern pattern = Pattern.compile("<(.|\\n)*?>", Pattern.MULTILINE);
         Matcher matcher = pattern.matcher(tegToReplace);
 
-        ApplicationLogger.LOGGER.info("Before: " + tegToReplace);
+        LOGGER.info("Before: " + tegToReplace);
 
         String result = matcher.replaceAll(replacementTemplate);
         return "After " + result;
-
     }
 
-
     /**
-     * This method uses RegEx to find phoneNumbers from format +375000000000 and output to correct format
+     * Validates phoneNumbers from format +375000000000 and output to correct format
      * +375 (XX) YYY-YY-YY
      * RegEx    (\+375)(\d{2})(\d{3})(\d{2})(\d{2})
      * important: Since we need to output in some format - regex should be grouped to collect
@@ -125,13 +109,11 @@ public final class UtilsRegExp {
      * @return phone numbers in format +375 (XX) YYY-YY-YY
      */
     public static String phoneValidator(String phoneNumToValidate) {
-
         Pattern pattern = Pattern.compile("(\\+375)(\\d{2})(\\d{3})(\\d{2})(\\d{2})", Pattern.MULTILINE);
         Matcher matcher = pattern.matcher(phoneNumToValidate);
         StringBuilder stringBuilder = new StringBuilder();
 
         while (matcher.find()) {
-
             stringBuilder
                     .append(" ")
                     .append(matcher.group(1))
@@ -145,15 +127,15 @@ public final class UtilsRegExp {
                     .append(matcher.group(5));
         }
 
-        ApplicationLogger.LOGGER.info("Before:" + phoneNumToValidate);
+        LOGGER.info("Before:" + phoneNumToValidate);
+
         String result = stringBuilder.toString();
         return "After " + result;
-
     }
 
 
     /**
-     * This method uses RegEx to find correct ipv4ToValidate
+     * Validates correct IP address
      * Example valid Ipv4:
      * 0.0.0.0
      * 0.0.1.0
@@ -181,24 +163,19 @@ public final class UtilsRegExp {
      * @return valid IPv4
      */
     public static String ipV4Validator(String ipv4ToValidate) {
-
         Pattern pattern = Pattern.compile("\\b(25[0-5]|2[0-4][0-9]|[1]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[1]?[0-9][0-9]?)\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(?=\\s|$)", Pattern.MULTILINE);
         Matcher matcher = pattern.matcher(ipv4ToValidate);
         StringBuilder stringbuilder = new StringBuilder();
 
         while (matcher.find()) {
-
             stringbuilder
                     .append(" ")
                     .append(matcher.group());
         }
 
-        ApplicationLogger.LOGGER.info("Before: " + ipv4ToValidate);
+        LOGGER.info("Before: " + ipv4ToValidate);
+
         String result = stringbuilder.toString();
         return "After" + result;
-
     }
-
 }
-
-
