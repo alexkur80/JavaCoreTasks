@@ -1,6 +1,5 @@
-package com.myproject.lection15;
+package com.myproject.lection13;
 
-import com.myproject.lection14.RegExpTesting;
 import org.apache.log4j.Logger;
 
 import java.util.List;
