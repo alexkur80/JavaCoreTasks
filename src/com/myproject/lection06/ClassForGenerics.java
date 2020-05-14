@@ -1,4 +1,4 @@
-package com.myproject.lection09;
+package com.myproject.lection06;
 
 public class ClassForGenerics {
     
