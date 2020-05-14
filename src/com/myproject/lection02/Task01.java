@@ -1,4 +1,4 @@
-package com.myproject.lection04;
+package com.myproject.lection02;
 
 import static com.myproject.utils.Utils.checkScannerIntNumberNew;
 
