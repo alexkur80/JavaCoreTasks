@@ -1,4 +1,4 @@
-## Занятие 30. Date API.
+## Занятие 09. Date API.
 * [getFixedDateFormatted()](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection30/DateUtil.java) Создать объект класса LocalDate, представляющий собой дату 25.06.2020.
  Вывести полученную дату в консоль
 * [getPlusThreeMonths()](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection30/DateUtil.java) Создать объект LocalDate, представляющий собой сегодняшнюю дату. Используя этот объект,

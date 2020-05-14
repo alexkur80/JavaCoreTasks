@@ -1,4 +1,4 @@
-package com.myproject.lection30;
+package com.myproject.lection09;
 
 import org.apache.log4j.Logger;
 
