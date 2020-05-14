@@ -1,10 +1,5 @@
-/**
- * This test package for lection30
- */
-
 package lection30;
 
-import com.myproject.utils.ApplicationLogger;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,6 +10,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 
+/**
+ * Tests lection30
+ */
 public class DateUtilsTest {
 
     @Test
@@ -22,8 +20,7 @@ public class DateUtilsTest {
         LocalDate fixedDate = LocalDate.of(2020, 6, 25);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(("dd.MM.yyyy"));
 
-        Assert.assertEquals(fixedDate.format(formatter), "25.06.2020");
-
+        Assert.assertEquals("25.06.2020", fixedDate.format(formatter));
     }
 
     @Test
@@ -33,7 +30,6 @@ public class DateUtilsTest {
         String actual = todayPlusMonths.toString();
 
         Assert.assertEquals("2020-07-03", actual);
-
     }
 
 
@@ -44,7 +40,6 @@ public class DateUtilsTest {
         String actual = today.format(formatter);
 
         Assert.assertEquals("03.04.2020", actual);
-
     }
 
     @Test
@@ -54,8 +49,6 @@ public class DateUtilsTest {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
         Assert.assertEquals("26-03-2014", parsedDate.format(formatter));
-
-
     }
 
     @Test(expected = DateTimeParseException.class)
@@ -63,26 +56,21 @@ public class DateUtilsTest {
         //Text '26-03-21222' could not be parsed at index 6
         String stringDate = "26-03-23331222"; // Correct is  format "dd-MM-yyyy"
         LocalDate parsedDate = LocalDate.parse(stringDate, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-
     }
-
 
     @Test(expected = DateTimeParseException.class)
     public void getLocalDateFromStringTestException02() {
         // Text '99-03-2014' could not be parsed: Invalid value for DayOfMonth (valid values 1 - 28/31): 99
         String stringDate = "99-03-2014";
         LocalDate parsedDate = LocalDate.parse(stringDate, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-
     }
 
     @Test(expected = DateTimeParseException.class)
     public void getLocalDateFromStringTestException03() {
         // Text '26-23-2014' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 23
         String stringDate = "26-23-2014";
-        LocalDate parsedDate = LocalDate.parse(stringDate, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-
+       LocalDate parsedDate = LocalDate.parse(stringDate, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
-
 
     @Test
     public void getPeriodOfDatesTest() {
@@ -91,9 +79,7 @@ public class DateUtilsTest {
         long daysBetweenDates = ChronoUnit.DAYS.between(today, fixedDate);
 
         Assert.assertEquals(5, daysBetweenDates);
-
     }
-
 
     @Test
     public void getDurationOfDatesTest() {
@@ -107,19 +93,15 @@ public class DateUtilsTest {
 
         // 86400 seconds in 24 hours
         Assert.assertEquals(86400, durationOfDates.getSeconds());
-
     }
-
 
     @Test
     public void setNewDateTestClassAddDaysTest() {
-
         LocalDate today = LocalDate.of(2020, 6, 25);
         LocalDate todayPlusDays = today.plus(3, ChronoUnit.DAYS);
 
         Assert.assertEquals("2020-06-28", todayPlusDays.toString());
     }
-
 
     @Test
     public void setNewDateClassSetDateNextFirstJanTest() {
@@ -133,9 +115,5 @@ public class DateUtilsTest {
 
         // leftDays + 1 change date to 01 Jan of the next year
         Assert.assertEquals(3, leftDays + 1);
-
-
     }
-
-
 }
