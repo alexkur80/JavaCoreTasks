@@ -1,4 +1,4 @@
-package com.myproject.lection08;
+package com.myproject.lection05;
 
 /**
  * Defines Rectangle implemented from IShape, has overriding

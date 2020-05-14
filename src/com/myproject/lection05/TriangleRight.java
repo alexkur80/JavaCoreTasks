@@ -1,4 +1,4 @@
-package com.myproject.lection08;
+package com.myproject.lection05;
 
 /**
  * Defines TriangleRight implemented from IShape, having overriding

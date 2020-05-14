@@ -1,4 +1,4 @@
-package com.myproject.lection08;
+package com.myproject.lection05;
 
 /**
  * Explores inner class in outer Oval
