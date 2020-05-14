@@ -1,36 +1,129 @@
 package com.myproject.lection03;
 
-import java.util.Random;
+import java.math.BigDecimal;
 
 /**
- * Fills random Array and output elements in Ascending Order and Descending Order
+ * Accepts two INT, two DOUBLE, two BIGDECIMAL numbers and initialized right after object created
+ * Make Peregruzka of methods, that should return result of math operation. In this code returns A + B
  */
+class Overloading {
+    private int intNumberA;
+    private int intNumberB;
+    private double doubleNumberA;
+    private double doubleNumberB;
+    private BigDecimal bigDecimalNumberA;
+    private BigDecimal bigDecimalNumberB;
+
+    Overloading(int intNumberA, int intNumberB) {
+        this.intNumberA = intNumberA;
+        this.intNumberB = intNumberB;
+    }
+
+    Overloading(double doubleNumberA, double doubleNumberB) {
+        this.doubleNumberA = doubleNumberA;
+        this.doubleNumberB = doubleNumberB;
+    }
+
+    Overloading(BigDecimal bigDecimalNumberA, BigDecimal bigDecimalNumberB) {
+        this.bigDecimalNumberA = bigDecimalNumberA;
+        this.bigDecimalNumberB = bigDecimalNumberB;
+    }
+
+    public int getIntNumberA() {
+        return intNumberA;
+    }
+
+    public void setIntNumberA(int intNumberA) {
+        this.intNumberA = intNumberA;
+    }
+
+    public int getIntNumberB() {
+        return intNumberB;
+    }
+
+    public void setIntNumberB(int intNumberB) {
+        this.intNumberB = intNumberB;
+    }
+
+    public double getDoubleNumberA() {
+        return doubleNumberA;
+    }
+
+    public void setDoubleNumberA(double doubleNumberA) {
+        this.doubleNumberA = doubleNumberA;
+    }
+
+    public double getDoubleNumberB() {
+        return doubleNumberB;
+    }
+
+    public void setDoubleNumberB(double doubleNumberB) {
+        this.doubleNumberB = doubleNumberB;
+    }
+
+    public BigDecimal getBigDecimalNumberA() {
+        return bigDecimalNumberA;
+    }
+
+    public void setBigDecimalNumberA(BigDecimal bigDecimalNumberA) {
+        this.bigDecimalNumberA = bigDecimalNumberA;
+    }
+
+    public BigDecimal getBigDecimalNumberB() {
+        return bigDecimalNumberB;
+    }
+
+    public void setBigDecimalNumberB(BigDecimal bigDecimalNumberB) {
+        this.bigDecimalNumberB = bigDecimalNumberB;
+    }
+
+    int intMethod() {
+        int result;
+        result = getIntNumberA() + getIntNumberB();
+        return result;
+    }
+
+    double doubleMethod() {
+        double result;
+        result = getDoubleNumberA() + getDoubleNumberB();
+        return result;
+    }
+
+    BigDecimal bigDecimalMethod() {
+        BigDecimal result;
+        result = getBigDecimalNumberA().add(getBigDecimalNumberB());
+        return result;
+    }
+}
+
+
 public class Task01 {
 
-    /**
-     * int highRandomElement  - high number of random element <p>
-     * int countElementsArray  -  count arrays elements <p>
-     * <p>
-     * Output All elements of array in ascending and descending order.
-     */
     public static void main(String[] args) {
-        int countElementsArray = 10;
-        int[] elementsArray = new int[countElementsArray];
+        BigDecimal bigDecimalNumberA = new BigDecimal("1111111111111111.12312312");
+        BigDecimal bigDecimalNumberB = new BigDecimal("2222222222222222.12323243");
 
-        Random randomElement = new Random();
+        int intNumberA = 50;
+        int intNumberB = 120;
+        double doubleNumberA = 50.5;
+        double doubleNumberB = 35115.45;
+        Overloading intPerezagruzkaObj = new Overloading(intNumberA, intNumberB);
+        Overloading doublePerezagruzkaObj = new Overloading(doubleNumberA, doubleNumberB);
+        Overloading bigDecimalPerezagruzkaObj = new Overloading(bigDecimalNumberA, bigDecimalNumberB);
 
-        System.out.print("Output elements of array in Ascending  order: ");
+        int resultIntNumbers;
+        resultIntNumbers = intPerezagruzkaObj.intMethod();
+        System.out.println("Sum of " + intNumberA + " + " + intNumberB + " = "
+                + resultIntNumbers);
 
-        int highRandomElement = 50;
-        for (int i = 0; i < elementsArray.length; i++) {
-            elementsArray[i] = randomElement.nextInt(highRandomElement);
-            System.out.print(elementsArray[i] + " ");
-        }
+        double resultDoubleNumbers;
+        resultDoubleNumbers = doublePerezagruzkaObj.doubleMethod();
+        System.out.println("Sum of " + doubleNumberA + " + " + doubleNumberB + " = "
+                + resultDoubleNumbers);
 
-        System.out.print("\nOutput elements of array in Descending  order: ");
-        for (int i = elementsArray.length - 1; i >= 0; i--) {
-            System.out.print(elementsArray[i] + " ");
-
-        }
+        BigDecimal resultBigDecimalNumbers;
+        resultBigDecimalNumbers = bigDecimalPerezagruzkaObj.bigDecimalMethod();
+        System.out.println("Sum of " + bigDecimalNumberA + " + " + bigDecimalNumberB + " = "
+                + resultBigDecimalNumbers);
     }
 }

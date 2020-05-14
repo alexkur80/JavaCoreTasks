@@ -1,38 +1,53 @@
 package com.myproject.lection03;
 
+import java.math.BigDecimal;
+
 /**
- * Outputs first 100 elements of natural numbers, that divide for 13 OR 17 with no leavings:
- * X % 13 == 0 OR X % 17 ==0
+ * Makes class and create Overloading methods. Call for methods that calculate and return sum of two fields.
+ * Make sum of: two int numbers, two double numbers, two BigDecimal numbers.
  */
+class OverloadingOfMethods {
+
+    int sumOverloading(int intNumberA, int intNumberB) {
+        return intNumberA + intNumberB;
+    }
+
+    double sumOverloading(double doubleNumberA, double doubleNumberB) {
+        return doubleNumberA + doubleNumberB;
+    }
+
+    BigDecimal sumOverloading(BigDecimal bigDecimalNumberA, BigDecimal bigDecimalNumberB) {
+        return bigDecimalNumberA.add(bigDecimalNumberB);
+    }
+}
+
 public class Task02 {
-
-    /**
-     * int countElementsToOutput - have number of elements to output. <p>
-     * int counterFillingElements - verify how many elements suit for rule. in Last iteration <p>
-     * counterFillingElements == countElementsToOutput <p>
-     * <p>
-     * Output first natural numbers  that divide for 13 and 17. Amount of elements for output we put in
-     * int countElementsToOutput
-     */
     public static void main(String[] args) {
-        int countElementsToOutput = 100;
-        int[] natulalElemenArrayDevideOn13And17 = new int[countElementsToOutput];
 
-        System.out.println("Congratulation! There are list of elements suit for rule: \n" +
-                "1. We have " + countElementsToOutput + " numbers \n" +
-                "2. Every element is natural and N % 13 ==0  AND  N % 17 ==0 \n");
+        int intNumberA = 50;
+        int intNumberB = 120;
+        double doubleNumberA = 50.5;
+        double doubleNumberB = 35115.45;
 
-        int counterFillingElements = 0;
-        for (int i = 0; ; i++) {
-            if (((counterFillingElements < countElementsToOutput) && ((i % 13 == 0) || (i % 17) == 0)) && i > 0) {
-                natulalElemenArrayDevideOn13And17[counterFillingElements] = i;
+        int resultIntNumbers;
+        double resultDoubleNumbers;
+        BigDecimal resultBigDecimalNumbers;
 
-                System.out.println(natulalElemenArrayDevideOn13And17[counterFillingElements]);
-                counterFillingElements++;
+        BigDecimal bigDecimalNumberA = new BigDecimal("1111111111111111.12312312");
+        BigDecimal bigDecimalNumberB = new BigDecimal("2222222222222222.12323243");
 
-            } else if (counterFillingElements == countElementsToOutput) {
-                break;
-            }
-        }
+        OverloadingOfMethods overloadingObj = new OverloadingOfMethods();
+
+        resultIntNumbers = overloadingObj.sumOverloading(intNumberA, intNumberB);
+        System.out.println("Sum of " + intNumberA + " + " + intNumberB + " = "
+                + resultIntNumbers);
+
+        resultDoubleNumbers = overloadingObj.sumOverloading(doubleNumberA, doubleNumberB);
+        System.out.println("Sum of " + doubleNumberA + " + " + doubleNumberB + " = "
+                + resultDoubleNumbers);
+
+        resultBigDecimalNumbers = overloadingObj.sumOverloading(bigDecimalNumberA, bigDecimalNumberB);
+        System.out.println("Sum of " + bigDecimalNumberA + " + " + bigDecimalNumberB + " = "
+                + resultBigDecimalNumbers);
     }
 }
