@@ -1,14 +1,31 @@
-## Занятие 12. Исключения.
+## Занятие 12. Регулярные выражения.
 
-* [ExceptionTesting](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/ExceptionTesting.java) Объявите переменную со значением null. Вызовите метод у этой переменной.
-Отловите возникшее исключение.
-* [ownWrittenArrayIndexOutOfBoundsException()](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/UtilsException.java) Написать код, который создаст, а затем отловит ArrayIndexOutOfBoundsException.
-* [MyDefaultException](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/MyDefaultException.java) Создать собственный класс-исключение - наследник класса Exception. Создать метод, выбрасывающий это исключение.
-Вызвать этот метод и отловить исключение. Вывести stacktrace в консоль.
-* [IsZeroRuntimeException](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/IsZeroRuntimeException.java) Повторить предыдущее упражнение, но наследуя свой класс от класса RuntimeException.
-Добавить вконструктор своего класса возможность указания сообщения.
-* [reCatchException()](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/UtilsException.java) Бросить одно из существующих в JDK исключений, отловить его и выбросить своё собственное, указав в качестве причины отловленное.
-* [randomThrowsException()](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/UtilsException.java) Создать метод случайным образом выбрасывающий одно из 3-х видов исключений.
-Вызвать этот метод в блоке try-catch, отлавливающем любое из 3-х.
-* [percent50Exception()](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection12/UtilsException.java) Написать метод, который в 50% случаев бросает исключение.
-Вызвать этот метод в конструкции try-catch-finally. Протестировать работу блока finally. 
+
+* [emailValidator(String emailToValidate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection14/UtilsRegExp.java) Написать программу, проверяющую, является ли введённая строка адресом электронного почтового ящика.
+В названии почтового ящика разрешить использование только букв, цифр и нижних подчёркиваний, при этом оно должно начинаться с буквы.
+Возможные домены верхнего уровня: .org .com
+
+* [hexValidator(String hexToValidate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection14/UtilsRegExp.java) Написать программу, выполняющую поиск в строке шестнадцатеричных чисел, записанных по правилам Java,
+с помощью регулярных выражений и выводящую их на страницу.
+
+* [tegReplacement(String tegToReplace, String replacementTemplate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection14/UtilsRegExp.java) Написать программу, выполняющую поиск в строке всех тегов абзацев,
+ в т.ч. тех, у которых есть параметры, например \<p id ="p1">,
+и замену их на простые теги абзацев \<p>.
+
+* [phoneValidator(String phoneNumToValidate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection14/UtilsRegExp.java) Написать программу, выполняющую поиск в строке мобильных телефонных номеров в формате +375XXYYYYYYY
+и заменяющую каждый телефон на тот же, но в формате +375 (XX) YYY-YY-YY
+X - код оператора
+Y - номер телефона
+* [ipV4Validator(String ipv4ToValidate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection14/UtilsRegExp.java) Написать метод, который проверяет, является ли строка адресом IPv4.
+    * Пример корректных IPv4 <p>
+0.0.0.0  <p>
+0.0.1.0 <p>
+255.0.0.1 <p>
+255.55.255.255 <p>
+192.168.0.1 <p>
+
+    * Не корректный <p>
+001.0.0.0 <p>
+256.1.1.1 <p>
+1.1.1.1. <p>
+-1.0.-1.1  <p>
