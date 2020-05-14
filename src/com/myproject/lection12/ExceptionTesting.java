@@ -1,100 +1,83 @@
-/**
- * This Class testing Exceptions opportunities
- *
- *
- * @author Kurlovich Alexander
- * @version Lection12 Exceptions
- */
-
-
 package com.myproject.lection12;
 
-import com.myproject.utils.ApplicationLogger;
+import org.apache.log4j.Logger;
 
 public class ExceptionTesting {
+    public final static Logger LOGGER = Logger.getLogger(ExceptionTesting.class);
+
     static public void main(String[] args) {
 
+        LOGGER.info("This Class testing opportunities of Exceptions in Java");
+
+        /* Produces and catches  NullPointerException by using method on null: null.length() */
+
         String str = null;
-        int[] intArray = {1, 10, 20, 50};
-        // for normal "numberOfPeople" should be positive, otherwise catch ArithmeticException
-        int numberOfPeople = -5;
-        // for normal "age" should be from 18 to 100, otherwise catch IllegalAgeException
-        int age = 17;
-        int testifZeroException = 0;
-
-        ApplicationLogger.LOGGER.info("===========================================" +
-                "===========");
-        ApplicationLogger.LOGGER.info("This Class testing opportunities of Exceptions " +
-                "in Java");
-        ApplicationLogger.LOGGER.info("===========================================" +
-                "===========\n");
-
         try {
             str.length();
-        } catch (NullPointerException e) {
-            ApplicationLogger.LOGGER.error("Catch JDK - " + e);
+        } catch (NullPointerException npe) {
+            LOGGER.error("Catch JDK Exception " + npe);
         }
 
-        try {
-            intArray[5] = 99;
-        } catch (IndexOutOfBoundsException e) {
-            ApplicationLogger.LOGGER.error("Catch JDK - " + e);
-        }
+        /* Catches IndexOutOfBoundsException by indexing not existing element intArray[5] */
 
-// немножко самодеятельности ))
+        UtilsException.ownWrittenArrayIndexOutOfBoundsException();
+
+        /* 'numberOfPeople' should be positive, otherwise catch ArithmeticException */
+
+        int numberOfPeople = -5;
         try {
             if (numberOfPeople < 0) {
                 throw new ArithmeticException("People number MUST BE POSITIVE (>0) ONLY");
             }
-        } catch (ArithmeticException e) {
-            ApplicationLogger.LOGGER.error("Catch JDK - " + e);
+        } catch (ArithmeticException ae) {
+            LOGGER.error("Catch JDK Exception- " + ae);
         }
 
+        /* for normal "age" should be from 18 to 100, otherwise catch IllegalAgeException
+        ageChecking(int age) throw IllegalAgeException  if age < 18 || age > 100 */
+
+        int age = 17;
         try {
             UtilsException.ageChecking(age);
-        } catch (IllegalAgeException e) {
-            ApplicationLogger.LOGGER.error("Catch MY_OWN CHECKED - " + e);
-            e.printStackTrace();
+        } catch (IllegalAgeException iae) {
+            LOGGER.error("Catch my own-written CHECKED - " + iae);
         }
 
-
+        /* isZeroChecking(int number) throwIsZeroException if number == 0*/
+        int number = 0;
         try {
-            UtilsException.isZeroChecking(testifZeroException);
-        } catch (IsZeroException e) {
-            ApplicationLogger.LOGGER.error("Catch MY_OWN UNCHECKED  - " + e);
+            UtilsException.isZeroChecking(number);
+        } catch (IsZeroRuntimeException ize) {
+            LOGGER.error("Catch my own-written UNCHECKED  - " + ize);
         }
 
-
-// This part of code have method " randomThrowsException() " that throws RANDOM Exception and
-// catch necessary Exception.
+        /* This part of code have method " randomThrowsException() "
+        that throws RANDOM Exception and catch necessary Exception. */
 
         try {
             UtilsException.randomThrowsException();
-        } catch (ArithmeticException e) {
-            ApplicationLogger.LOGGER.error("Catch  JDK Random - " + e);
-        } catch (NullPointerException e) {
-            ApplicationLogger.LOGGER.error("Catch JDK Random - " + e);
-        } catch (IsZeroException e) {
-            ApplicationLogger.LOGGER.error("Catch MY_OWN UNCHECKED Random - " + e);
+        } catch (ArithmeticException ae) {
+            LOGGER.error("Catch ArithmeticException - " + ae);
+        } catch (NullPointerException npe) {
+            LOGGER.error("Catch NullPointerException - " + npe);
+        } catch (IsZeroRuntimeException ize) {
+            LOGGER.error("Catch my own-written UNCHECKED IsZeroRuntimeException - " + ize);
         }
 
-// Метод, который в 50% случаев бросает исключение. Вся реализация внутри
+        /* Метод, который в 50% случаев бросает исключение. Вся реализация внутри */
+
         UtilsException.percent50Exception();
 
-// Бросить одно из существующих в JDK исключений, отловить его и выбросить своё собственное,
-// указав в качестве причины отловленное. Выполнить блок try-catch-finally
+        /* Бросить одно из существующих в JDK исключений, отловить его и выбросить своё собственное,
+         указав в качестве причины отловленное. Выполнить блок try-catch-finally */
+
         try {
             throw new NullPointerException();
-        } catch (NullPointerException e) {
-            UtilsException.reCatchException(e);
+        } catch (NullPointerException npe) {
+            UtilsException.reCatchException(npe);
+            LOGGER.error(npe);
         } finally {
-            ApplicationLogger.LOGGER.info("FINISH");
+            LOGGER.info("FINISH");
         }
-
     }
 }
-
-
-
-
-

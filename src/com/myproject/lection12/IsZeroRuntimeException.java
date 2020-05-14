@@ -1,34 +1,23 @@
-/**
- * IllegalMyException "UNCHECKED"
- *
- * @author Kurlovich Alexander
- * @version Lection12 Exceptions
- */
-
 package com.myproject.lection12;
 
-public class IsZeroException extends RuntimeException {
+public class IsZeroRuntimeException extends RuntimeException {
     private String message;
     private int number;
 
-    IsZeroException() {
+    IsZeroRuntimeException() {
         this.message = " is ZERO, try another number";
         this.number = 0;
-
     }
 
-    IsZeroException(String message) {
+    IsZeroRuntimeException(String message) {
         this.message = message;
         this.number = 0;
-
     }
 
-    IsZeroException(String message, int number) {
+    IsZeroRuntimeException(String message, int number) {
         this.message = message;
         this.number = number;
-
     }
-
 
     @Override
     public String toString() {
@@ -39,6 +28,3 @@ public class IsZeroException extends RuntimeException {
 
     }
 }
-
-
-

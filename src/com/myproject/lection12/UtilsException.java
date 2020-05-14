@@ -1,83 +1,94 @@
-/**
- * Utils methods
- *
- * @param static void ageChecking(int age). It uses IllegalAgeException extends Exception (CHECKED)
- * check age range. Normal range  is 18 till 100, otherwise throw IllegalAgeException.
- * <p>
- * @param static void isZeroChecking(int number) It uses sfZeroException extends RuntimeException (UNCHECKED)
- * if number == 0 then throw IfZeroException ArithmeticException, NullPointerException,
- * IfZeroException
- * <p>
- * @param public static void randomThrowsException() It generates one of three Exceptions and catch it.
- * @param public static void percent50Exception() Generates Exceptions in 50% of cases
- * @param public static void reCatchException(Exception e)  - this method re-catch JDK Exception
- * anb throw OWn Exception instead with reason of Exception. It accepts as argument
- * object of JDK Exception.
- * @author Kurlovich Alexander
- * @version Lection12 Exceptions
- */
-
-
 package com.myproject.lection12;
 
-import com.myproject.utils.ApplicationLogger;
+import org.apache.log4j.Logger;
 
 import java.util.Random;
 
 public class UtilsException {
+    public final static Logger LOGGER = Logger.getLogger(UtilsException.class);
 
-
+    /**
+     * Validates age legality
+     *
+     * @param age from 18 to 100, out of range throws IllegalAgeException
+     * @throws IllegalAgeException if age out of range 18 to 100
+     */
     public static void ageChecking(int age) throws IllegalAgeException {
         if (age < 18 || age > 100) {
             throw new IllegalAgeException(" years if out of range. Must be from 18 to 100", age);
         }
     }
 
-
+    /**
+     * Checks if number == 0 throw IsZeroRuntimeException
+     *
+     * @param number int number
+     */
     public static void isZeroChecking(int number) {
         if (number == 0) {
-            throw new IsZeroException(" is ZERO, try another number", number);
+            throw new IsZeroRuntimeException(" is ZERO, try another number", number);
         }
     }
 
-
+    /**
+     * Throws random Exception from three Exception: ArithmeticException,
+     * NullPointerException, IsZeroRuntimeException
+     */
     public static void randomThrowsException() throws ArithmeticException,
-            NullPointerException, IsZeroException {
+            NullPointerException, IsZeroRuntimeException {
         Random rnd = new Random();
-        int rndEcxeption = rnd.nextInt(3);
+        int rndException = rnd.nextInt(3);
 
-        switch (rndEcxeption) {
+        switch (rndException) {
             case 0:
                 throw new ArithmeticException();
             case 1:
                 throw new NullPointerException();
             case 2:
-                throw new IsZeroException();
+                throw new IsZeroRuntimeException();
         }
     }
 
-
+    /**
+     * Throws Exception in 50% of cases
+     */
     public static void percent50Exception() {
-        int number = 10;
-        for (int i = 2; i <= 10; i++) {
+        int numberIterations = 10;
+        for (int i = 2; i <= numberIterations; i++) {
             try {
                 if (i % 2 == 0) {
                     throw new ArithmeticException("50 percent cases Exception");
                 }
             } catch (ArithmeticException e) {
-                ApplicationLogger.LOGGER.error("Catch JDK - " + e);
+                LOGGER.error("Catch JDK - " + e);
             }
         }
     }
 
-
+    /**
+     * * Re-catches JDK Exception anb throw own-written Exception instead with reason of Exception.
+     * It accepts as argument object of JDK Exception.
+     *
+     * @param e Exceptions which re-catch
+     */
     public static void reCatchException(Exception e) {
         try {
-            throw new MyDefaultException("Re-catching instead of " + e);
-        } catch (MyDefaultException e2) {
-            ApplicationLogger.LOGGER.error("Catch MY_OWN CHECKED - " + e2);
+            throw new MyDefaultException("Re-catching Exception instead of " + e);
+        } catch (MyDefaultException mde) {
+            LOGGER.error("Catch MY_OWN CHECKED - " + mde);
         }
     }
 
-}
+    /**
+     * Produces and catches ArrayIndexOutOfBoundsException by indexing not existing element intArray[5]
+     */
+    public static void ownWrittenArrayIndexOutOfBoundsException() {
 
+        int[] intArray = new int[3];
+        try {
+            intArray[5] = 99;
+        } catch (IndexOutOfBoundsException aie) {
+            LOGGER.error("Catch JDK ArrayIndexOutOfBoundsException - " + aie);
+        }
+    }
+}

@@ -10,7 +10,6 @@ public class MyDefaultException extends Exception {
         this.message = message;
     }
 
-
     @Override
     public String toString() {
         String s1 = this.getClass()
@@ -18,5 +17,4 @@ public class MyDefaultException extends Exception {
         String s2 = ": " + message;
         return s1.concat(s2);
     }
-
 }
