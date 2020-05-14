@@ -1,4 +1,4 @@
-package com.myproject.lection07;
+package com.myproject.lection04;
 
 interface Mortal {
     boolean isAlive();

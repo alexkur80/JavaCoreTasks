@@ -15,7 +15,7 @@
  * no affect at all.
  */
 
-package com.myproject.lection07;
+package com.myproject.lection04;
 
 import static com.myproject.utils.Utils.checkScannerIntNumberNew;
 
