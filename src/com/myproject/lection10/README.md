@@ -1,13 +1,24 @@
-## Занятие 10. Коллекции.
+## Занятие 10. Строки.
 
-* [Student](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection10/Students.java) Создать список оценок учеников, заполнить случайными оценками. Удалить неудовлетворительные оценки из списка.
-* [Student](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection10/Students.java) Создать список оценок учеников с помощью ListIterator, заполнить случайными оценками. Найти самую высокую оценку с использованием итератора.
-* [Student](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection10/Students.java) Вывести учеников из списка в обратном порядке.
-* [Stack](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection10/Stack.java) Ввести с консоли число, занести его цифры в стек. Стек – самостоятельно спроектированный класс, поддерживающий 3 операции:
-    * Задать размер стека.
-    * Внести цифру в стек.
-    * Извлечь цифру из стека.
-    * Вывести число, у которого цифры идут в обратном порядке.
-* [CollectionsUtils](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection10/CollectionsUtils.java) Определить множество на основе множества целых чисел. Создать методы для определения пересечения и объединения множеств.
-* [HashMapWordFrequency](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection10/HashMapWordFrequency.java) Имеется текст. Следует составить для него частотный словарь.
-* [SortIntegerAscending](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection10/SortIntegerAscending.java) Использовать Алгоритмы. Не используя вспомогательных объектов, переставить отрицательные элементы сгенерированного списка в конец, а положительные – в начало этого списка.
+* [stringBuilderVSString(String str1, String str2, int numberOfIteration)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection13/UtilsString.java) Написать два цикла, выполняющих многократное сложение строк, один с помощью оператора сложения и String, 
+второй с помощью StringBuilder и метода append. Сравнить скорость их выполнения.
+
+* [1. strReplace(String string, String oldSubstring, String newSubstring)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection13/UtilsString.java) <p>
+ [2. String strReplaceRegEx(String string)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection13/UtilsString.java) <p>
+Заменить все грустные смайлы :( в строке на весёлые :)
+
+* [ifStringStartAndFinishWord(String string, String world)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection13/UtilsString.java) Написать функцию, принимающую 2 параметра: строку и слово - и возвращающую true, если строка начинается и заканчивается этим словом.
+
+* [personFIO(String string)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection13/UtilsString.java) Написать функцию, принимающую в качестве параметров имя, фамилию и отчество и возвращающую инициалы
+    в формате "Ф.И.О". Учесть, что входные параметры могут быть в любом регистре, а результирующая строка должна быть в верхнем.
+
+* [countWordsInString(String string)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection13/UtilsString.java) Подсчитать количество слов в тексте. Учесть, что слова могут разделяться несколькими пробелами.
+
+* [removeDuplicate(String string)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection13/UtilsString.java) Написать функцию, заменяющую несколько последовательных одинаковых символов в строке одним.
+   Пример: aaabbcdeef ->abcdef
+
+* [1. longToStringFilledByZero01(long number)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection13/UtilsString.java) <p> 
+[2. intToStringFilledByZero02(long number)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection13/UtilsString.java)  <p>
+[3 .intToStringFilledByZero03(long number)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection13/UtilsString.java) <p> Написать функцию, принимающую на вход целое число, возвращающую строку из 10 символов, дополненных слева нулями. Если число выходит за размер 10 символов вернуть все нули. 
+Пример getString(22) -> 0000000022
+Найти 3 способа решения задачи и определить наиболее быстрый способ.

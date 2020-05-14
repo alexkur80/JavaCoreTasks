@@ -1,6 +1,6 @@
-package com.myproject.lection13;
+package com.myproject.lection10;
 
-import com.myproject.lection08.GeometricFig;
+import com.myproject.lection05.GeometricFig;
 import org.apache.log4j.Logger;
 
 public class StringsTesting {
