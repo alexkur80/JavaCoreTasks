@@ -8,8 +8,9 @@
 * [hexValidator(String hexToValidate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection14/UtilsRegExp.java) Написать программу, выполняющую поиск в строке шестнадцатеричных чисел, записанных по правилам Java,
 с помощью регулярных выражений и выводящую их на страницу.
 
-* [tegReplacement(String tegToReplace, String replacementTemplate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection14/UtilsRegExp.java) Написать программу, выполняющую поиск в строке всех тегов абзацев, в т.ч. тех, у которых есть параметры, например <p id ="p1">,
-и замену их на простые теги абзацев <p>.
+* [tegReplacement(String tegToReplace, String replacementTemplate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection14/UtilsRegExp.java) Написать программу, выполняющую поиск в строке всех тегов абзацев,
+ в т.ч. тех, у которых есть параметры, например \<p id ="p1">,
+и замену их на простые теги абзацев \<p>.
 
 * [phoneValidator(String phoneNumToValidate)](https://github.com/alexkur80/PVTCourse2020/blob/master/src/com/myproject/lection14/UtilsRegExp.java) Написать программу, выполняющую поиск в строке мобильных телефонных номеров в формате +375XXYYYYYYY
 и заменяющую каждый телефон на тот же, но в формате +375 (XX) YYY-YY-YY
