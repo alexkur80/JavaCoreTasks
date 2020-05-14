@@ -1,4 +1,4 @@
-package com.myproject.lection16;
+package com.myproject.lection14;
 
 public class TouchPad {
     private String brandName;
